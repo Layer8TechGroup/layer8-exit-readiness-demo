@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layer8 Exit Readiness Assessment — Framework Guide</title>
+  <style>
+*, *::before, *::after { box-sizing: border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13.5px; line-height: 1.7; color: #1F2937;
+    background: #F3F4F6; margin: 0; padding: 0;
+}
+.page { max-width: 900px; margin: 0 auto; background: white; }
+.header-bar {
+    background: #1E2761; color: white;
+    padding: 20px 32px; display: flex;
+    justify-content: space-between; align-items: center;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.header-left .brand { font-size: 20px; font-weight: 700; display: block; }
+.header-left .sub   { font-size: 13px; opacity: .8; margin-top: 2px; display: block; }
+.header-right       { text-align: right; font-size: 12px; opacity: .8; }
+.content { padding: 32px; }
+h2 {
+    font-size: 16px; color: #1E2761;
+    border-bottom: 2px solid #1E2761;
+    padding-bottom: 6px; margin: 36px 0 14px;
+}
+h3 { font-size: 14px; color: #374151; margin: 20px 0 6px; }
+h4 { font-size: 13px; font-weight: 700; color: #1E2761; margin: 14px 0 4px; }
+p  { margin: 0 0 10px; }
+ul { padding-left: 20px; margin: 0 0 10px; }
+li { margin-bottom: 5px; }
+
+/* Callout boxes */
+.callout {
+    border-left: 4px solid #028090; background: #F0FDFA;
+    padding: 12px 16px; border-radius: 0 4px 4px 0;
+    margin: 14px 0; font-size: 13px; color: #064E3B;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.callout-blue {
+    border-left: 4px solid #0369A1; background: #EFF6FF;
+    padding: 12px 16px; border-radius: 0 4px 4px 0;
+    margin: 14px 0; font-size: 13px; color: #1E3A5F;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.callout-amber {
+    border-left: 4px solid #D97706; background: #FFFBEB;
+    padding: 12px 16px; border-radius: 0 4px 4px 0;
+    margin: 14px 0; font-size: 13px; color: #78350F;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+
+/* Score scale */
+.score-scale {
+    display: flex; border-radius: 4px; overflow: hidden;
+    height: 28px; margin: 12px 0;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.scale-seg {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; color: white;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.scale-labels {
+    display: flex; justify-content: space-between;
+    font-size: 10px; color: #6B7280; margin-bottom: 12px;
+}
+
+/* Domain cards */
+.domain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+.domain-card {
+    border-left: 4px solid #ccc; padding: 12px 14px;
+    border-radius: 0 6px 6px 0; background: #FAFAFA;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.domain-card .dc-title { font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+.domain-card .dc-weight { font-size: 11px; color: #6B7280; margin-bottom: 6px; }
+.domain-card p { font-size: 12px; color: #374151; margin: 0; }
+
+/* Multiple table */
+.mult-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+.mult-table th {
+    background: #1E2761; color: white; padding: 8px 12px;
+    text-align: left; font-weight: 600;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.mult-table td { padding: 8px 12px; border-bottom: 1px solid #E5E7EB; }
+.mult-table tr:last-child td { border-bottom: none; }
+.mult-table .score-cell { font-weight: 700; }
+
+/* AMI scale */
+.ami-scale { display: flex; gap: 8px; margin: 12px 0; }
+.ami-band {
+    flex: 1; text-align: center; padding: 10px 6px;
+    border-radius: 4px; font-size: 12px;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+
+/* Vertical weight table */
+.vert-table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 12px 0; }
+.vert-table th {
+    background: #1E2761; color: white; padding: 7px 10px;
+    text-align: center; font-weight: 600;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.vert-table td { padding: 7px 10px; border-bottom: 1px solid #E5E7EB; text-align: center; }
+.vert-table td:first-child { text-align: left; font-weight: 500; }
+.vert-table tr:last-child td { border-bottom: none; }
+.vert-table tr:nth-child(even) td { background: #F8F9FA; }
+
+/* Section divider */
+.divider { border: none; border-top: 1px solid #E5E7EB; margin: 32px 0; }
+
+/* Badge */
+.badge {
+    display: inline-block; padding: 1px 7px; border-radius: 3px;
+    font-size: 11px; font-weight: 700;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.bc { background: #FEE2E2; color: #DC2626; }
+.bn { background: #FEF3C7; color: #92400E; }
+.ba { background: #D1FAE5; color: #065F46; }
+.bs { background: #DBEAFE; color: #1E40AF; }
+.be { background: #EDE9FE; color: #5B21B6; }
+
+.footer {
+    text-align: center; font-size: 12px; color: #9CA3AF;
+    padding: 16px 32px; border-top: 1px solid #E5E7EB;
+}
+.pb { page-break-before: always; break-before: page; }
+@media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { background: white; font-size: 12px; }
+    .page { max-width: 100%; box-shadow: none; }
+    @page { margin: 0.5in; size: letter; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header-bar">
+  <div class="header-left">
+    <span class="brand">Layer8 Tech Group</span>
+    <span class="sub">Exit Readiness Assessment — Framework &amp; Scoring Guide</span>
+  </div>
+  <div class="header-right">
+    Confidential &nbsp;·&nbsp; 2026-04-24
+  </div>
+</div>
+
+<div class="content">
+
+<!-- ── OVERVIEW ─────────────────────────────────────────────────────────── -->
+<h2>What Is an Exit Readiness Assessment?</h2>
+
+<p>The Layer8 Exit Readiness Assessment evaluates a business across five scored domains and one
+standalone Automation Maturity Index. It is built on the principle that exit readiness is not a
+single number — it is a multi-dimensional profile that buyers and their advisors scrutinize from
+several angles during due diligence.</p>
+
+<p>The assessment is generated by AI analysis of the company's own documents — financial statements,
+contracts, IT asset inventories, cybersecurity assessments, SOPs, CRM data, and other materials
+loaded into a secure data pipeline. Every finding is traceable to a specific source document. No
+information is invented; scores reflect only what the documents support.</p>
+
+<div class="callout">
+  <strong>Who uses this assessment?</strong> Business owners planning a sale in the next 1–3 years,
+  M&amp;A advisors and brokers preparing a client for market, and buyers conducting preliminary
+  diligence on an acquisition target.
+</div>
+
+<p>The output is a scored report with per-criterion findings, a valuation impact analysis, a
+Value Recovery Roadmap showing specific services and dollar estimates, and an Automation Maturity
+Index that frames the post-close opportunity for a buyer.</p>
+
+
+<!-- ── SCORING METHODOLOGY ──────────────────────────────────────────────── -->
+<h2>How Scoring Works</h2>
+
+<h3>The 1–10 Scale</h3>
+<p>Each criterion in the five primary domains is scored from 1 to 10 based on a structured rubric.
+The rubric defines what evidence is required at each level. Scores reflect the state of the
+business as documented — not aspirational.</p>
+
+<div class="score-scale">
+  <div class="scale-seg" style="flex:3;background:#DC2626;">1–3</div>
+  <div class="scale-seg" style="flex:2;background:#EA580C;">4–5</div>
+  <div class="scale-seg" style="flex:2;background:#0369A1;">6–7</div>
+  <div class="scale-seg" style="flex:2;background:#059669;">8–9</div>
+  <div class="scale-seg" style="flex:1;background:#5B21B6;">10</div>
+</div>
+<div class="scale-labels">
+  <span>CRITICAL RISK</span>
+  <span>NEEDS WORK</span>
+  <span>ADEQUATE</span>
+  <span>STRONG</span>
+  <span>EXCEPTIONAL</span>
+</div>
+
+<h3>Domain Scores</h3>
+<p>Each domain's score is the weighted average of its criterion scores. Criteria with higher
+relevance to a specific industry vertical receive higher weights; criteria with low applicability
+receive lower weights or are excluded entirely (weight = 0.0). For example, Automated Review
+Solicitation is excluded from the Legal vertical because bar association rules restrict
+testimonials — a score on that criterion would be meaningless for a law firm.</p>
+
+<h3>The Overall Score</h3>
+<p>The overall score is a blended composite of all five primary domain scores, weighted by the
+vertical-specific blend percentages shown in the Domain Blend Weights table below. It is expressed
+as a single number from 0 to 10 and maps directly to a valuation multiple band.</p>
+
+<div class="callout-blue">
+  <strong>Evidence sourcing:</strong> Each criterion score is supported by a 2–3 sentence
+  finding citing specific evidence from the company's documents. The confidence level reflects
+  how many independent source documents corroborated the finding — High (3+), Moderate (2),
+  or Low (1). Low-confidence findings should be reviewed against the original documents.
+</div>
+
+
+<!-- ── THE FIVE DOMAINS ──────────────────────────────────────────────────── -->
+<h2 class="pb">The Five Scored Domains</h2>
+
+<p>The five domains are not equally weighted — they reflect the relative importance buyers
+and their advisors place on each area during M&amp;A due diligence. Each domain is broken
+into four criteria, scored individually and then blended into the domain score.</p>
+
+<div class="domain-grid"><div class="domain-card" style="border-left-color:#1E2761;"><div class="dc-title" style="color:#1E2761;">Diligence Risk</div><div class="dc-weight">30% default blend</div><p>Evaluates how ready the business is to withstand a buyer's due diligence process. Covers SOPs, cybersecurity posture, IT asset documentation, CRM maturity, and data room completeness. A high score here compresses the diligence timeline and supports the upper end of the multiple range.</p></div><div class="domain-card" style="border-left-color:#7C3AED;"><div class="dc-title" style="color:#7C3AED;">Owner Risk</div><div class="dc-weight">25% default blend</div><p>Measures how dependent the business is on the owner for operations, decisions, and key relationships — and whether a transition plan exists. Covers succession readiness, institutional knowledge capture, management team depth, and key person concentration beyond the owner.</p></div><div class="domain-card" style="border-left-color:#0369A1;"><div class="dc-title" style="color:#0369A1;">Customer Quality</div><div class="dc-weight">25% default blend</div><p>Evaluates the defensibility and predictability of the revenue base. Covers customer concentration, recurring revenue mix, contract transferability, and churn rate. Buyers are buying future cash flows — this domain determines how confident they can be in those projections.</p></div><div class="domain-card" style="border-left-color:#047857;"><div class="dc-title" style="color:#047857;">Operational Scalability</div><div class="dc-weight">12% default blend</div><p>Assesses whether the business can grow post-acquisition without fundamental restructuring. Covers process documentation, technology and systems scalability, vendor concentration, and financial controls. Strong scores signal platform potential and support PE-style value creation.</p></div><div class="domain-card" style="border-left-color:#B45309;"><div class="dc-title" style="color:#B45309;">Financial Readiness</div><div class="dc-weight">8% default blend</div><p>Evaluates whether the financials are ready for a Quality of Earnings (QofE) review. Covers books quality, CPA relationship, add-back documentation, revenue recognition consistency, and the three-year financial trend. This is where many deals fall apart or get re-traded.</p></div></div>
+
+<hr class="divider">
+
+<h3>Why These Five?</h3>
+<p>These domains were selected because they represent the five most common areas where
+SMB deals slow down, get re-traded, or fall apart entirely:</p>
+<ul>
+  <li><strong>Diligence Risk</strong> — Poor documentation creates friction that costs time and money and signals management immaturity to a buyer.</li>
+  <li><strong>Owner Risk</strong> — Owner dependency is the most frequently cited reason institutional buyers pass on SMB targets.</li>
+  <li><strong>Customer Quality</strong> — Revenue concentration and low contract transferability are the two items that most commonly trigger post-LOI price reductions.</li>
+  <li><strong>Operational Scalability</strong> — Platform buyers pay a premium specifically for businesses that don't require rebuilding post-acquisition.</li>
+  <li><strong>Financial Readiness</strong> — The QofE process is where the normalized EBITDA a buyer is paying a multiple on gets validated — or challenged.</li>
+</ul>
+
+
+<!-- ── DOMAIN BLEND WEIGHTS ──────────────────────────────────────────────── -->
+<h2>Domain Blend Weights by Vertical</h2>
+
+<p>The Layer8 Scoring Engine applies vertical-specific blend weights that reflect how buyers
+in each industry actually weight these domains. A legal firm buyer cares far more about
+partner succession than automation maturity; a healthcare buyer weights patient retention
+as a primary value driver. The overall score shifts accordingly.</p>
+
+<table class="vert-table">
+  <thead><tr>
+    <th style="text-align:left;">Vertical</th>
+    <th>Diligence<br>Risk</th>
+    <th>Owner<br>Risk</th>
+    <th>Customer<br>Quality</th>
+    <th>Ops<br>Scalability</th>
+    <th>Financial<br>Readiness</th>
+  </tr></thead>
+  <tbody><tr><td>Default / General</td><td>30%</td><td>25%</td><td>25%</td><td>12%</td><td>8%</td></tr>
+<tr><td>Technology / MSP</td><td>25%</td><td>22%</td><td>25%</td><td>20%</td><td>8%</td></tr>
+<tr><td>Healthcare</td><td>28%</td><td>22%</td><td>28%</td><td>12%</td><td>10%</td></tr>
+<tr><td>Legal</td><td>28%</td><td>30%</td><td>25%</td><td>10%</td><td>7%</td></tr>
+<tr><td>Insurance</td><td>27%</td><td>22%</td><td>30%</td><td>12%</td><td>9%</td></tr>
+<tr><td>Accounting</td><td>27%</td><td>30%</td><td>25%</td><td>10%</td><td>8%</td></tr>
+<tr><td>Real Estate</td><td>27%</td><td>22%</td><td>30%</td><td>12%</td><td>9%</td></tr>
+</tbody>
+</table>
+
+<div class="callout-amber">
+  <strong>Vertical selection matters.</strong> Running a healthcare practice through the Default
+  weights would underweight patient retention (Customer Quality) and overweight Operational
+  Scalability — producing a score profile that doesn't reflect how a healthcare buyer
+  actually underwrites the deal. Always select the vertical that matches the company's
+  primary business model.
+</div>
+
+
+<!-- ── AUTOMATION MATURITY INDEX ─────────────────────────────────────────── -->
+<h2 class="pb">The Automation Maturity Index</h2>
+
+<p>The Automation Maturity Index (AMI) scores the company's revenue operations infrastructure
+across six criteria on a 0–2 scale. It is <strong>intentionally excluded from the overall
+score and valuation multiple.</strong></p>
+
+<h3>Why Is It Separate?</h3>
+<p>The AMI measures <em>opportunity</em>, not risk. A low AMI score does not indicate that the
+business is less valuable — it indicates that there is a systematized growth lever available to
+a buyer who deploys automation post-close. High AMI scores signal that the business has already
+captured this value and that it will transfer intact to a new owner.</p>
+
+<p>Including AMI in the overall score would penalize industries where automation is structurally
+inappropriate (law firms, referral-based accounting practices) and would misrepresent the
+difference between "value not yet captured" and "operational deficiency."</p>
+
+<div class="ami-scale">
+  <div class="ami-band" style="background:#FEE2E2;color:#DC2626;">
+    <strong>0 — MANUAL</strong><br>
+    <span style="font-size:11px;">Not present or entirely absent. Manual processes in place.</span>
+  </div>
+  <div class="ami-band" style="background:#FEF3C7;color:#92400E;">
+    <strong>1 — PARTIAL</strong><br>
+    <span style="font-size:11px;">Some capability exists but owner-dependent or inconsistent.</span>
+  </div>
+  <div class="ami-band" style="background:#D1FAE5;color:#065F46;">
+    <strong>2 — OPTIMIZED</strong><br>
+    <span style="font-size:11px;">Fully automated, systematized, and transferable to a buyer.</span>
+  </div>
+</div>
+
+<h3>The Six AMI Criteria</h3>
+<table class="vert-table">
+  <thead><tr>
+    <th style="text-align:left;width:200px;">Criterion</th>
+    <th style="text-align:left;">What It Evaluates</th>
+    <th style="width:80px;">Scores</th>
+  </tr></thead>
+  <tbody><tr><td style="font-weight:600;">AI Voice & After-Hours</td><td style="color:#6B7280;">Is inbound call handling automated after hours? Does an AI voice agent qualify leads and log them to the CRM?</td><td style="text-align:center;"><span class="badge bc">0</span> <span class="badge bn">1</span> <span class="badge ba">2</span></td></tr>
+<tr><td style="font-weight:600;">CRM & Workflow Automation</td><td style="color:#6B7280;">Is a CRM in active use with automated workflows? Is the pipeline current and tracked?</td><td style="text-align:center;"><span class="badge bc">0</span> <span class="badge bn">1</span> <span class="badge ba">2</span></td></tr>
+<tr><td style="font-weight:600;">24/7 Lead Capture</td><td style="color:#6B7280;">Does the business capture leads outside business hours via chatbot or automated form routing?</td><td style="text-align:center;"><span class="badge bc">0</span> <span class="badge bn">1</span> <span class="badge ba">2</span></td></tr>
+<tr><td style="font-weight:600;">SMS Reminders & Confirmations</td><td style="color:#6B7280;">Are appointment reminders and confirmation workflows automated via SMS?</td><td style="text-align:center;"><span class="badge bc">0</span> <span class="badge bn">1</span> <span class="badge ba">2</span></td></tr>
+<tr><td style="font-weight:600;">Automated Review Solicitation</td><td style="color:#6B7280;">Does a post-service trigger automatically send review requests?</td><td style="text-align:center;"><span class="badge bc">0</span> <span class="badge bn">1</span> <span class="badge ba">2</span></td></tr>
+<tr><td style="font-weight:600;">Smart Follow-Up Sequences</td><td style="color:#6B7280;">Are automated drip sequences deployed for unconverted leads and dormant client re-engagement?</td><td style="text-align:center;"><span class="badge bc">0</span> <span class="badge bn">1</span> <span class="badge ba">2</span></td></tr>
+</tbody>
+</table>
+
+<h3>Vertical Criterion Weights</h3>
+<p>AMI criterion weights are adjusted by vertical using the same principle as the primary domains.
+Key adjustments:</p>
+<ul>
+  <li><strong>Legal:</strong> Review Solicitation excluded (weight = 0.0) — bar rules restrict testimonials.
+      AI Voice and 24/7 Lead Capture have low weight — professional services clients expect human intake.</li>
+  <li><strong>Healthcare:</strong> SMS Reminders weighted at 2.0× (critical) — no-show rate is direct EBITDA leakage.
+      AI Voice and 24/7 Lead Capture at 1.5× — patients book outside business hours.</li>
+  <li><strong>Real Estate:</strong> 24/7 Lead Capture weighted at 2.0× (critical) — research shows 78% of buyers
+      select the first agent who responds.</li>
+  <li><strong>Accounting:</strong> All criteria at 0.5× or standard — referral-based practices do not depend
+      on inbound automation for growth.</li>
+</ul>
+
+<div class="callout">
+  <strong>The Layer8 opportunity:</strong> A low AMI score is the starting point of a conversation,
+  not a penalty. The Value Recovery Roadmap in each report quantifies what closing these gaps is
+  worth — in dollars — to a buyer who deploys automation post-close.
+</div>
+
+
+<!-- ── VALUATION IMPACT ───────────────────────────────────────────────────── -->
+<h2 class="pb">Valuation Impact Analysis</h2>
+
+<p>The valuation section translates the overall readiness score into a EBITDA multiple band and
+implied dollar value range. It also projects a post-remediation range based on implementing the
+priority fixes in the report.</p>
+
+<h3>How Multiple Bands Are Assigned</h3>
+<p>Multiple bands reflect real-world SMB transaction data for businesses of comparable size and
+operational maturity. They are not aspirational — they represent what buyers are currently paying
+for businesses at each readiness level:</p>
+
+<table class="mult-table">
+  <thead><tr>
+    <th style="width:140px;">Overall Score</th>
+    <th style="width:160px;">Multiple Range</th>
+    <th>What It Signals to Buyers</th>
+  </tr></thead>
+  <tbody>
+    <tr><td class="score-cell"><span class="badge be">8.0 – 10.0</span></td>
+        <td><strong>5.0 – 6.5×</strong></td>
+        <td>Institutional-ready — minimal buyer risk, clean diligence, strong fundamentals</td></tr>
+    <tr><td class="score-cell"><span class="badge bs">6.5 – 7.9</span></td>
+        <td><strong>4.5 – 5.5×</strong></td>
+        <td>Strong fundamentals with minor addressable gaps</td></tr>
+    <tr><td class="score-cell"><span class="badge ba">5.0 – 6.4</span></td>
+        <td><strong>3.5 – 4.5×</strong></td>
+        <td>Adequate — buyer will discount for gaps, expect extended diligence</td></tr>
+    <tr><td class="score-cell"><span class="badge bn">3.5 – 4.9</span></td>
+        <td><strong>2.5 – 3.5×</strong></td>
+        <td>Material gaps — significant discount expected, earnout likely</td></tr>
+    <tr><td class="score-cell"><span class="badge bc">0 – 3.4</span></td>
+        <td><strong>2.0 – 3.0×</strong></td>
+        <td>Not ready — remediation required before listing, deal structure risk is high</td></tr>
+  </tbody>
+</table>
+
+<h3>Post-Remediation Projection</h3>
+<p>The post-remediation range shows the implied value after implementing the priority fixes,
+assuming a 1.0× improvement in the multiple band. <strong>This is a directional estimate,
+not a guarantee.</strong> The actual improvement depends on the quality of execution and
+how the market receives the remediated business at the time of sale.</p>
+
+<h3>EBITDA Source</h3>
+<p>Where EBITDA is shown, it reflects the most recent full fiscal year extracted from the
+company's financial documents. Where the AI could not extract a reliable figure, EBITDA
+is shown as "—" and the valuation section shows the multiple band without dollar values.
+Providing a verified EBITDA at intake enables the full valuation analysis.</p>
+
+<div class="callout-blue">
+  <strong>Important note on add-backs:</strong> The EBITDA shown is as-reported from the
+  financial statements. A properly normalized EBITDA — with owner compensation adjusted to
+  market rate, one-time expenses removed, and personal expenses separated — will typically
+  be higher and will command a better multiple. The Financial Readiness domain score
+  reflects how well-documented these add-backs are.
+</div>
+
+
+<!-- ── VALUE RECOVERY ROADMAP ────────────────────────────────────────────── -->
+<h2>Value Recovery Roadmap</h2>
+
+<p>The Value Recovery Roadmap is a prioritized services table that translates each domain
+gap into a specific Layer8 service, a multiple impact estimate, a dollar value at risk,
+and an estimated timeline to close the gap. It appears between the domain bar chart and
+the Valuation Impact Analysis in each report.</p>
+
+<h3>How Dollar Values Are Calculated</h3>
+<p>The "Total Recoverable Value" is the gap between the company's current valuation
+midpoint and the ceiling of the next multiple band up, multiplied by EBITDA:</p>
+<ul>
+  <li><strong>Current midpoint</strong> = (lower band multiple + upper band multiple) ÷ 2</li>
+  <li><strong>Ceiling</strong> = the high end of the next multiple band above the current one</li>
+  <li><strong>Total recoverable</strong> = (ceiling − current midpoint) × EBITDA</li>
+  <li><strong>Per-domain share</strong> = total recoverable × that domain's blend weight</li>
+  <li><strong>Multiple impact</strong> = per-domain share ÷ EBITDA</li>
+</ul>
+
+<div class="callout-amber">
+  <strong>Example:</strong> A business with a 3.6/10 score sits in the 2.5–3.5× band.
+  Current midpoint = 3.0×. Next band ceiling = 4.5×. With EBITDA of $864,000:
+  total recoverable = 1.5 × $864,000 = $1,296,000. The Diligence Risk domain (30% blend)
+  accounts for $388,800 of that, representing a +0.5× multiple impact if fully closed.
+</div>
+
+<h3>Quick Win vs. Timeline</h3>
+<p>Each row displays an estimated timeline to close the domain gap. Timelines reflect both
+the inherent complexity of the service type and the severity of the gap (score band):</p>
+<ul>
+  <li><strong>Financial Readiness and Diligence Risk</strong> — faster ceiling (4–8 weeks for most gaps). Discrete tasks: add-back schedule, data room completion, MFA deployment.</li>
+  <li><strong>Owner Risk</strong> — 6–10 weeks. Succession planning and knowledge capture require coordination and documentation.</li>
+  <li><strong>Customer Quality</strong> — 8–12+ weeks. Contract review requires legal involvement; CRM implementation requires configuration and adoption time.</li>
+  <li><strong>Operational Scalability</strong> — 8–12+ weeks. Process documentation and systems audits require structured interviews and multi-stakeholder review.</li>
+</ul>
+
+<h3>The Layer8 Services</h3>
+<p>Each roadmap row maps to a specific Layer8 service engagement:</p>
+<ul>
+  <li><strong>Security Hardening &amp; Data Room Preparation</strong> — MFA deployment, endpoint protection, incident response documentation, data room build and organization.</li>
+  <li><strong>Succession Planning &amp; Knowledge Capture Sprint</strong> — Successor identification, succession plan drafting, SOP documentation sessions, org chart and escalation path design.</li>
+  <li><strong>Contract Audit &amp; CRM Implementation</strong> — Contract review with M&amp;A counsel for assignment language, CRM selection and deployment, pipeline workflow configuration.</li>
+  <li><strong>Process Documentation &amp; Systems Audit</strong> — Core SOP documentation, technology stack review and documentation, vendor contract review, financial controls assessment.</li>
+  <li><strong>Books Cleanup &amp; Add-Back Schedule</strong> — Bookkeeping normalization, add-back identification and documentation, CPA coordination, QofE preparation support.</li>
+</ul>
+
+
+<!-- ── SYNTHESIS SECTIONS ────────────────────────────────────────────────── -->
+<h2 class="pb">Synthesis Sections</h2>
+
+<p>Three synthesis sections appear at the end of each report. They are generated by AI
+analysis of the full set of domain scores and findings, and are designed to give a broker
+or advisor a rapid narrative summary of the report's key conclusions.</p>
+
+<h3>Top 3 Strengths</h3>
+<p>Areas where the company is demonstrably well-positioned for exit, documented by specific
+evidence from the assessment. These are not generic positives — they reference actual scores
+and findings. Use these when positioning the business to buyers or framing the investment thesis.</p>
+
+<h3>Top 3 Risks</h3>
+<p>Areas that pose the greatest risk to deal value or completion. These are the items a buyer's
+M&amp;A team will focus on during diligence. Understanding them in advance allows the seller to
+prepare responses, remediate before listing, or price them into the transaction structure
+proactively rather than reactively.</p>
+
+<h3>Recommended Priority Fixes</h3>
+<p>Five specific, actionable remediation steps sequenced across a 90-day pre-listing window.
+Each fix includes a timeframe (e.g., "Weeks 1–4") and is ordered by a combination of impact
+and sequencing logic — some items must be completed before others can begin. These are not
+generic best practices; they are derived from the specific gaps identified in this company's
+assessment.</p>
+
+<div class="callout">
+  <strong>90-day framing:</strong> The 90-day horizon is deliberate. It reflects the typical
+  lead time between the decision to engage a broker and the first buyer meeting.
+  A business that enters that window with a completed remediation plan is measurably more
+  valuable than one that surfaces gaps in live diligence.
+</div>
+
+
+<!-- ── DOMAIN DETAIL ─────────────────────────────────────────────────────── -->
+<h2>Domain Detail &amp; Findings</h2>
+
+<p>The main body of each report shows one section per primary domain. Each section contains:</p>
+<ul>
+  <li><strong>Domain score and badge</strong> — normalized /10 with readiness label and blend weight</li>
+  <li><strong>Deal Impact line</strong> — a single sentence describing what the score means for deal
+      velocity and the multiple range, specific to that domain</li>
+  <li><strong>Criteria table</strong> — one row per criterion showing ID, area, score, rating badge,
+      and visual score bar</li>
+  <li><strong>Finding</strong> — a 2–3 sentence evidence-based narrative for each criterion citing
+      the specific source documents that informed the score</li>
+</ul>
+
+<p>The Automation Maturity Index section follows the primary domain sections and is visually
+distinct (dashed border, grey background) to reinforce that it is a separate index, not part
+of the scored composite.</p>
+
+
+<!-- ── CONFIDENCE LEVELS ──────────────────────────────────────────────────── -->
+<h2>Evidence Confidence Levels</h2>
+
+<p>Each finding includes a confidence rating that reflects how many independent source documents
+corroborated the evidence used to generate the score:</p>
+<ul>
+  <li><strong>High confidence — multiple documents corroborated:</strong> Three or more distinct
+      source documents provided evidence for this criterion. The score is well-supported.</li>
+  <li><strong>Moderate confidence:</strong> Two documents provided corroborating evidence.
+      The score is reasonably supported but a single additional document could shift it.</li>
+  <li><strong>Low confidence — limited document coverage:</strong> Only one document provided
+      evidence, or the retrieval returned limited relevant content. The score should be reviewed
+      against the original documents before relying on it for negotiation.</li>
+</ul>
+
+<div class="callout-amber">
+  <strong>Low-confidence scores:</strong> A low-confidence score does not mean the finding is
+  wrong — it means the evidence base is thin. This typically occurs when a criterion requires
+  documentation that was not included in the data room (e.g., a succession plan that exists
+  but was not uploaded). Providing additional documents and re-running the assessment will
+  resolve most low-confidence findings.
+</div>
+
+
+<!-- ── FOOTER NOTE ───────────────────────────────────────────────────────── -->
+<hr class="divider">
+<p style="font-size:12px;color:#6B7280;">
+  This guide is intended to accompany the Layer8 Exit Readiness Assessment report.
+  Scores, findings, and valuations in the assessment are derived from AI analysis of
+  company-provided documents and are not a substitute for formal financial, legal, or
+  M&amp;A advisory services. Valuation ranges are illustrative and reflect market
+  benchmarks for comparable businesses — actual transaction values depend on deal
+  structure, buyer type, market conditions, and negotiation.
+</p>
+
+</div>
+
+<div class="footer">
+  Layer8 Tech Group &nbsp;·&nbsp; layer8techgroup.com &nbsp;·&nbsp; Confidential
+</div>
+
+</div>
+</body>
+</html>

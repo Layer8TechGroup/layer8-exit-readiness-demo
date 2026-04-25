@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exit Readiness Assessment — Cornerstone Commercial Cleaning</title>
+  <style>
+*, *::before, *::after { box-sizing: border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 14px; line-height: 1.6; color: #1F2937;
+    background: #F3F4F6; margin: 0; padding: 0;
+}
+.page { max-width: 900px; margin: 0 auto; background: white; }
+.header-bar {
+    background: #1E2761; color: white;
+    padding: 20px 32px; display: flex;
+    justify-content: space-between; align-items: center;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.header-left .brand { font-size: 20px; font-weight: 700; display: block; }
+.header-left .sub   { font-size: 13px; opacity: 0.8; margin-top: 2px; display: block; }
+.header-right       { text-align: right; }
+.header-right .co   { font-size: 16px; font-weight: 600; display: block; }
+.header-right .dt   { font-size: 13px; opacity: 0.8; margin-top: 2px; display: block; }
+.content { padding: 32px; }
+h2 {
+    font-size: 17px; color: #1E2761;
+    border-bottom: 2px solid #1E2761;
+    padding-bottom: 6px; margin: 36px 0 16px;
+}
+h3 { font-size: 14px; color: #374151; margin: 0 0 6px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 8px; }
+th {
+    background: #1E2761; color: white;
+    padding: 10px 12px; text-align: left; font-weight: 600;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+td { padding: 9px 12px; border-bottom: 1px solid #E5E7EB; vertical-align: middle; }
+.badge {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 11px; font-weight: 700; white-space: nowrap;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.bc { background: #FEE2E2; color: #DC2626; }
+.bn { background: #FEF3C7; color: #92400E; }
+.ba { background: #D1FAE5; color: #065F46; }
+.bs { background: #DBEAFE; color: #1E40AF; }
+.be { background: #EDE9FE; color: #5B21B6; }
+.bx { background: #F3F4F6; color: #6B7280; }
+.score-summary {
+    background: #F8F9FA; border: 1px solid #E5E7EB;
+    border-radius: 6px; padding: 16px 20px; margin: 16px 0 24px;
+    display: flex; gap: 32px; flex-wrap: wrap;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.score-item .lbl { font-size: 11px; color: #6B7280; text-transform: uppercase; letter-spacing: 0.05em; }
+.score-item .val { font-size: 22px; font-weight: 700; color: #1E2761; }
+.score-item .wt  { font-size: 11px; color: #9CA3AF; }
+.val-box {
+    background: #EFF6FF; border: 1px solid #BFDBFE;
+    border-radius: 8px; padding: 24px; margin: 24px 0;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.val-box h3 { color: #1E40AF; font-size: 15px; }
+.val-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6px 24px; margin-bottom: 16px; font-size: 13px;
+}
+.opportunity {
+    color: #028090; font-weight: 700; font-size: 15px;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid #BFDBFE;
+}
+.evidence { font-size: 12px; color: #6B7280; font-style: italic; margin: 4px 0 10px; }
+blockquote {
+    border-left: 3px solid #E5E7EB; margin: 0;
+    padding: 10px 16px; background: #FAFAFA;
+    border-radius: 0 4px 4px 0; font-size: 13px; line-height: 1.7;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.fix-card {
+    background: #F9FAFB; border-left: 4px solid #028090;
+    border-radius: 0 6px 6px 0; padding: 14px 16px; margin-bottom: 12px;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.fix-num { font-size: 11px; font-weight: 700; color: #028090; text-transform: uppercase; margin-bottom: 4px; }
+ul.sr { padding-left: 20px; margin: 8px 0; }
+ul.sr li { margin-bottom: 8px; font-size: 13px; }
+.compliance { font-size: 12px; color: #6B7280; border-top: 1px solid #E5E7EB; padding-top: 16px; margin-top: 32px; }
+.compliance h2 { font-size: 14px; color: #6B7280; border-color: #E5E7EB; margin-top: 0; }
+.footer {
+    text-align: center; font-size: 12px; color: #9CA3AF;
+    padding: 16px 32px; border-top: 1px solid #E5E7EB; background: white;
+}
+.pb { page-break-before: always; break-before: page; }
+@media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { background: white; font-size: 12px; }
+    .page { max-width: 100%; box-shadow: none; }
+    @page { margin: 0.5in; size: letter; }
+}
+
+/* ── Value Recovery Roadmap ────────────────────────────────────────────────── */
+.vrr-card {
+    border-top: 4px solid #1E2761; border-radius: 0 0 6px 6px;
+    margin: 0 0 24px; overflow: hidden;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.vrr-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 14px 16px 6px;
+}
+.vrr-title { font-size: 15px; font-weight: 700; color: #1E2761; }
+.vrr-total { font-size: 14px; font-weight: 700; color: #028090; }
+.vrr-sub   { font-size: 12px; color: #6B7280; padding: 0 16px 10px; }
+.vrr-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.vrr-table th {
+    background: #1E2761; color: white; padding: 9px 12px;
+    text-align: left; font-weight: 600;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.vrr-table td { padding: 9px 12px; border-bottom: 1px solid #E5E7EB; vertical-align: middle; }
+.vrr-table tr:last-child td { border-bottom: none; }
+.vrr-dom  { display: flex; align-items: center; gap: 8px; }
+.vrr-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; border-radius: 4px;
+    font-size: 10px; font-weight: 700; color: white; flex-shrink: 0;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.vrr-impact { font-weight: 700; color: #0369A1; }
+.vrr-value  { font-weight: 700; color: #DC2626; }
+.vrr-tl {
+    display: inline-block; background: #F1F5F9; color: #475569;
+    font-size: 11px; font-weight: 600; padding: 2px 8px;
+    border-radius: 3px; white-space: nowrap;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.vrr-cta {
+    display: flex; align-items: center; justify-content: space-between;
+    background: #F0F9FF; border: 1px solid #BAE6FD; border-radius: 6px;
+    padding: 13px 16px; margin: 10px 16px 16px; gap: 16px; flex-wrap: wrap;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.vrr-cta-text { font-size: 13px; color: #0C4A6E; flex: 1; line-height: 1.5; }
+.vrr-cta-btn {
+    display: inline-block; background: #028090; color: white !important;
+    text-decoration: none; padding: 8px 18px; border-radius: 4px;
+    font-size: 12px; font-weight: 700; white-space: nowrap;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+@media (max-width:600px) {
+    .vrr-header { flex-direction: column; gap: 4px; }
+    .vrr-table th:nth-child(3), .vrr-table td:nth-child(3) { display: none; }
+    .vrr-cta { flex-direction: column; }
+}
+
+/* ── 5-domain horizontal bar chart ────────────────────────────────────── */
+.domain-chart { margin: 14px 0 24px; }
+.domain-bar-row {
+    display: grid;
+    grid-template-columns: 170px 1fr 56px 130px;
+    align-items: center;
+    gap: 0 10px;
+    padding: 5px 0;
+    border-bottom: 1px solid #F3F4F6;
+}
+.domain-bar-row:last-child { border-bottom: none; }
+.dbl { font-size: 12px; color: #374151; font-weight: 500; }
+.dbt { background: #E5E7EB; border-radius: 4px; height: 11px; overflow: hidden;
+       -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.dbf { height: 100%; border-radius: 4px;
+       -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.dbv { font-size: 12px; font-weight: 700; color: #1F2937; text-align: right; }
+
+/* ── Per-domain detail section ─────────────────────────────────────────── */
+.domain-section { margin: 32px 0 0; }
+.ds-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 2px solid #1E2761; padding-bottom: 6px; margin-bottom: 10px;
+}
+.ds-title { font-size: 16px; font-weight: 700; color: #1E2761; margin: 0; }
+.ds-score { font-size: 13px; color: #374151; }
+.broker-impact {
+    background: #F0FDFA; border-left: 4px solid #028090;
+    padding: 9px 14px; border-radius: 0 4px 4px 0;
+    font-size: 12px; color: #064E3B; margin: 0 0 12px;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.broker-impact strong { color: #028090; }
+
+/* ── Automation Maturity Index section ─────────────────────────────────── */
+.ami-section {
+    background: #F9FAFB; border: 1.5px dashed #9CA3AF;
+    border-radius: 8px; padding: 20px 24px; margin: 32px 0;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.ami-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 4px;
+}
+.ami-title { font-size: 15px; font-weight: 700; color: #374151; }
+.ami-excl  { font-size: 11px; color: #9CA3AF; font-style: italic; }
+.ami-score-row {
+    display: flex; align-items: center; gap: 12px;
+    margin: 10px 0 12px;
+}
+.ami-big { font-size: 26px; font-weight: 700; color: #374151; }
+.ami-context {
+    font-size: 13px; color: #6B7280; margin: 0 0 14px;
+    padding-bottom: 12px; border-bottom: 1px solid #E5E7EB;
+}
+.ami-opportunity {
+    background: #EFF6FF; border-radius: 4px; padding: 12px 14px;
+    margin-top: 14px; font-size: 12px; color: #1E40AF;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.ami-cta {
+    background: #1E2761; color: white; border-radius: 4px;
+    padding: 12px 14px; margin-top: 10px; font-size: 12px;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.ami-cta strong { color: #93C5FD; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header-bar">
+  <div class="header-left">
+    <span class="brand">Layer8 Tech Group</span>
+    <span class="sub">Exit Readiness Assessment</span>
+  </div>
+  <div class="header-right">
+    <span class="co">Cornerstone Commercial Cleaning</span>
+    <span class="dt">2026-04-24</span>
+  </div>
+</div>
+
+<div class="content">
+
+  <p style="margin-top:16px;font-size:13px;color:#6B7280;">
+    <strong>Prepared by:</strong> Layer8TechGroup &nbsp;·&nbsp;
+    <strong>Framework:</strong> 10 Technology Fixes — Tier 1 &nbsp;·&nbsp;
+    <strong>Documents Ingested:</strong> 14 documents
+  </p>
+
+  <div class="score-summary">
+    <div class="score-item">
+      <div class="lbl">Overall Score</div>
+      <div class="val">6.8/10</div>
+      <div class="wt">5-domain blend</div>
+    </div>
+    <div class="score-item">
+      <div class="lbl">Valuation Multiple</div>
+      <div class="val" style="font-size:17px;">4.5&#8202;–&#8202;5.5x</div>
+      <div class="wt">EBITDA</div>
+    </div>
+    <div class="score-item">
+      <div class="lbl">EBITDA</div>
+      <div class="val" style="font-size:17px;">$680,000</div>
+      <div class="wt">most recent FY</div>
+    </div>
+    <div class="score-item">
+      <div class="lbl">Vertical</div>
+      <div class="val" style="font-size:14px;">Default</div>
+      <div class="wt">default</div>
+    </div>
+  </div>
+
+  <h2>Assessment Scores — 5-Domain Profile</h2>
+  <div class="domain-chart"><div class="domain-bar-row"><span class="dbl">Diligence Risk</span><div class="dbt"><div class="dbf" style="width:67%;background:#F59E0B;"></div></div><span class="dbv">6.7/10</span><span class="badge ba">ADEQUATE</span></div>
+<div class="domain-bar-row"><span class="dbl">Owner Risk</span><div class="dbt"><div class="dbf" style="width:70%;background:#059669;"></div></div><span class="dbv">7.0/10</span><span class="badge ba">ADEQUATE</span></div>
+<div class="domain-bar-row"><span class="dbl">Customer Quality</span><div class="dbt"><div class="dbf" style="width:68%;background:#F59E0B;"></div></div><span class="dbv">6.8/10</span><span class="badge ba">ADEQUATE</span></div>
+<div class="domain-bar-row"><span class="dbl">Operational Scalability</span><div class="dbt"><div class="dbf" style="width:65%;background:#F59E0B;"></div></div><span class="dbv">6.5/10</span><span class="badge ba">ADEQUATE</span></div>
+<div class="domain-bar-row"><span class="dbl">Financial Readiness</span><div class="dbt"><div class="dbf" style="width:70%;background:#059669;"></div></div><span class="dbv">7.0/10</span><span class="badge ba">ADEQUATE</span></div>
+</div>
+  <div class="vrr-card"><div class="vrr-header"><span class="vrr-title">Value Recovery Roadmap</span><span class="vrr-total">Total Recoverable Value: $1,020,000</span></div><div class="vrr-sub">Prioritized by estimated valuation impact &nbsp;·&nbsp; Current multiple: 4.5&#8202;–&#8202;5.5x &nbsp;·&nbsp; Ceiling: 6.5x</div><table class="vrr-table"><thead><tr><th style="width:140px;">Domain</th><th>Layer8 Service</th><th style="width:100px;">Multiple Impact</th><th style="width:120px;">Value at Risk</th><th style="width:100px;">Est. Timeline</th></tr></thead><tbody><tr><td><div class="vrr-dom"><span class="vrr-badge" style="background:#1E2761;">DR</span><span>Diligence Risk</span></div></td><td style="color:#374151;">Security Hardening &amp; Data Room Preparation</td><td class="vrr-impact">+0.5x</td><td class="vrr-value">$306,000</td><td><span class="vrr-tl">&#9201;&nbsp;2–4 wks</span></td></tr>
+<tr style="background:#F8F9FA;"><td><div class="vrr-dom"><span class="vrr-badge" style="background:#7C3AED;">OR</span><span>Owner Risk</span></div></td><td style="color:#374151;">Succession Planning &amp; Knowledge Capture Sprint</td><td class="vrr-impact">+0.4x</td><td class="vrr-value">$255,000</td><td><span class="vrr-tl">&#9201;&nbsp;4–6 wks</span></td></tr>
+<tr><td><div class="vrr-dom"><span class="vrr-badge" style="background:#0369A1;">CQ</span><span>Customer Quality</span></div></td><td style="color:#374151;">Contract Audit &amp; CRM Implementation</td><td class="vrr-impact">+0.4x</td><td class="vrr-value">$255,000</td><td><span class="vrr-tl">&#9201;&nbsp;6–8 wks</span></td></tr>
+<tr style="background:#F8F9FA;"><td><div class="vrr-dom"><span class="vrr-badge" style="background:#047857;">OS</span><span>Operational Scalability</span></div></td><td style="color:#374151;">Process Documentation &amp; Systems Audit</td><td class="vrr-impact">+0.2x</td><td class="vrr-value">$122,400</td><td><span class="vrr-tl">&#9201;&nbsp;6–8 wks</span></td></tr>
+<tr><td><div class="vrr-dom"><span class="vrr-badge" style="background:#B45309;">FR</span><span>Financial Readiness</span></div></td><td style="color:#374151;">Books Cleanup &amp; Add-Back Schedule</td><td class="vrr-impact">+0.1x</td><td class="vrr-value">$81,600</td><td><span class="vrr-tl">&#9201;&nbsp;2–4 wks</span></td></tr>
+</tbody></table><div class="vrr-cta"><span class="vrr-cta-text"><strong>Ready to recover this value before you list?</strong><br>Layer8 Tech Group delivers these services for businesses preparing for acquisition.</span><a class="vrr-cta-btn" href="https://layer8techgroup.com" target="_blank">Schedule a Discovery Call &#8594;</a></div></div>
+
+  <h2>Valuation Impact Analysis</h2>
+  <div class="val-box">
+    <h3>Current State</h3>
+    <div class="val-grid">
+      <p><strong>EBITDA (most recent FY):</strong><br><strong>$680,000</strong> <em>(AI-extracted)</em></p>
+      <p><strong>Exit readiness score:</strong><br>6.8/10 (blended)</p>
+      <p><strong>Multiple at current state:</strong><br>4.5–5.5x</p>
+      <p><strong>Rationale:</strong><br>Strong fundamentals, minor gaps</p>
+      <p><strong>Projected score (post-fixes):</strong><br>8.8/10 <em>(estimated)</em></p>
+    </div>
+    
+        <table>
+          <thead><tr>
+            <th>Scenario</th><th>Multiple Range</th><th>Implied Value</th>
+          </tr></thead>
+          <tbody>
+            <tr>
+              <td>Current (as-is)</td>
+              <td>4.5x – 5.5x</td>
+              <td style="font-weight:700;">$3,060,000 – $3,740,000</td>
+            </tr>
+            <tr style="background:#EFF6FF;">
+              <td>Post-Remediation</td>
+              <td>5.5x – 6.5x</td>
+              <td style="font-weight:700;">$3,740,000 – $4,420,000</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="opportunity">
+          Implementing the recommended priority fixes over 90 days could add an estimated
+          <strong>~$680,000</strong> to the transaction value —
+          a potential <strong>20% lift</strong> on the same underlying business.
+        </p>
+  </div>
+  <h2 class="pb">Domain Detail &amp; Findings</h2>
+  <div class="domain-section"><div class="ds-header"><span class="ds-title">Diligence Risk</span><span class="ds-score">6.7/10 &nbsp;<span class="badge ba">ADEQUATE</span>&nbsp;<span style="color:#9CA3AF;font-size:11px;">(30% blend)</span></span></div><div class="broker-impact"><strong>Deal Impact:</strong> Minor documentation gaps — standard 60–90 day diligence with targeted questions; unlikely to impede deal.</div><table><thead><tr><th style="width:80px;">ID</th><th>Criterion &amp; Finding</th><th style="width:60px;">Score</th><th style="width:120px;">Rating</th><th style="width:120px;">Bar</th></tr></thead><tbody><tr><td style="color:#9CA3AF;font-size:11px;">fix_01</td><td><strong>Documented Processes &amp; SOPs</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Documented Processes &amp; SOPs shows strong practices with minor gaps; unlikely to attract material diligence questions.</div></td><td style="font-weight:700;white-space:nowrap;">7/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:70%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:11px;">fix_02</td><td><strong>Cybersecurity Posture</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Cybersecurity Posture meets baseline expectations with identifiable gaps; addressable before listing with targeted effort.</div></td><td style="font-weight:700;white-space:nowrap;">6/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#F59E0B;width:60%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr><td style="color:#9CA3AF;font-size:11px;">fix_03</td><td><strong>Owner Dependency</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Owner Dependency shows strong practices with minor gaps; unlikely to attract material diligence questions.</div></td><td style="font-weight:700;white-space:nowrap;">8/10</td><td><span class="badge bs">STRONG</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:80%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:11px;">fix_04</td><td><strong>Revenue Quality &amp; Concentration</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Revenue Quality &amp; Concentration meets baseline expectations with identifiable gaps; addressable before listing with targeted effort.</div></td><td style="font-weight:700;white-space:nowrap;">6/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#F59E0B;width:60%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr><td style="color:#9CA3AF;font-size:11px;">fix_05</td><td><strong>Customer Contracts</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Customer Contracts shows strong practices with minor gaps; unlikely to attract material diligence questions.</div></td><td style="font-weight:700;white-space:nowrap;">7/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:70%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:11px;">fix_06</td><td><strong>IT Infrastructure &amp; Asset Documentation</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">IT Infrastructure &amp; Asset Documentation meets baseline expectations with identifiable gaps; addressable before listing with targeted effort.</div></td><td style="font-weight:700;white-space:nowrap;">6/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#F59E0B;width:60%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr><td style="color:#9CA3AF;font-size:11px;">fix_07</td><td><strong>CRM &amp; Pipeline Documentation</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">CRM &amp; Pipeline Documentation shows strong practices with minor gaps; unlikely to attract material diligence questions.</div></td><td style="font-weight:700;white-space:nowrap;">7/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:70%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:11px;">fix_08</td><td><strong>Key Employee Risks</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Key Employee Risks shows strong practices with minor gaps; unlikely to attract material diligence questions.</div></td><td style="font-weight:700;white-space:nowrap;">7/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:70%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr><td style="color:#9CA3AF;font-size:11px;">fix_09</td><td><strong>Financial Trajectory &amp; EBITDA Quality</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Financial Trajectory &amp; EBITDA Quality shows strong practices with minor gaps; unlikely to attract material diligence questions.</div></td><td style="font-weight:700;white-space:nowrap;">7/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:70%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:11px;">fix_10</td><td><strong>Data Room Readiness</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Data Room Readiness meets baseline expectations with identifiable gaps; addressable before listing with targeted effort.</div></td><td style="font-weight:700;white-space:nowrap;">6/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#F59E0B;width:60%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+</tbody></table></div>
+<div class="domain-section"><div class="ds-header"><span class="ds-title">Owner Risk</span><span class="ds-score">7.0/10 &nbsp;<span class="badge ba">ADEQUATE</span>&nbsp;<span style="color:#9CA3AF;font-size:11px;">(25% blend)</span></span></div><div class="broker-impact"><strong>Deal Impact:</strong> Moderate key-person exposure — buyers will seek retention agreements and may structure an earn-out component.</div><table><thead><tr><th style="width:80px;">ID</th><th>Criterion &amp; Finding</th><th style="width:60px;">Score</th><th style="width:120px;">Rating</th><th style="width:120px;">Bar</th></tr></thead><tbody><tr><td style="color:#9CA3AF;font-size:11px;">owr_01</td><td><strong>Succession Readiness</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Succession Readiness shows strong practices with minor gaps; unlikely to attract material diligence questions.</div></td><td style="font-weight:700;white-space:nowrap;">7/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:70%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:11px;">owr_02</td><td><strong>Institutional Knowledge Capture</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Institutional Knowledge Capture shows strong practices with minor gaps; unlikely to attract material diligence questions.</div></td><td style="font-weight:700;white-space:nowrap;">7/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:70%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr><td style="color:#9CA3AF;font-size:11px;">owr_03</td><td><strong>Management Team Depth</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Management Team Depth shows strong practices with minor gaps; unlikely to attract material diligence questions.</div></td><td style="font-weight:700;white-space:nowrap;">8/10</td><td><span class="badge bs">STRONG</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:80%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:11px;">owr_04</td><td><strong>Key Person Concentration Beyond Owner</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Key Person Concentration Beyond Owner meets baseline expectations with identifiable gaps; addressable before listing with targeted effort.</div></td><td style="font-weight:700;white-space:nowrap;">6/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#F59E0B;width:60%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+</tbody></table></div>
+<div class="domain-section"><div class="ds-header"><span class="ds-title">Customer Quality</span><span class="ds-score">6.8/10 &nbsp;<span class="badge ba">ADEQUATE</span>&nbsp;<span style="color:#9CA3AF;font-size:11px;">(25% blend)</span></span></div><div class="broker-impact"><strong>Deal Impact:</strong> Adequate customer quality — concentration or churn risk will be modeled but is unlikely to break a deal.</div><table><thead><tr><th style="width:80px;">ID</th><th>Criterion &amp; Finding</th><th style="width:60px;">Score</th><th style="width:120px;">Rating</th><th style="width:120px;">Bar</th></tr></thead><tbody><tr><td style="color:#9CA3AF;font-size:11px;">cq_01</td><td><strong>Top Customer Concentration</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Top Customer Concentration meets baseline expectations with identifiable gaps; addressable before listing with targeted effort.</div></td><td style="font-weight:700;white-space:nowrap;">5/10</td><td><span class="badge bn">NEEDS WORK</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#F59E0B;width:50%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:11px;">cq_02</td><td><strong>Revenue Predictability &amp; Recurring Mix</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Revenue Predictability &amp; Recurring Mix shows strong practices with minor gaps; unlikely to attract material diligence questions.</div></td><td style="font-weight:700;white-space:nowrap;">8/10</td><td><span class="badge bs">STRONG</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:80%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr><td style="color:#9CA3AF;font-size:11px;">cq_03</td><td><strong>Contract Transferability</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Contract Transferability shows strong practices with minor gaps; unlikely to attract material diligence questions.</div></td><td style="font-weight:700;white-space:nowrap;">7/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:70%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:11px;">cq_04</td><td><strong>Churn Rate &amp; Retention Metrics</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Churn Rate &amp; Retention Metrics shows strong practices with minor gaps; unlikely to attract material diligence questions.</div></td><td style="font-weight:700;white-space:nowrap;">7/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:70%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+</tbody></table></div>
+<div class="domain-section"><div class="ds-header"><span class="ds-title">Operational Scalability</span><span class="ds-score">6.5/10 &nbsp;<span class="badge ba">ADEQUATE</span>&nbsp;<span style="color:#9CA3AF;font-size:11px;">(12% blend)</span></span></div><div class="broker-impact"><strong>Deal Impact:</strong> Operations adequate with upside — modest post-close investment will unlock scalability and support the valuation.</div><table><thead><tr><th style="width:80px;">ID</th><th>Criterion &amp; Finding</th><th style="width:60px;">Score</th><th style="width:120px;">Rating</th><th style="width:120px;">Bar</th></tr></thead><tbody><tr><td style="color:#9CA3AF;font-size:11px;">ops_01</td><td><strong>Process Documentation &amp; Repeatability</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Process Documentation &amp; Repeatability shows strong practices with minor gaps; unlikely to attract material diligence questions.</div></td><td style="font-weight:700;white-space:nowrap;">7/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:70%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:11px;">ops_02</td><td><strong>Technology &amp; Systems Scalability</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Technology &amp; Systems Scalability meets baseline expectations with identifiable gaps; addressable before listing with targeted effort.</div></td><td style="font-weight:700;white-space:nowrap;">6/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#F59E0B;width:60%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr><td style="color:#9CA3AF;font-size:11px;">ops_03</td><td><strong>Vendor &amp; Supplier Concentration</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Vendor &amp; Supplier Concentration shows strong practices with minor gaps; unlikely to attract material diligence questions.</div></td><td style="font-weight:700;white-space:nowrap;">7/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:70%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:11px;">ops_04</td><td><strong>Financial Controls &amp; Reporting Cadence</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Financial Controls &amp; Reporting Cadence meets baseline expectations with identifiable gaps; addressable before listing with targeted effort.</div></td><td style="font-weight:700;white-space:nowrap;">6/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#F59E0B;width:60%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+</tbody></table></div>
+<div class="domain-section"><div class="ds-header"><span class="ds-title">Financial Readiness</span><span class="ds-score">7.0/10 &nbsp;<span class="badge ba">ADEQUATE</span>&nbsp;<span style="color:#9CA3AF;font-size:11px;">(8% blend)</span></span></div><div class="broker-impact"><strong>Deal Impact:</strong> Financial presentation adequate — minor cleanup required for QofE, unlikely to cause material valuation impact.</div><table><thead><tr><th style="width:80px;">ID</th><th>Criterion &amp; Finding</th><th style="width:60px;">Score</th><th style="width:120px;">Rating</th><th style="width:120px;">Bar</th></tr></thead><tbody><tr><td style="color:#9CA3AF;font-size:11px;">fr_01</td><td><strong>Books Quality &amp; CPA Relationship</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Books Quality &amp; CPA Relationship shows strong practices with minor gaps; unlikely to attract material diligence questions.</div></td><td style="font-weight:700;white-space:nowrap;">7/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:70%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:11px;">fr_02</td><td><strong>Add-Back Documentation</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Add-Back Documentation shows strong practices with minor gaps; unlikely to attract material diligence questions.</div></td><td style="font-weight:700;white-space:nowrap;">7/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:70%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr><td style="color:#9CA3AF;font-size:11px;">fr_03</td><td><strong>Revenue Recognition &amp; Consistency</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Revenue Recognition &amp; Consistency shows strong practices with minor gaps; unlikely to attract material diligence questions.</div></td><td style="font-weight:700;white-space:nowrap;">7/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:70%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:11px;">fr_04</td><td><strong>Three-Year Financial Trend</strong><div class="evidence">company_dataset.json · financials.xlsx — High confidence — multiple documents corroborated</div><div style="font-size:12px;color:#374151;margin-top:4px;">Three-Year Financial Trend shows strong practices with minor gaps; unlikely to attract material diligence questions.</div></td><td style="font-weight:700;white-space:nowrap;">7/10</td><td><span class="badge ba">ADEQUATE</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:70%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+</tbody></table></div>
+
+  <div class="ami-section"><div class="ami-head"><span class="ami-title">&#9650; Automation Maturity Index</span><span class="ami-excl">Scored separately — excluded from overall score and valuation multiple</span></div><div class="ami-score-row"><span class="ami-big">5.8/10</span><span class="badge bn">PARTIAL</span><span style="font-size:12px;color:#6B7280;">&nbsp;(raw: 7/12)</span></div><p class="ami-context">Revenue operations are evaluated across all six automation criteria at equal weight as a standalone maturity index.
+</p><table><thead><tr><th style="width:40px;">#</th><th>Criterion &amp; Finding</th><th style="width:60px;">Score</th><th style="width:120px;">Rating</th><th style="width:120px;">Bar</th></tr></thead><tbody><tr><td style="color:#9CA3AF;font-size:11px;">R01</td><td><strong>AI Voice / After-Hours Call Handling</strong><div class="evidence">company_dataset.json</div><div style="font-size:12px;color:#374151;margin-top:4px;">Partial capability in place</div></td><td style="font-weight:700;white-space:nowrap;">1/2</td><td><span class="badge bn">PARTIAL</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#F59E0B;width:50%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:11px;">R02</td><td><strong>CRM Presence &amp; Workflow Automation</strong><div class="evidence">company_dataset.json</div><div style="font-size:12px;color:#374151;margin-top:4px;">Fully automated and transferable</div></td><td style="font-weight:700;white-space:nowrap;">2/2</td><td><span class="badge ba">OPTIMIZED</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#059669;width:100%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr><td style="color:#9CA3AF;font-size:11px;">R03</td><td><strong>24/7 Lead Capture</strong><div class="evidence">company_dataset.json</div><div style="font-size:12px;color:#374151;margin-top:4px;">Partial capability in place</div></td><td style="font-weight:700;white-space:nowrap;">1/2</td><td><span class="badge bn">PARTIAL</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#F59E0B;width:50%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:11px;">R04</td><td><strong>SMS Appointment Reminders &amp; Confirmations</strong><div class="evidence">company_dataset.json</div><div style="font-size:12px;color:#374151;margin-top:4px;">Partial capability in place</div></td><td style="font-weight:700;white-space:nowrap;">1/2</td><td><span class="badge bn">PARTIAL</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#F59E0B;width:50%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr><td style="color:#9CA3AF;font-size:11px;">R05</td><td><strong>Automated Review Solicitation</strong><div class="evidence">company_dataset.json</div><div style="font-size:12px;color:#374151;margin-top:4px;">Partial capability in place</div></td><td style="font-weight:700;white-space:nowrap;">1/2</td><td><span class="badge bn">PARTIAL</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#F59E0B;width:50%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:11px;">R06</td><td><strong>Smart Follow-Up Sequences</strong><div class="evidence">company_dataset.json</div><div style="font-size:12px;color:#374151;margin-top:4px;">Partial capability in place</div></td><td style="font-weight:700;white-space:nowrap;">1/2</td><td><span class="badge bn">PARTIAL</span></td><td><div style="background:#E5E7EB;border-radius:3px;height:14px;width:110px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="background:#F59E0B;width:50%;height:100%;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div></td></tr>
+</tbody></table><p style="font-size:13px;margin:10px 0 0;color:#374151;"><strong>Interpretation:</strong> Partial — some automation, owner-dependent gaps remain</p><div class="ami-opportunity"><strong>&#128200; Buyer Opportunity:</strong> Closing remaining automation gaps would complete the revenue infrastructure. An operational buyer who finishes this work post-close could add meaningful margin uplift within 12 months — buyers who see that clearly tend to pay more.</div><div class="ami-cta"><strong>Layer8 delivers exactly this.</strong> Our 90-day Automation Sprint closes AI voice, CRM workflow, lead capture, and follow-up gaps — the same gaps that suppress your multiple. The work is defined, the timeline is fixed, and the ROI is measurable before you go to market.</div></div>
+
+  <h2>Top 3 Strengths</h2>
+  <ul class="sr"><li>General Manager has run all operations independently for 4 years — exceptional depth.</li>
+<li>89% annual contract renewal rate across 47 recurring commercial clients.</li>
+<li>Owner fully removed from day-to-day; attends monthly review only.</li></ul>
+
+  <h2>Top 3 Risks</h2>
+  <ul class="sr"><li>Top client represents 22% of revenue — primary buyer concern; top 3 combined at 41%.</li>
+<li>Cybersecurity posture needs hardening: MFA only partially deployed, patching inconsistent.</li>
+<li>GM is both key operator and key person risk — retention agreement signed but no equity stake.</li></ul>
+
+  <h2 class="pb">Recommended Priority Fixes</h2>
+  <p style="font-size:13px;color:#6B7280;margin-bottom:16px;">
+    Actions the company should take in the next 90 days to maximise exit readiness:
+  </p>
+  <div class="fix-card"><div class="fix-num">Fix 1</div><div style="font-size:13px;"><strong>Weeks 1–6:</strong> Target one additional anchor contract to reduce top-client concentration below 15%.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 2</div><div style="font-size:13px;"><strong>Weeks 1–2:</strong> Deploy MFA across all systems — high multiple impact, low effort.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 3</div><div style="font-size:13px;"><strong>Weeks 2–6:</strong> Standardize asset inventory and implement consistent patching schedule.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 4</div><div style="font-size:13px;"><strong>Weeks 4–8:</strong> Formalize GM succession documentation and begin cross-training second manager.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 5</div><div style="font-size:13px;"><strong>Weeks 6–12:</strong> Add assignment and change-of-control clauses to top 10 customer contracts.</div></div>
+
+
+  <div class="compliance">
+    <h2>Compliance Notes</h2>
+    <p>No PII was detected in the ingested documents.</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  Prepared by Layer8TechGroup &nbsp;·&nbsp; layer8techgroup.com &nbsp;·&nbsp; Confidential
+</div>
+
+</div>
+</body>
+</html>
