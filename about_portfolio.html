@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About This Portfolio — Layer8 Exit Readiness Demo</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+         font-size:14px;line-height:1.7;color:#1F2937;background:#F3F4F6;margin:0;padding:0;}
+    .page{max-width:1000px;margin:0 auto;background:white;}
+    .header-bar{background:#1E2761;color:white;padding:20px 32px;display:flex;
+                justify-content:space-between;align-items:center;
+                -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .brand{font-size:20px;font-weight:700;display:block;}
+    .sub{font-size:13px;opacity:.8;margin-top:2px;display:block;}
+    .nav-link{color:rgba(255,255,255,0.75);font-size:13px;text-decoration:none;
+              padding:6px 12px;border:1px solid rgba(255,255,255,0.3);border-radius:4px;
+              transition:background .15s;}
+    .nav-link:hover{background:rgba(255,255,255,0.1);}
+    .content{padding:36px 40px;}
+    .intro-block{margin:0 0 36px;}
+    .intro-block h1{font-size:26px;font-weight:700;color:#1E2761;margin:0 0 6px;}
+    .intro-block .subtitle{font-size:16px;color:#028090;font-weight:500;margin:0 0 18px;}
+    .intro-block p{font-size:14px;color:#374151;max-width:720px;line-height:1.8;}
+    .disclaimer{background:#FFFBEB;border:1px solid #FDE68A;border-radius:6px;
+                padding:10px 16px;font-size:12px;color:#78350F;margin:16px 0 0;
+                -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+    /* Vertical badges */
+    .vbadge{display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;
+            font-weight:700;white-space:nowrap;
+            -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .vb-hc {background:#ECFDF5;color:#059669;}
+    .vb-fi {background:#EFF6FF;color:#0369A1;}
+    .vb-cs {background:#F0FDFA;color:#0F766E;}
+    .vb-it {background:#EDE9FE;color:#5B21B6;}
+    .vb-ht {background:#FFF7ED;color:#C2410C;}
+    .vb-tr {background:#FEF3C7;color:#92400E;}
+    .vb-ps {background:#F5F3FF;color:#6D28D9;}
+    .vb-lg {background:#FEF9C3;color:#713F12;}
+    .vb-ls {background:#ECFDF5;color:#15803D;}
+    .vb-sc {background:#FEF2F2;color:#B91C1C;}
+    .vb-df {background:#F3F4F6;color:#4B5563;}
+
+    /* Score badges */
+    .sbadge{display:inline-block;padding:2px 9px;border-radius:3px;
+            font-size:12px;font-weight:700;white-space:nowrap;
+            -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .sb-mr{background:#ECFDF5;color:#059669;}
+    .sb-nr{background:#DBEAFE;color:#1E40AF;}
+    .sb-ad{background:#FEF3C7;color:#92400E;}
+    .sb-nw{background:#FED7AA;color:#C2410C;}
+    .sb-nt{background:#FEE2E2;color:#DC2626;}
+
+    /* Company profiles table */
+    .profiles-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;}
+    .profiles-table thead th{
+      background:#1E2761;color:white;padding:10px 14px;
+      text-align:left;font-weight:600;
+      -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .profiles-table tbody td{
+      padding:14px;border-bottom:1px solid #E5E7EB;vertical-align:top;}
+    .profiles-table tbody tr:last-child td{border-bottom:none;}
+    .profiles-table tbody tr:nth-child(even) td{background:#F9FAFB;}
+    .co-name{font-weight:700;font-size:13px;color:#1E2761;margin-bottom:4px;}
+    .score-display{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+    .score-num{font-size:16px;font-weight:700;}
+    .backstory{font-size:12px;color:#374151;line-height:1.7;margin-top:6px;}
+    .report-link{display:inline-block;margin-top:8px;font-size:11px;font-weight:700;
+                 color:#028090;text-decoration:none;}
+    .report-link:hover{text-decoration:underline;}
+
+    /* Score bar mini */
+    .mini-bar{display:inline-block;width:80px;height:7px;background:#E5E7EB;
+              border-radius:3px;vertical-align:middle;overflow:hidden;
+              -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .mini-fill{height:100%;border-radius:3px;
+               -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+    .section-note{font-size:12px;color:#6B7280;margin:0 0 16px;font-style:italic;}
+    .back-link{display:inline-block;color:#028090;font-size:13px;font-weight:600;
+               text-decoration:none;margin-bottom:20px;}
+    .back-link:hover{text-decoration:underline;}
+    .footer-disclaimer{font-size:11px;color:#9CA3AF;text-align:center;
+                       border-top:1px solid #E5E7EB;padding:16px 32px;margin-top:8px;}
+    .footer-bar{text-align:center;font-size:12px;color:#9CA3AF;
+                padding:14px 32px;border-top:1px solid #E5E7EB;}
+    h2{font-size:15px;color:#1E2761;border-bottom:2px solid #1E2761;
+       padding-bottom:6px;margin:32px 0 14px;}
+  </style>
+</head>
+<body>
+<div class="page">
+
+<!-- Header -->
+<div class="header-bar">
+  <div>
+    <span class="brand">Layer8 Tech Group</span>
+    <span class="sub">Exit Readiness Assessment — Demo Portfolio</span>
+  </div>
+  <a href="index.html" class="nav-link">&#8592; Back to Portfolio</a>
+</div>
+
+<div class="content">
+
+  <div class="intro-block">
+    <h1>About This Portfolio</h1>
+    <p class="subtitle">A Representative Cross-Section of SMB Exit Candidates</p>
+    <p>
+      This demo portfolio represents the range of businesses a broker or M&amp;A advisor
+      might manage at any given time — from institutional-ready companies with clean financials
+      and documented succession plans, to early-stage candidates who require 12–18 months of
+      remediation before a meaningful listing is possible. The twelve companies span seven
+      industries, five readiness bands, and a combined EBITDA of approximately $7.96M,
+      illustrating how the Layer8 Exit Readiness Assessment surfaces different risk and
+      opportunity profiles across a real-world deal pipeline.
+    </p>
+    <div class="disclaimer">
+      &#9432;&nbsp; <strong>Demonstration purposes only.</strong> All companies, names, personnel,
+      financial figures, client names, and scenarios depicted in this portfolio are entirely
+      fictional and created for demonstration purposes. Any resemblance to actual businesses,
+      persons, or financial results is coincidental.
+    </div>
+  </div>
+
+  <h2>Company Profiles</h2>
+  <p class="section-note">Ranked by overall readiness score, highest to lowest. Click "View Report" to open the full assessment.</p>
+
+  <table class="profiles-table">
+    <thead>
+      <tr>
+        <th style="width:28px;">#</th>
+        <th style="width:200px;">Company</th>
+        <th style="width:140px;">Score</th>
+        <th style="width:100px;">EBITDA</th>
+        <th>Backstory</th>
+        <th style="width:90px;"></th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- 1. Meridian Pediatric Group -->
+      <tr>
+        <td style="color:#9CA3AF;font-size:12px;text-align:center;">1</td>
+        <td>
+          <div class="co-name">Meridian Pediatric Group</div>
+          <span class="vbadge vb-hc">Healthcare</span>
+        </td>
+        <td>
+          <div class="score-display">
+            <div class="mini-bar"><div class="mini-fill" style="width:83%;background:#059669;"></div></div>
+            <span class="score-num" style="color:#059669;">8.3</span>
+          </div>
+          <div style="margin-top:5px;"><span class="sbadge sb-mr">MARKET READY</span></div>
+        </td>
+        <td style="font-weight:600;">$1,240,000</td>
+        <td>
+          <div class="backstory">
+            4-physician pediatric practice in suburban Atlanta with 2,800 active patients.
+            Owner Dr. Sarah Chen has been planning her exit for 3 years, engaged a CPA 18 months
+            ago specifically for sale preparation, and built a strong office manager layer that runs
+            all operations independently. The practice scores near the top of every domain —
+            94% patient retention, no concentration risk, reviewed financials, and a nearly
+            complete data room. The primary remaining gap is formalizing the verbal succession
+            arrangement — one signed document away from institutional-ready with a clear path
+            to the 5.0–6.5× multiple band.
+          </div>
+        </td>
+        <td><a href="reports/meridian_pediatric_exit_assessment.html" class="report-link">View Report &#8594;</a></td>
+      </tr>
+
+      <!-- 2. Halcyon Wealth Advisors -->
+      <tr>
+        <td style="color:#9CA3AF;font-size:12px;text-align:center;">2</td>
+        <td>
+          <div class="co-name">Halcyon Wealth Advisors</div>
+          <span class="vbadge vb-fi">Financial Services</span>
+        </td>
+        <td>
+          <div class="score-display">
+            <div class="mini-bar"><div class="mini-fill" style="width:78%;background:#0369A1;"></div></div>
+            <span class="score-num" style="color:#0369A1;">7.8</span>
+          </div>
+          <div style="margin-top:5px;"><span class="sbadge sb-nr">NEAR READY</span></div>
+        </td>
+        <td style="font-weight:600;">$920,000</td>
+        <td>
+          <div class="backstory">
+            Boutique RIA managing $187M AUM across 140 household clients in Buckhead, Atlanta.
+            Founder James Halcyon has groomed a junior partner who independently manages 60%
+            of client relationships — but the succession arrangement is verbal with no equity stake
+            or signed transition agreement. The business scores exceptionally on customer quality
+            (96% AUM retention) and financial readiness (audited financials, minimal add-backs),
+            but the informal succession structure is the single flag any sophisticated acquirer
+            will surface. One legal agreement separates this business from a premium exit.
+          </div>
+        </td>
+        <td><a href="reports/halcyon_wealth_exit_assessment.html" class="report-link">View Report &#8594;</a></td>
+      </tr>
+
+      <!-- 3. Cornerstone Commercial Cleaning -->
+      <tr>
+        <td style="color:#9CA3AF;font-size:12px;text-align:center;">3</td>
+        <td>
+          <div class="co-name">Cornerstone Commercial Cleaning</div>
+          <span class="vbadge vb-cs">Commercial Services</span>
+        </td>
+        <td>
+          <div class="score-display">
+            <div class="mini-bar"><div class="mini-fill" style="width:68%;background:#0369A1;"></div></div>
+            <span class="score-num" style="color:#0369A1;">6.8</span>
+          </div>
+          <div style="margin-top:5px;"><span class="sbadge sb-nr">NEAR READY</span></div>
+        </td>
+        <td style="font-weight:600;">$680,000</td>
+        <td>
+          <div class="backstory">
+            12-year commercial cleaning company serving 47 recurring contract clients across metro
+            Atlanta. GM Sandra Reyes has run all day-to-day operations independently for 4 years —
+            the owner attends monthly reviews and nothing more. The business scores well across
+            every domain except one: their anchor client represents 22% of revenue, a single flag
+            any buyer will raise immediately in diligence. Landing one additional mid-size contract
+            to bring that below 15% and deploying MFA across systems are the two moves that unlock
+            the next multiple band.
+          </div>
+        </td>
+        <td><a href="reports/cornerstone_cleaning_exit_assessment.html" class="report-link">View Report &#8594;</a></td>
+      </tr>
+
+      <!-- 4. Peachtree Integrated -->
+      <tr>
+        <td style="color:#9CA3AF;font-size:12px;text-align:center;">4</td>
+        <td>
+          <div class="co-name">Peachtree Integrated</div>
+          <span class="vbadge vb-it">IT / MSP</span>
+        </td>
+        <td>
+          <div class="score-display">
+            <div class="mini-bar"><div class="mini-fill" style="width:52%;background:#D97706;"></div></div>
+            <span class="score-num" style="color:#D97706;">5.2</span>
+          </div>
+          <div style="margin-top:5px;"><span class="sbadge sb-ad">ADEQUATE</span></div>
+        </td>
+        <td style="font-weight:600;">$1,200,000</td>
+        <td>
+          <div class="backstory">
+            Mid-size managed IT services provider with 340 SMB clients across the Southeast.
+            Strong recurring revenue base and the highest EBITDA in the portfolio, but an
+            owner-dependent sales motion and inconsistent documentation practices suppress the
+            score. The business has real value — the gap is in how that value is packaged and
+            transferred. A 6-month remediation plan targeting owner risk and CRM maturity could
+            meaningfully shift the multiple and bring this into near-ready territory.
+          </div>
+        </td>
+        <td><a href="reports/peachtree_exit_readiness_assessment.html" class="report-link">View Report &#8594;</a></td>
+      </tr>
+
+      <!-- 5. Helix Health Technologies -->
+      <tr>
+        <td style="color:#9CA3AF;font-size:12px;text-align:center;">5</td>
+        <td>
+          <div class="co-name">Helix Health Technologies</div>
+          <span class="vbadge vb-ht">Health Technology</span>
+        </td>
+        <td>
+          <div class="score-display">
+            <div class="mini-bar"><div class="mini-fill" style="width:51%;background:#D97706;"></div></div>
+            <span class="score-num" style="color:#D97706;">5.1</span>
+          </div>
+          <div style="margin-top:5px;"><span class="sbadge sb-ad">ADEQUATE</span></div>
+        </td>
+        <td style="font-weight:600;">$820,000</td>
+        <td>
+          <div class="backstory">
+            Health-tech software company serving regional hospital networks with a SaaS billing
+            optimization platform. Strong product-market fit with SOC 2 certification and 71%
+            recurring revenue, but early-stage management depth and incomplete data room
+            preparation create meaningful diligence risk. Financial readiness is the primary gap —
+            books require normalization before a QofE would hold up under buyer scrutiny, and
+            the CTO holds critical institutional knowledge with no documented backup.
+          </div>
+        </td>
+        <td><a href="reports/helix_exit_assessment.html" class="report-link">View Report &#8594;</a></td>
+      </tr>
+
+      <!-- 6. Blue Collar Systems -->
+      <tr>
+        <td style="color:#9CA3AF;font-size:12px;text-align:center;">6</td>
+        <td>
+          <div class="co-name">Blue Collar Systems</div>
+          <span class="vbadge vb-tr">HVAC / Trades</span>
+        </td>
+        <td>
+          <div class="score-display">
+            <div class="mini-bar"><div class="mini-fill" style="width:46%;background:#EA580C;"></div></div>
+            <span class="score-num" style="color:#EA580C;">4.6</span>
+          </div>
+          <div style="margin-top:5px;"><span class="sbadge sb-nw">NEEDS WORK</span></div>
+        </td>
+        <td style="font-weight:600;">$352,000</td>
+        <td>
+          <div class="backstory">
+            18-year HVAC installation and service company with strong brand recognition in North
+            Atlanta suburbs. Owner Mike Torres holds most client relationships and virtually all
+            institutional knowledge — the business cannot operate without him for more than a few
+            days. The revenue quality scores are the highest in its tier (customer concentration
+            is well-diversified across 47 recurring clients), which signals a solid underlying
+            business. Succession planning, SOP documentation, and cybersecurity hardening are
+            the primary levers to unlock meaningful value here.
+          </div>
+        </td>
+        <td><a href="reports/bcs_exit_assessment.html" class="report-link">View Report &#8594;</a></td>
+      </tr>
+
+      <!-- 7. Garrison Professional Advisors -->
+      <tr>
+        <td style="color:#9CA3AF;font-size:12px;text-align:center;">7</td>
+        <td>
+          <div class="co-name">Garrison Professional Advisors</div>
+          <span class="vbadge vb-ps">Professional Services</span>
+        </td>
+        <td>
+          <div class="score-display">
+            <div class="mini-bar"><div class="mini-fill" style="width:43%;background:#EA580C;"></div></div>
+            <span class="score-num" style="color:#EA580C;">4.3</span>
+          </div>
+          <div style="margin-top:5px;"><span class="sbadge sb-nw">NEEDS WORK</span></div>
+        </td>
+        <td style="font-weight:600;">$254,200</td>
+        <td>
+          <div class="backstory">
+            Boutique HR consulting firm serving mid-market companies across Georgia with strong
+            client relationships built over 11 years. The firm has excellent revenue quality and
+            clean financials — a CPA prepares books and the 31% EBITDA margin is among the
+            highest in the portfolio. However, delivery is entirely owner-dependent with no
+            formal contracts, no CRM, and no documented processes. This is a relationship
+            business that requires significant systematization before any buyer could underwrite
+            the transition risk at a meaningful multiple.
+          </div>
+        </td>
+        <td><a href="reports/garrison_exit_assessment.html" class="report-link">View Report &#8594;</a></td>
+      </tr>
+
+      <!-- 8. Mercer Law Partners -->
+      <tr>
+        <td style="color:#9CA3AF;font-size:12px;text-align:center;">8</td>
+        <td>
+          <div class="co-name">Mercer Law Partners</div>
+          <span class="vbadge vb-lg">Legal</span>
+        </td>
+        <td>
+          <div class="score-display">
+            <div class="mini-bar"><div class="mini-fill" style="width:43%;background:#EA580C;"></div></div>
+            <span class="score-num" style="color:#EA580C;">4.3</span>
+          </div>
+          <div style="margin-top:5px;"><span class="sbadge sb-nw">NEEDS WORK</span></div>
+        </td>
+        <td style="font-weight:600;">$312,500</td>
+        <td>
+          <div class="backstory">
+            8-attorney litigation firm with a strong referral network and consistent revenue
+            across Georgia courts. The legal vertical scores reflect professional services norms —
+            low automation is industry-standard, not a gap, which is why the Automation Maturity
+            Index is treated separately in the report. The primary risks are partner concentration
+            (two founding partners generate 70% of billable hours) and the complete absence of
+            a formal succession plan — both common and both fixable with the right structure
+            before a listing.
+          </div>
+        </td>
+        <td><a href="reports/mercer_exit_assessment.html" class="report-link">View Report &#8594;</a></td>
+      </tr>
+
+      <!-- 9. Greenscape Landscape Services -->
+      <tr>
+        <td style="color:#9CA3AF;font-size:12px;text-align:center;">9</td>
+        <td>
+          <div class="co-name">Greenscape Landscape Services</div>
+          <span class="vbadge vb-ls">Landscaping</span>
+        </td>
+        <td>
+          <div class="score-display">
+            <div class="mini-bar"><div class="mini-fill" style="width:40%;background:#EA580C;"></div></div>
+            <span class="score-num" style="color:#EA580C;">4.0</span>
+          </div>
+          <div style="margin-top:5px;"><span class="sbadge sb-nw">NEEDS WORK</span></div>
+        </td>
+        <td style="font-weight:600;">$465,000</td>
+        <td>
+          <div class="backstory">
+            Commercial landscaping company with 85 recurring maintenance contracts across
+            corporate parks and HOAs in the Atlanta metro area. Revenue quality is solid —
+            the client base is well-diversified and contracts are largely stable — but the
+            documentation posture, cybersecurity, and owner dependency scores tell the real
+            story. The business cannot run without the founder present, and there is no
+            management layer to absorb the transition. A buyer would be acquiring the
+            relationships directly from the seller.
+          </div>
+        </td>
+        <td><a href="reports/greenscape_exit_assessment.html" class="report-link">View Report &#8594;</a></td>
+      </tr>
+
+      <!-- 10. Apex Managed Solutions -->
+      <tr>
+        <td style="color:#9CA3AF;font-size:12px;text-align:center;">10</td>
+        <td>
+          <div class="co-name">Apex Managed Solutions</div>
+          <span class="vbadge vb-it">IT / MSP</span>
+        </td>
+        <td>
+          <div class="score-display">
+            <div class="mini-bar"><div class="mini-fill" style="width:39%;background:#DC2626;"></div></div>
+            <span class="score-num" style="color:#DC2626;">3.9</span>
+          </div>
+          <div style="margin-top:5px;"><span class="sbadge sb-nt">NOT READY</span></div>
+        </td>
+        <td style="font-weight:600;">$378,000</td>
+        <td>
+          <div class="backstory">
+            Small MSP serving 120 SMB clients with break-fix and basic managed services contracts.
+            Underdeveloped compared to Peachtree — no formal contracts on most accounts, minimal
+            CRM adoption, and a cybersecurity posture that would not survive buyer diligence.
+            The business has real underlying value in its client relationships and recurring
+            revenue base, but significant remediation is required before any serious buyer
+            conversation. A 12-month program targeting documentation, contracts, and systems
+            could meaningfully change the story.
+          </div>
+        </td>
+        <td><a href="reports/apex_ms_exit_assessment.html" class="report-link">View Report &#8594;</a></td>
+      </tr>
+
+      <!-- 11. Atlas Security Technologies -->
+      <tr>
+        <td style="color:#9CA3AF;font-size:12px;text-align:center;">11</td>
+        <td>
+          <div class="co-name">Atlas Security Technologies</div>
+          <span class="vbadge vb-sc">Security</span>
+        </td>
+        <td>
+          <div class="score-display">
+            <div class="mini-bar"><div class="mini-fill" style="width:37%;background:#DC2626;"></div></div>
+            <span class="score-num" style="color:#DC2626;">3.7</span>
+          </div>
+          <div style="margin-top:5px;"><span class="sbadge sb-nt">NOT READY</span></div>
+        </td>
+        <td style="font-weight:600;">$476,000</td>
+        <td>
+          <div class="backstory">
+            Commercial security systems integrator serving retail and hospitality clients across
+            the Southeast. Owner-dependent sales and service delivery with no documented processes
+            or institutional knowledge capture. The primary structural issue is revenue quality —
+            the business is almost entirely project-based with no meaningful recurring contract
+            base, which is the first thing a buyer models when underwriting the risk of a
+            post-close transition. Moving even 30% of revenue to recurring contracts would
+            materially shift the exit profile.
+          </div>
+        </td>
+        <td><a href="reports/atlas_exit_assessment.html" class="report-link">View Report &#8594;</a></td>
+      </tr>
+
+      <!-- 12. Pinnacle Integrated -->
+      <tr>
+        <td style="color:#9CA3AF;font-size:12px;text-align:center;">12</td>
+        <td>
+          <div class="co-name">Pinnacle Integrated</div>
+          <span class="vbadge vb-df">Technology Services</span>
+        </td>
+        <td>
+          <div class="score-display">
+            <div class="mini-bar"><div class="mini-fill" style="width:36%;background:#DC2626;"></div></div>
+            <span class="score-num" style="color:#DC2626;">3.6</span>
+          </div>
+          <div style="margin-top:5px;"><span class="sbadge sb-nt">NOT READY</span></div>
+        </td>
+        <td style="font-weight:600;">$864,000</td>
+        <td>
+          <div class="backstory">
+            General technology services firm at the earliest stage of exit preparation — included
+            in this portfolio specifically to show what the assessment looks like before any
+            remediation work has begun. All institutional knowledge lives in the founder's head,
+            there are no formal customer contracts, the CRM is underutilized, and the books require
+            significant cleanup before a QofE would hold. Despite the score, the EBITDA is strong
+            ($864K) — this is a business with real value that simply hasn't been packaged for
+            sale. A 12–18 month runway is realistic before this company is listable at a
+            meaningful multiple.
+          </div>
+        </td>
+        <td><a href="reports/pinnacle_exit_readiness_assessment.html" class="report-link">View Report &#8594;</a></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div style="margin-top:28px;">
+    <a href="index.html" class="back-link">&#8592; Back to Portfolio Summary</a>
+  </div>
+
+</div>
+
+<div class="footer-disclaimer">
+  All companies, names, personnel, financial figures, client names, and scenarios depicted are
+  entirely fictional and created for demonstration purposes only.
+  Any resemblance to actual businesses, persons, or financial results is coincidental.
+</div>
+
+<div class="footer-bar">
+  Layer8 Tech Group &nbsp;·&nbsp; layer8techgroup.com &nbsp;·&nbsp; Confidential
+</div>
+
+</div>
+</body>
+</html>

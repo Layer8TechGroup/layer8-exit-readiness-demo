@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Guide — Layer8 Exit Readiness [INTERNAL]</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+         font-size:13.5px;line-height:1.7;color:#1F2937;background:#F3F4F6;margin:0;padding:0;}
+    .page{max-width:960px;margin:0 auto;background:white;}
+    .header-bar{background:#1E2761;color:white;padding:18px 32px;display:flex;
+                justify-content:space-between;align-items:center;
+                -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .brand{font-size:20px;font-weight:700;}
+    .sub{font-size:12px;opacity:.8;margin-top:2px;}
+    .internal-banner{background:#DC2626;color:white;text-align:center;
+                     padding:7px 32px;font-size:12px;font-weight:700;
+                     letter-spacing:.06em;text-transform:uppercase;
+                     -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .content{padding:32px 36px;}
+    h2{font-size:15px;color:#1E2761;border-bottom:2px solid #1E2761;
+       padding-bottom:5px;margin:32px 0 14px;}
+    h3{font-size:13px;font-weight:700;color:#374151;margin:18px 0 6px;}
+    p{margin:0 0 10px;}
+    ul,ol{padding-left:20px;margin:0 0 10px;}
+    li{margin-bottom:5px;}
+
+    /* Meeting flow timeline */
+    .timeline{display:flex;flex-direction:column;gap:0;margin:12px 0;}
+    .tl-item{display:flex;gap:0;position:relative;}
+    .tl-left{width:80px;flex-shrink:0;text-align:right;padding:12px 14px 12px 0;
+              font-size:12px;font-weight:700;color:#028090;white-space:nowrap;}
+    .tl-line{width:2px;background:#E5E7EB;flex-shrink:0;position:relative;
+             -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .tl-dot{width:10px;height:10px;background:#028090;border-radius:50%;
+            position:absolute;left:-4px;top:18px;
+            -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .tl-right{flex:1;padding:10px 0 10px 18px;}
+    .tl-title{font-weight:700;font-size:13px;color:#1E2761;margin-bottom:3px;}
+    .tl-body{font-size:12px;color:#4B5563;}
+
+    /* Company quick reference cards */
+    .company-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0;}
+    .co-card{border:1px solid #E5E7EB;border-radius:6px;overflow:hidden;}
+    .co-card-header{padding:9px 12px;display:flex;align-items:center;
+                    justify-content:space-between;
+                    -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .co-card-name{font-weight:700;font-size:12px;color:white;}
+    .co-card-score{font-size:12px;font-weight:700;color:white;opacity:.9;}
+    .co-card-body{padding:10px 12px;font-size:12px;}
+    .co-card-row{margin-bottom:6px;}
+    .co-card-label{font-size:10px;font-weight:700;color:#6B7280;
+                   text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;}
+    .co-card-value{color:#1F2937;line-height:1.5;}
+    .objection-tag{display:inline-block;background:#FEF3C7;color:#92400E;
+                   font-size:10px;font-weight:700;padding:1px 6px;border-radius:2px;
+                   -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+    /* Objections */
+    .objection-block{border:1px solid #E5E7EB;border-radius:6px;margin-bottom:10px;overflow:hidden;}
+    .obj-q{padding:10px 14px;background:#F8F9FA;font-weight:700;font-size:13px;
+           color:#1E2761;border-bottom:1px solid #E5E7EB;
+           -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .obj-a{padding:10px 14px;font-size:12px;color:#374151;line-height:1.7;}
+
+    /* The Ask */
+    .ask-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;}
+    .ask-card{border-radius:6px;padding:14px 16px;
+              -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .ask-card .ask-label{font-size:11px;font-weight:700;text-transform:uppercase;
+                         letter-spacing:.06em;margin-bottom:8px;}
+    .ask-card .ask-script{font-size:12px;font-style:italic;line-height:1.6;margin-bottom:8px;}
+    .ask-card .ask-note{font-size:11px;color:#6B7280;}
+    .ask-warm{background:#ECFDF5;border:1px solid #6EE7B7;}
+    .ask-warm .ask-label{color:#059669;}
+    .ask-std{background:#EFF6FF;border:1px solid #93C5FD;}
+    .ask-std .ask-label{color:#1D4ED8;}
+    .ask-cold{background:#F3F4F6;border:1px solid #D1D5DB;}
+    .ask-cold .ask-label{color:#6B7280;}
+
+    /* Pricing */
+    .pricing-table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+    .pricing-table th{background:#1E2761;color:white;padding:9px 14px;text-align:left;
+                      font-weight:600;
+                      -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .pricing-table td{padding:9px 14px;border-bottom:1px solid #E5E7EB;}
+    .pricing-table tr:last-child td{border-bottom:none;}
+    .pricing-table tr:nth-child(even) td{background:#F9FAFB;}
+    .price-val{font-weight:700;color:#1E2761;}
+
+    /* Callout boxes */
+    .tip{background:#F0FDFA;border-left:3px solid #028090;padding:10px 14px;
+         border-radius:0 4px 4px 0;font-size:12px;color:#065F46;margin:10px 0;
+         -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .tip strong{color:#028090;}
+    .warn{background:#FFFBEB;border-left:3px solid #F59E0B;padding:10px 14px;
+          border-radius:0 4px 4px 0;font-size:12px;color:#78350F;margin:10px 0;
+          -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+    .footer{text-align:center;font-size:11px;color:#9CA3AF;
+            padding:14px 32px;border-top:1px solid #E5E7EB;}
+    @media print{
+      body{background:white;font-size:12px;}
+      .page{max-width:100%;}
+      .company-grid{grid-template-columns:1fr 1fr;}
+      .ask-grid{grid-template-columns:1fr 1fr 1fr;}
+      @page{margin:.4in;size:letter;}
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+<div class="header-bar">
+  <div>
+    <div class="brand">Layer8 Tech Group</div>
+    <div class="sub">Exit Readiness Demo — Broker Meeting Guide</div>
+  </div>
+  <div style="text-align:right;font-size:12px;opacity:.75;">
+    John Wallace &nbsp;·&nbsp; layer8techgroup.com
+  </div>
+</div>
+<div class="internal-banner">&#128274;&nbsp; Internal Only — Not for Distribution</div>
+
+<div class="content">
+
+<!-- ── MEETING FLOW ────────────────────────────────────────────────────── -->
+<h2>&#9201; Suggested 30-Minute Demo Flow</h2>
+
+<div class="timeline">
+
+  <div class="tl-item">
+    <div class="tl-left">0–5 min</div>
+    <div class="tl-line"><div class="tl-dot"></div></div>
+    <div class="tl-right">
+      <div class="tl-title">Context Setting</div>
+      <div class="tl-body">
+        Lead with the problem, not the product. Ask: "How do your clients typically find out
+        how ready they are before you start a process?" Let them describe the gap. Then:
+        "We built a tool that answers that question before you pick up the phone with a buyer."
+        Keep it under 90 seconds. Don't demo yet.
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-left">5–10 min</div>
+    <div class="tl-line"><div class="tl-dot"></div></div>
+    <div class="tl-right">
+      <div class="tl-title">Show the Portfolio Summary</div>
+      <div class="tl-body">
+        Open <strong>index.html</strong>. Walk them through the score distribution — note that
+        only 3 of 12 are near-ready or better. Ask: "In your current book, what percentage
+        do you think would be above a 6.5?" Let them answer. The portfolio exists to mirror
+        what a real book looks like — not cherry-picked. Emphasize the EBITDA and implied value
+        columns: "This is what each company is leaving on the table right now."
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-left">10–20 min</div>
+    <div class="tl-line"><div class="tl-dot"></div></div>
+    <div class="tl-right">
+      <div class="tl-title">Drill Into 2–3 Company Reports</div>
+      <div class="tl-body">
+        Suggested sequence: <strong>Meridian</strong> (show what good looks like — 8.3, one gap,
+        document away from done), then <strong>Cornerstone</strong> (mid-range, good ops but
+        one concentration flag — relatable), then <strong>Pinnacle</strong> (low score, strong
+        EBITDA — the "valuable but not listable" scenario every broker knows). Skip the Detailed
+        Findings on the first pass — go straight to the Value Recovery Roadmap.
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-left">20–25 min</div>
+    <div class="tl-line"><div class="tl-dot"></div></div>
+    <div class="tl-right">
+      <div class="tl-title">Focus: Value Recovery Roadmap</div>
+      <div class="tl-body">
+        This is the key section. Show the Pinnacle roadmap: <strong>$1,296,000 in recoverable
+        value</strong> across 5 services, 3 months timeline, dollar-quantified. Say: "Every one
+        of those line items is a service Layer8 delivers. We're not handing them a list — we're
+        handing them a project plan." Let that land. Then show the timeline column: "8–10 weeks
+        for the biggest items. Most of this is completable before you've drafted the CIM."
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-left">25–30 min</div>
+    <div class="tl-line"><div class="tl-dot"></div></div>
+    <div class="tl-right">
+      <div class="tl-title">The Ask</div>
+      <div class="tl-body">
+        Read the room (see Ask Options below). Default opening: the pilot. Make it zero-risk:
+        one client, no cost to the broker, full report in 5 business days. If they're warm,
+        move to the referral model conversation. If the room is cold, leave the Framework Guide
+        and ask for a follow-up.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="tip">
+  <strong>Best companies to demo by audience type:</strong>
+  Healthcare broker → Meridian. Commercial broker → Cornerstone or Blue Collar.
+  PE-adjacent → Peachtree or Halcyon. Skeptic who needs the "before" picture → Pinnacle.
+</div>
+
+
+<!-- ── COMPANY QUICK REFERENCE ──────────────────────────────────────────── -->
+<h2>&#128203; Company Quick Reference</h2>
+<p style="font-size:12px;color:#6B7280;margin:-6px 0 14px;">One card per company. Use during the demo to stay oriented.</p>
+
+<div class="company-grid">
+
+  <div class="co-card">
+    <div class="co-card-header" style="background:#059669;">
+      <span class="co-card-name">Meridian Pediatric Group</span>
+      <span class="co-card-score">8.3 · MARKET READY</span>
+    </div>
+    <div class="co-card-body">
+      <div class="co-card-row">
+        <div class="co-card-label">Primary talking point</div>
+        <div class="co-card-value">3 years of prep, one unsigned document away from institutional-ready — show this as the ideal end state.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">What to highlight</div>
+        <div class="co-card-value">Domain bar chart (all green), 5.0–6.5× multiple, AMI as post-close opportunity not penalty.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">Objection to anticipate</div>
+        <div class="co-card-value">"Not all my clients are this prepared." Agree — that's the point of the other 11.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="co-card">
+    <div class="co-card-header" style="background:#0369A1;">
+      <span class="co-card-name">Halcyon Wealth Advisors</span>
+      <span class="co-card-score">7.8 · NEAR READY</span>
+    </div>
+    <div class="co-card-body">
+      <div class="co-card-row">
+        <div class="co-card-label">Primary talking point</div>
+        <div class="co-card-value">96% AUM retention, audited books, but the succession deal is verbal — a single legal agreement is the gap.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">What to highlight</div>
+        <div class="co-card-value">Owner Risk domain (6.8) as the outlier pulling down an otherwise clean profile.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">Objection to anticipate</div>
+        <div class="co-card-value">"RIA acquisitions are different." Agree on structure — same buyer concern about key-person dependency.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="co-card">
+    <div class="co-card-header" style="background:#0369A1;">
+      <span class="co-card-name">Cornerstone Commercial Cleaning</span>
+      <span class="co-card-score">6.8 · NEAR READY</span>
+    </div>
+    <div class="co-card-body">
+      <div class="co-card-row">
+        <div class="co-card-label">Primary talking point</div>
+        <div class="co-card-value">GM runs everything independently for 4 years — the single customer concentration flag is the only real issue.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">What to highlight</div>
+        <div class="co-card-value">Customer Quality domain (6.8) — one anchor contract represents 22%, fixable pre-listing.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">Objection to anticipate</div>
+        <div class="co-card-value">"Cleaning companies don't sell for much." Point to 4.5–5.5× implied range = $3.1M–$3.7M on $680K EBITDA.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="co-card">
+    <div class="co-card-header" style="background:#D97706;">
+      <span class="co-card-name">Peachtree Integrated</span>
+      <span class="co-card-score">5.2 · ADEQUATE</span>
+    </div>
+    <div class="co-card-body">
+      <div class="co-card-row">
+        <div class="co-card-label">Primary talking point</div>
+        <div class="co-card-value">Highest EBITDA in the portfolio ($1.2M) but owner-dependent sales suppress the multiple — value is there, packaging isn't.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">What to highlight</div>
+        <div class="co-card-value">The gap between 3.5–4.5× (current) and 4.5–5.5× (post-remediation) on $1.2M EBITDA = $1.2M lift.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">Objection to anticipate</div>
+        <div class="co-card-value">"MSPs are hot right now, they'll get a premium anyway." Buyers still diligence — owner dependency gets re-traded at LOI.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="co-card">
+    <div class="co-card-header" style="background:#C2410C;">
+      <span class="co-card-name">Helix Health Technologies</span>
+      <span class="co-card-score">5.1 · ADEQUATE</span>
+    </div>
+    <div class="co-card-body">
+      <div class="co-card-row">
+        <div class="co-card-label">Primary talking point</div>
+        <div class="co-card-value">SOC 2 certified, 71% recurring, but incomplete data room and book normalization needed before QofE holds up.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">What to highlight</div>
+        <div class="co-card-value">Financial Readiness score (5.8) — books are the gating item before any serious process can start.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">Objection to anticipate</div>
+        <div class="co-card-value">"SaaS companies get revenue multiples." True — which makes the books normalization more important, not less.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="co-card">
+    <div class="co-card-header" style="background:#92400E;">
+      <span class="co-card-name">Blue Collar Systems</span>
+      <span class="co-card-score">4.6 · NEEDS WORK</span>
+    </div>
+    <div class="co-card-body">
+      <div class="co-card-row">
+        <div class="co-card-label">Primary talking point</div>
+        <div class="co-card-value">Strong revenue quality and brand — the business has real value but it's 100% in the founder's head.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">What to highlight</div>
+        <div class="co-card-value">Customer Quality (7.0) vs. Owner Risk (3.0) — the contrast shows exactly where the work is.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">Objection to anticipate</div>
+        <div class="co-card-value">"Trades businesses don't have buyers." Private equity rolled up 40+ HVAC platforms in 2024 alone.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="co-card">
+    <div class="co-card-header" style="background:#6D28D9;">
+      <span class="co-card-name">Garrison Professional Advisors</span>
+      <span class="co-card-score">4.3 · NEEDS WORK</span>
+    </div>
+    <div class="co-card-body">
+      <div class="co-card-row">
+        <div class="co-card-label">Primary talking point</div>
+        <div class="co-card-value">31% EBITDA margin and clean books — but no contracts, no CRM, purely relationship-based delivery.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">What to highlight</div>
+        <div class="co-card-value">Financial Readiness (6.8) as the bright spot; Owner Risk (3.0) and Ops (3.5) as the work to do.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">Objection to anticipate</div>
+        <div class="co-card-value">"Professional services don't transfer." They do — if the relationships are documented and contractualized.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="co-card">
+    <div class="co-card-header" style="background:#713F12;">
+      <span class="co-card-name">Mercer Law Partners</span>
+      <span class="co-card-score">4.3 · NEEDS WORK</span>
+    </div>
+    <div class="co-card-body">
+      <div class="co-card-row">
+        <div class="co-card-label">Primary talking point</div>
+        <div class="co-card-value">Low automation is industry-standard for law firms — the real flag is 70% of billable hours in two partners with no succession plan.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">What to highlight</div>
+        <div class="co-card-value">AMI section — explain why review solicitation is excluded for legal (bar rules), shows vertical-awareness.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">Objection to anticipate</div>
+        <div class="co-card-value">"Law firms don't sell." They do — merger activity among boutique litigation practices has accelerated significantly.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="co-card">
+    <div class="co-card-header" style="background:#15803D;">
+      <span class="co-card-name">Greenscape Landscape Services</span>
+      <span class="co-card-score">4.0 · NEEDS WORK</span>
+    </div>
+    <div class="co-card-body">
+      <div class="co-card-row">
+        <div class="co-card-label">Primary talking point</div>
+        <div class="co-card-value">85 recurring maintenance contracts — solid revenue floor — but entirely owner-operated with zero management layer.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">What to highlight</div>
+        <div class="co-card-value">Value Recovery Roadmap: $930K–$1.4M implied range on $465K EBITDA — worth the remediation investment.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">Objection to anticipate</div>
+        <div class="co-card-value">"Landscaping is seasonal." The recurring commercial contract base mitigates this significantly.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="co-card">
+    <div class="co-card-header" style="background:#B45309;">
+      <span class="co-card-name">Apex Managed Solutions</span>
+      <span class="co-card-score">3.9 · NOT READY</span>
+    </div>
+    <div class="co-card-body">
+      <div class="co-card-row">
+        <div class="co-card-label">Primary talking point</div>
+        <div class="co-card-value">120 SMB clients, real recurring revenue — but no contracts, no CRM, and cybersecurity that wouldn't survive diligence.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">What to highlight</div>
+        <div class="co-card-value">The gap to the next multiple band is $378K × 1.5× = ~$567K in recoverable value — worth a 12-month remediation runway.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">Objection to anticipate</div>
+        <div class="co-card-value">"My client isn't ready to sell." Exactly — this is how you help them get ready before they need to.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="co-card">
+    <div class="co-card-header" style="background:#B91C1C;">
+      <span class="co-card-name">Atlas Security Technologies</span>
+      <span class="co-card-score">3.7 · NOT READY</span>
+    </div>
+    <div class="co-card-body">
+      <div class="co-card-row">
+        <div class="co-card-label">Primary talking point</div>
+        <div class="co-card-value">Project-based revenue with no recurring base — this is the structural issue a buyer models first.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">What to highlight</div>
+        <div class="co-card-value">Customer Quality domain (4.8) — recurring contract conversion is the single highest-leverage remediation move.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">Objection to anticipate</div>
+        <div class="co-card-value">"Security integrators are project businesses." The best ones have moved to monitoring MRR — that's the gap.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="co-card">
+    <div class="co-card-header" style="background:#4B5563;">
+      <span class="co-card-name">Pinnacle Integrated</span>
+      <span class="co-card-score">3.6 · NOT READY</span>
+    </div>
+    <div class="co-card-body">
+      <div class="co-card-row">
+        <div class="co-card-label">Primary talking point</div>
+        <div class="co-card-value">$864K EBITDA, nothing packaged for sale — this is "value that exists but can't transfer." Use it as the "before" picture.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">What to highlight</div>
+        <div class="co-card-value">Value Recovery Roadmap: $1.296M in recoverable value — that's what proper preparation is worth on this EBITDA.</div>
+      </div>
+      <div class="co-card-row">
+        <div class="co-card-label">Objection to anticipate</div>
+        <div class="co-card-value">"The owner won't want to hear this." Frame it as protecting the transaction, not criticizing the business.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ── OBJECTIONS & RESPONSES ────────────────────────────────────────────── -->
+<h2>&#128172; Likely Objections &amp; Responses</h2>
+
+<div class="objection-block">
+  <div class="obj-q">"How is this different from what I already do as a broker?"</div>
+  <div class="obj-a">
+    "You do the qualitative version — you read the business and form a view. We do the quantitative
+    version — we score it across five domains with evidence from the company's own documents, and
+    we put a dollar figure on each gap before you've had one buyer conversation. You keep doing
+    what you do; this just gives you better data going in."
+  </div>
+</div>
+
+<div class="objection-block">
+  <div class="obj-q">"My clients won't share this information with a third party."</div>
+  <div class="obj-a">
+    "They share it with you. We work as an extension of your engagement — documents stay in your
+    data room, we access only what you and the client authorize, and we operate under your
+    existing NDA with the client. From the client's perspective, you brought in a specialist,
+    not a third party."
+  </div>
+</div>
+
+<div class="objection-block">
+  <div class="obj-q">"What does this cost?"</div>
+  <div class="obj-a">
+    "Assessment only is $1,500 per company — less than a half-day of your time to produce a
+    document that could add $200K to the close price. If the client wants the remediation plan,
+    that's $3,500 all-in. Full remediation engagement is scoped per domain — typically $15K–$50K
+    depending on how many gaps need closing. The assessment pays for itself the first time a
+    buyer doesn't re-trade at LOI."
+  </div>
+</div>
+
+<div class="objection-block">
+  <div class="obj-q">"Who actually does the remediation work?"</div>
+  <div class="obj-a">
+    "Layer8 delivers it directly. We're not a referral service — we have practitioners who do
+    succession planning documentation, data room build, cybersecurity hardening, CRM implementation,
+    and books cleanup. You refer the client; we deliver the service; you get a better-prepared
+    listing. We don't compete with you for the M&amp;A advisory relationship."
+  </div>
+</div>
+
+<div class="objection-block">
+  <div class="obj-q">"What if the score is wrong?"</div>
+  <div class="obj-a">
+    "Every score cites the specific document that generated it — it's not a black box. If a client
+    says 'that's not right,' we look at the source. Nine times out of ten, the score is right and
+    the document they meant to provide wasn't in the data room — which is itself a finding.
+    Occasionally a score needs recalibration when context is added. We stand behind the methodology
+    and we'll revisit any finding that's challenged with new evidence."
+  </div>
+</div>
+
+<div class="objection-block">
+  <div class="obj-q">"I don't want to add friction to my intake process."</div>
+  <div class="obj-a">
+    "Neither do we. The intake is a standard document checklist — the same materials you'd
+    collect for the CIM anyway: financials, contracts, org chart, basic IT info. We turn around
+    the report in 5 business days. You get a scored assessment before you've written a paragraph
+    of the CIM. That's not friction — that's a head start."
+  </div>
+</div>
+
+
+<!-- ── THE ASK ────────────────────────────────────────────────────────────── -->
+<h2>&#127919; The Ask — Choose Based on Room Temperature</h2>
+
+<div class="ask-grid">
+  <div class="ask-card ask-warm">
+    <div class="ask-label">&#127777; Warm Room</div>
+    <div class="ask-script">
+      "Would you be open to running one client through this as a pilot — no cost to you?
+      You pick the company, we deliver the report in 5 business days, you keep the output
+      regardless of what happens next."
+    </div>
+    <div class="ask-note">Best for: engaged brokers who asked good questions during the demo. Zero-risk entry point.</div>
+  </div>
+  <div class="ask-card ask-std">
+    <div class="ask-label">&#128176; Standard Ask</div>
+    <div class="ask-script">
+      "We're building a network of 3–5 broker partners in Atlanta to co-develop the referral
+      model. 15% of assessment and remediation fees, introduced clients only.
+      Want to be part of that conversation?"
+    </div>
+    <div class="ask-note">Best for: brokers with active books who see the revenue angle. Opens a partnership conversation.</div>
+  </div>
+  <div class="ask-card ask-cold">
+    <div class="ask-label">&#10060; Cold Room</div>
+    <div class="ask-script">
+      "Can I leave the Framework Guide with you and follow up next week?
+      Sometimes this lands differently after you've had a client conversation
+      where it would have been useful."
+    </div>
+    <div class="ask-note">Best for: skeptical or distracted rooms. Plant the seed, don't force it. Follow up in 7 days.</div>
+  </div>
+</div>
+
+<div class="warn">
+  <strong>Never leave without a next step.</strong> Even "cold room" has a follow-up date.
+  Offer to send the portfolio link so they can explore between meetings —
+  it's a better leave-behind than a PDF.
+</div>
+
+
+<!-- ── PRICING ────────────────────────────────────────────────────────────── -->
+<h2>&#128182; Pricing Reference</h2>
+<p style="font-size:12px;color:#6B7280;margin:-6px 0 12px;">Share only when directly asked. Lead with the pilot, not the price sheet.</p>
+
+<table class="pricing-table">
+  <thead>
+    <tr>
+      <th>Service</th>
+      <th>Price</th>
+      <th>What's Included</th>
+      <th>Timeline</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Assessment Only</strong></td>
+      <td class="price-val">$1,500</td>
+      <td>Full 5-domain scored report, AMI, Value Recovery Roadmap, synthesis</td>
+      <td>5 business days</td>
+    </tr>
+    <tr>
+      <td><strong>Assessment + 90-Day Plan</strong></td>
+      <td class="price-val">$3,500</td>
+      <td>Assessment + detailed remediation playbook per domain, scoped milestones</td>
+      <td>7 business days</td>
+    </tr>
+    <tr>
+      <td><strong>Full Remediation Engagement</strong></td>
+      <td class="price-val">Scoped</td>
+      <td>Delivery of services in Value Recovery Roadmap — succession docs, data room, CRM, books, cybersecurity</td>
+      <td>8–16 weeks</td>
+    </tr>
+    <tr>
+      <td><strong>Broker Referral Fee</strong></td>
+      <td class="price-val">15%</td>
+      <td>Of assessment and remediation fees on referred clients. Paid at invoice close.</td>
+      <td>Ongoing</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="tip">
+  <strong>Typical engagement math:</strong> Broker refers a client at $800K EBITDA with a
+  3.5/10 score. Assessment = $1,500 (referral = $225). Client engages remediation = $35,000
+  (referral = $5,250). Total broker referral on one client: ~$5,475.
+  Multiply by 3–4 clients/year and the math speaks for itself.
+</div>
+
+</div>
+
+<div class="footer">
+  Layer8 Tech Group &nbsp;·&nbsp; layer8techgroup.com &nbsp;·&nbsp;
+  <strong style="color:#DC2626;">Internal use only — not for distribution</strong>
+</div>
+
+</div>
+</body>
+</html>
