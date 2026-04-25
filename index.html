@@ -3,482 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Layer8 Exit Readiness — Demo Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Layer8 Exit Readiness — Portfolio Summary</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
-
-    body {
-      margin: 0; padding: 0;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 14px; line-height: 1.5; color: #1F2937;
-      background: #F3F4F6;
-    }
-
-    /* ── Header ── */
-    .header {
-      background: #1E2761;
-      padding: 20px 32px;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 12px;
-    }
-    .header-left .brand {
-      font-size: 20px; font-weight: 700; color: #fff; display: block;
-    }
-    .header-left .sub {
-      font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 3px; display: block;
-    }
-    .header-right { text-align: right; }
-    .header-right .portfolio {
-      font-size: 14px; font-weight: 600; color: #fff; display: block;
-    }
-    .header-right .dt {
-      font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 3px; display: block;
-    }
-
-    /* ── Stats Bar ── */
-    .stats-bar {
-      background: #fff;
-      border-bottom: 1px solid #E5E7EB;
-      padding: 0 32px;
-      display: flex; gap: 0; flex-wrap: wrap;
-    }
-    .stat-card {
-      padding: 18px 28px;
-      border-right: 1px solid #E5E7EB;
-      flex: 1; min-width: 150px;
-    }
-    .stat-card:last-child { border-right: none; }
-    .stat-label {
-      font-size: 11px; font-weight: 600; color: #6B7280;
-      text-transform: uppercase; letter-spacing: 0.06em; display: block;
-    }
-    .stat-value {
-      font-size: 26px; font-weight: 700; color: #1E2761;
-      display: block; margin-top: 4px; line-height: 1;
-    }
-    .stat-sub {
-      font-size: 12px; color: #9CA3AF; margin-top: 3px; display: block;
-    }
-
-    /* ── Filter Bar ── */
-    .filter-bar {
-      padding: 16px 32px;
-      display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
-    }
-    .filter-label {
-      font-size: 12px; font-weight: 600; color: #6B7280;
-      text-transform: uppercase; letter-spacing: 0.05em; margin-right: 4px;
-    }
-    .filter-btn {
-      padding: 6px 14px; border-radius: 20px; border: 1.5px solid #D1D5DB;
-      background: #fff; color: #374151; font-size: 13px; font-weight: 500;
-      cursor: pointer; transition: all 0.15s ease; font-family: inherit;
-    }
-    .filter-btn:hover { border-color: #028090; color: #028090; }
-    .filter-btn.active {
-      background: #028090; border-color: #028090; color: #fff;
-    }
-
-    /* ── Cards Grid ── */
-    .cards-container { padding: 8px 32px 40px; }
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-    @media (max-width: 720px) {
-      .cards-grid { grid-template-columns: 1fr; }
-      .header { padding: 16px 20px; }
-      .stats-bar { padding: 0 20px; }
-      .filter-bar { padding: 12px 20px; }
-      .cards-container { padding: 8px 20px 32px; }
-      .stat-card { padding: 14px 18px; min-width: 130px; }
-    }
-
-    /* ── Card ── */
-    .card {
-      background: #fff;
-      border: 1px solid #E5E7EB;
-      border-radius: 10px;
-      padding: 20px;
-      display: flex; flex-direction: column; gap: 14px;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    }
-    .card.hidden {
-      display: none;
-    }
-    .card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.10);
-      border-color: #CBD5E1;
-    }
-
-    .card-top {
-      display: flex; justify-content: space-between;
-      align-items: flex-start; gap: 10px;
-    }
-    .company-name {
-      font-size: 15px; font-weight: 700; color: #111827; line-height: 1.3;
-      flex: 1;
-    }
-
-    /* Industry badges */
-    .badge {
-      display: inline-block; padding: 3px 9px; border-radius: 12px;
-      font-size: 11px; font-weight: 600; white-space: nowrap; flex-shrink: 0;
-    }
-    .badge-it       { background: #DBEAFE; color: #1E40AF; }
-    .badge-health   { background: #D1FAE5; color: #065F46; }
-    .badge-legal    { background: #EDE9FE; color: #5B21B6; }
-    .badge-account  { background: #FEF3C7; color: #92400E; }
-    .badge-trades   { background: #FFEDD5; color: #9A3412; }
-    .badge-security { background: #FEE2E2; color: #991B1B; }
-
-    /* Score section */
-    .score-section { display: flex; flex-direction: column; gap: 6px; }
-    .score-header {
-      display: flex; justify-content: space-between; align-items: baseline;
-    }
-    .score-title { font-size: 11px; font-weight: 600; color: #6B7280; text-transform: uppercase; letter-spacing: 0.05em; }
-    .score-value { font-size: 18px; font-weight: 700; }
-    .score-bar-bg {
-      background: #E5E7EB; border-radius: 4px; height: 8px; overflow: hidden;
-    }
-    .score-bar-fill {
-      height: 8px; border-radius: 4px; transition: width 0.4s ease;
-    }
-    .score-rating {
-      font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px;
-      align-self: flex-start;
-    }
-    .rating-red    { background: #FEE2E2; color: #DC2626; }
-    .rating-amber  { background: #FEF3C7; color: #92400E; }
-    .rating-green  { background: #D1FAE5; color: #065F46; }
-
-    /* Valuation grid */
-    .val-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px;
-      background: #F8F9FA; border-radius: 6px; padding: 12px 14px;
-    }
-    .val-item .vl { font-size: 11px; color: #9CA3AF; font-weight: 500; }
-    .val-item .vv { font-size: 13px; font-weight: 600; color: #374151; margin-top: 1px; }
-    .val-item .vv.uplift { color: #059669; }
-
-    /* Report button */
-    .btn-report {
-      display: block; text-align: center;
-      padding: 9px 16px; border-radius: 6px;
-      font-size: 13px; font-weight: 600;
-      text-decoration: none;
-      transition: all 0.15s ease;
-      margin-top: auto;
-    }
-    .btn-report.active-link {
-      background: #1E2761; color: #fff;
-    }
-    .btn-report.active-link:hover {
-      background: #028090;
-    }
-    .btn-report.disabled-link {
-      background: #F3F4F6; color: #9CA3AF;
-      cursor: not-allowed; border: 1px dashed #D1D5DB;
-      pointer-events: none;
-    }
-
-    /* ── Footer ── */
-    .footer {
-      text-align: center; padding: 20px 32px;
-      font-size: 12px; color: #9CA3AF;
-      border-top: 1px solid #E5E7EB; background: #fff;
-    }
-    .footer strong { color: #6B7280; }
+    *,*::before,*::after{box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+         font-size:14px;line-height:1.6;color:#1F2937;background:#F3F4F6;margin:0;padding:0;}
+    .page{max-width:1100px;margin:0 auto;background:white;}
+    .header-bar{background:#1E2761;color:white;padding:20px 32px;display:flex;
+                 justify-content:space-between;align-items:center;
+                 -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .brand{font-size:20px;font-weight:700;display:block;}
+    .sub{font-size:13px;opacity:.8;margin-top:2px;display:block;}
+    .content{padding:28px 32px;}
+    .stats-bar{display:flex;flex-wrap:wrap;background:#F8F9FA;border:1px solid #E5E7EB;
+                border-radius:6px;margin:0 0 20px;overflow:hidden;
+                -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .stat{flex:1;min-width:130px;padding:16px 12px;text-align:center;border-right:1px solid #E5E7EB;}
+    .stat:last-child{border-right:none;}
+    .stat-val{font-size:21px;font-weight:700;color:#1E2761;}
+    .stat-lbl{font-size:11px;color:#6B7280;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;}
+    .dist-bar{display:flex;flex-wrap:wrap;background:white;border:1px solid #E5E7EB;
+               border-radius:6px;margin:0 0 24px;overflow:hidden;
+               -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .dist-bar>div:last-child{border-right:none!important;}
+    h2{font-size:15px;color:#1E2761;border-bottom:2px solid #1E2761;padding-bottom:6px;margin:0 0 14px;}
+    table{width:100%;border-collapse:collapse;font-size:13px;}
+    th{background:#1E2761;color:white;padding:10px 12px;text-align:left;font-weight:600;
+        -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    td{padding:10px 12px;border-bottom:1px solid #E5E7EB;vertical-align:middle;}
+    tr:last-child td{border-bottom:none;}
+    .guide-cta{background:#F0FDFA;border:1px solid #99F6E4;border-radius:6px;
+                padding:12px 18px;margin:18px 0 0;display:flex;
+                justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+                -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .guide-cta a{color:#028090;font-weight:700;font-size:13px;text-decoration:none;
+                  white-space:nowrap;}
+    .note{font-size:12px;color:#6B7280;margin-top:16px;border-top:1px solid #E5E7EB;padding-top:12px;}
+    .footer{text-align:center;font-size:12px;color:#9CA3AF;padding:16px 32px;border-top:1px solid #E5E7EB;}
+    @media print{body{background:white;}.page{max-width:100%;}@page{margin:.5in;}}
   </style>
 </head>
 <body>
-
-<!-- Header -->
-<div class="header">
-  <div class="header-left">
+<div class="page">
+<div class="header-bar">
+  <div>
     <span class="brand">Layer8 Tech Group</span>
-    <span class="sub">Exit Readiness Assessment Platform</span>
+    <span class="sub">Exit Readiness Assessment — Portfolio Summary</span>
   </div>
-  <div class="header-right">
-    <span class="portfolio">Demo Portfolio &mdash; 9 Companies</span>
-    <span class="dt" id="hdr-date"></span>
-  </div>
-</div>
-
-<!-- Stats Bar -->
-<div class="stats-bar">
-  <div class="stat-card">
-    <span class="stat-label">Companies Assessed</span>
-    <span class="stat-value">9</span>
-    <span class="stat-sub">Tier 1 assessments</span>
-  </div>
-  <div class="stat-card">
-    <span class="stat-label">Average Score</span>
-    <span class="stat-value">3.4<span style="font-size:16px;color:#9CA3AF;">/10</span></span>
-    <span class="stat-sub">blended readiness</span>
-  </div>
-  <div class="stat-card">
-    <span class="stat-label">Total Portfolio EBITDA</span>
-    <span class="stat-value">$5.2M</span>
-    <span class="stat-sub">most recent FY</span>
-  </div>
-  <div class="stat-card">
-    <span class="stat-label">Avg Valuation Opportunity</span>
-    <span class="stat-value" style="color:#028090;">~35%</span>
-    <span class="stat-sub">lift from remediation</span>
+  <div style="text-align:right;font-size:13px;opacity:.8;">
+    12 Companies &nbsp;·&nbsp; Generated 2026-04-24
   </div>
 </div>
+<div class="content">
 
-<!-- Filter Bar -->
-<div class="filter-bar">
-  <span class="filter-label">Filter:</span>
-  <button class="filter-btn active" data-filter="all">All</button>
-  <button class="filter-btn" data-filter="it-msp">IT / MSP</button>
-  <button class="filter-btn" data-filter="healthcare">Healthcare</button>
-  <button class="filter-btn" data-filter="legal">Legal</button>
-  <button class="filter-btn" data-filter="accounting">Accounting</button>
-  <button class="filter-btn" data-filter="trades">Trades</button>
-  <button class="filter-btn" data-filter="security">Security</button>
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-val">12</div><div class="stat-lbl">Companies Assessed</div></div>
+    <div class="stat"><div class="stat-val">5.1/10</div><div class="stat-lbl">Portfolio Avg Score</div></div>
+    <div class="stat"><div class="stat-val">3</div><div class="stat-lbl">At 6.5+ (Near Ready)</div></div>
+    <div class="stat"><div class="stat-val">$7,961,700</div><div class="stat-lbl">Total Portfolio EBITDA</div></div>
+    <div class="stat"><div class="stat-val">$23,088,930</div><div class="stat-lbl">Est. Value (Low)</div></div>
+    <div class="stat"><div class="stat-val">$34,235,310</div><div class="stat-lbl">Est. Value (High)</div></div>
+  </div>
+
+  <div class="dist-bar"><div style="flex:1;min-width:130px;padding:14px 0;text-align:center;border-right:1px solid #E5E7EB;"><div style="font-size:22px;font-weight:700;color:#1E2761;">1</div><div style="font-size:11px;color:#6B7280;margin-top:2px;">Market Ready (8.0+)</div></div><div style="flex:1;min-width:130px;padding:14px 0;text-align:center;border-right:1px solid #E5E7EB;"><div style="font-size:22px;font-weight:700;color:#1E2761;">2</div><div style="font-size:11px;color:#6B7280;margin-top:2px;">Near Ready (6.5–7.9)</div></div><div style="flex:1;min-width:130px;padding:14px 0;text-align:center;border-right:1px solid #E5E7EB;"><div style="font-size:22px;font-weight:700;color:#1E2761;">2</div><div style="font-size:11px;color:#6B7280;margin-top:2px;">Adequate (5.0–6.4)</div></div><div style="flex:1;min-width:130px;padding:14px 0;text-align:center;border-right:1px solid #E5E7EB;"><div style="font-size:22px;font-weight:700;color:#1E2761;">7</div><div style="font-size:11px;color:#6B7280;margin-top:2px;">Needs Work / Not Ready (<5.0)</div></div></div>
+
+  <h2>All Assessments — Ranked by Readiness Score</h2>
+  <table>
+    <thead><tr>
+      <th style="width:32px;">#</th>
+      <th>Company</th>
+      <th style="width:180px;">Score</th>
+      <th style="width:120px;">Readiness</th>
+      <th style="width:100px;">Multiple</th>
+      <th style="width:110px;">EBITDA</th>
+      <th style="width:200px;">Implied Value Range</th>
+      <th style="width:90px;"></th>
+    </tr></thead>
+    <tbody><tr><td style="color:#9CA3AF;font-size:12px;text-align:center;">1</td><td><div style="font-weight:600;font-size:13px;">Meridian Pediatric Group<span style="font-size:10px;color:#6B7280;margin-left:4px;">5-domain</span></div><div style="font-size:11px;color:#6B7280;margin-top:2px;">Healthcare</div></td><td><div style="display:flex;align-items:center;gap:8px;"><div style="width:120px;height:10px;background:#E5E7EB;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="width:83%;height:100%;background:#059669;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div><span style="font-weight:700;color:#059669;font-size:13px;">8.3/10</span></div></td><td><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:700;color:#059669;background:#ECFDF5;-webkit-print-color-adjust:exact;print-color-adjust:exact;">MARKET READY</span></td><td style="font-size:13px;font-weight:500;color:#374151;">5.0–6.5x</td><td style="font-size:13px;color:#374151;">$1,240,000</td><td style="font-size:12px;color:#374151;">$6,200,000 – $8,060,000</td><td><a href="meridian_pediatric_exit_assessment.html" style="color:#028090;font-weight:600;font-size:12px;text-decoration:none;">View Report &#8594;</a></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:12px;text-align:center;">2</td><td><div style="font-weight:600;font-size:13px;">Halcyon Wealth Advisors<span style="font-size:10px;color:#6B7280;margin-left:4px;">5-domain</span></div><div style="font-size:11px;color:#6B7280;margin-top:2px;">Financial Services / RIA</div></td><td><div style="display:flex;align-items:center;gap:8px;"><div style="width:120px;height:10px;background:#E5E7EB;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="width:78%;height:100%;background:#0369A1;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div><span style="font-weight:700;color:#0369A1;font-size:13px;">7.8/10</span></div></td><td><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:700;color:#0369A1;background:#EFF6FF;-webkit-print-color-adjust:exact;print-color-adjust:exact;">NEAR READY</span></td><td style="font-size:13px;font-weight:500;color:#374151;">4.5–5.5x</td><td style="font-size:13px;color:#374151;">$920,000</td><td style="font-size:12px;color:#374151;">$4,140,000 – $5,060,000</td><td><a href="halcyon_wealth_exit_assessment.html" style="color:#028090;font-weight:600;font-size:12px;text-decoration:none;">View Report &#8594;</a></td></tr>
+<tr><td style="color:#9CA3AF;font-size:12px;text-align:center;">3</td><td><div style="font-weight:600;font-size:13px;">Cornerstone Commercial Cleaning<span style="font-size:10px;color:#6B7280;margin-left:4px;">5-domain</span></div><div style="font-size:11px;color:#6B7280;margin-top:2px;">Commercial Services</div></td><td><div style="display:flex;align-items:center;gap:8px;"><div style="width:120px;height:10px;background:#E5E7EB;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="width:68%;height:100%;background:#0369A1;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div><span style="font-weight:700;color:#0369A1;font-size:13px;">6.8/10</span></div></td><td><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:700;color:#0369A1;background:#EFF6FF;-webkit-print-color-adjust:exact;print-color-adjust:exact;">NEAR READY</span></td><td style="font-size:13px;font-weight:500;color:#374151;">4.5–5.5x</td><td style="font-size:13px;color:#374151;">$680,000</td><td style="font-size:12px;color:#374151;">$3,060,000 – $3,740,000</td><td><a href="cornerstone_cleaning_exit_assessment.html" style="color:#028090;font-weight:600;font-size:12px;text-decoration:none;">View Report &#8594;</a></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:12px;text-align:center;">4</td><td><div style="font-weight:600;font-size:13px;">Peachtree Integrated<span style="font-size:10px;color:#6B7280;margin-left:4px;">5-domain</span></div><div style="font-size:11px;color:#6B7280;margin-top:2px;">IT / MSP</div></td><td><div style="display:flex;align-items:center;gap:8px;"><div style="width:120px;height:10px;background:#E5E7EB;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="width:52%;height:100%;background:#D97706;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div><span style="font-weight:700;color:#D97706;font-size:13px;">5.2/10</span></div></td><td><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:700;color:#D97706;background:#FFFBEB;-webkit-print-color-adjust:exact;print-color-adjust:exact;">ADEQUATE</span></td><td style="font-size:13px;font-weight:500;color:#374151;">3.5–4.5x</td><td style="font-size:13px;color:#374151;">$1,200,000</td><td style="font-size:12px;color:#374151;">$4,200,000 – $5,400,000</td><td><a href="peachtree_exit_readiness_assessment.html" style="color:#028090;font-weight:600;font-size:12px;text-decoration:none;">View Report &#8594;</a></td></tr>
+<tr><td style="color:#9CA3AF;font-size:12px;text-align:center;">5</td><td><div style="font-weight:600;font-size:13px;">Helix Health Technologies<span style="font-size:10px;color:#6B7280;margin-left:4px;">5-domain</span></div><div style="font-size:11px;color:#6B7280;margin-top:2px;">Health Technology</div></td><td><div style="display:flex;align-items:center;gap:8px;"><div style="width:120px;height:10px;background:#E5E7EB;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="width:51%;height:100%;background:#D97706;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div><span style="font-weight:700;color:#D97706;font-size:13px;">5.1/10</span></div></td><td><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:700;color:#D97706;background:#FFFBEB;-webkit-print-color-adjust:exact;print-color-adjust:exact;">ADEQUATE</span></td><td style="font-size:13px;font-weight:500;color:#374151;">3.5–4.5x</td><td style="font-size:13px;color:#374151;">$820,000</td><td style="font-size:12px;color:#374151;">$2,870,000 – $3,690,000</td><td><a href="helix_exit_assessment.html" style="color:#028090;font-weight:600;font-size:12px;text-decoration:none;">View Report &#8594;</a></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:12px;text-align:center;">6</td><td><div style="font-weight:600;font-size:13px;">Blue Collar Systems<span style="font-size:10px;color:#6B7280;margin-left:4px;">5-domain</span></div><div style="font-size:11px;color:#6B7280;margin-top:2px;">HVAC / Trades</div></td><td><div style="display:flex;align-items:center;gap:8px;"><div style="width:120px;height:10px;background:#E5E7EB;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="width:46%;height:100%;background:#EA580C;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div><span style="font-weight:700;color:#EA580C;font-size:13px;">4.6/10</span></div></td><td><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:700;color:#EA580C;background:#FFF7ED;-webkit-print-color-adjust:exact;print-color-adjust:exact;">NEEDS WORK</span></td><td style="font-size:13px;font-weight:500;color:#374151;">2.5–3.5x</td><td style="font-size:13px;color:#374151;">$352,000</td><td style="font-size:12px;color:#374151;">$880,000 – $1,232,000</td><td><a href="bcs_exit_assessment.html" style="color:#028090;font-weight:600;font-size:12px;text-decoration:none;">View Report &#8594;</a></td></tr>
+<tr><td style="color:#9CA3AF;font-size:12px;text-align:center;">7</td><td><div style="font-weight:600;font-size:13px;">Garrison Professional Advisors<span style="font-size:10px;color:#6B7280;margin-left:4px;">5-domain</span></div><div style="font-size:11px;color:#6B7280;margin-top:2px;">Professional Services</div></td><td><div style="display:flex;align-items:center;gap:8px;"><div style="width:120px;height:10px;background:#E5E7EB;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="width:43%;height:100%;background:#EA580C;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div><span style="font-weight:700;color:#EA580C;font-size:13px;">4.3/10</span></div></td><td><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:700;color:#EA580C;background:#FFF7ED;-webkit-print-color-adjust:exact;print-color-adjust:exact;">NEEDS WORK</span></td><td style="font-size:13px;font-weight:500;color:#374151;">2.5–3.5x</td><td style="font-size:13px;color:#374151;">$254,200</td><td style="font-size:12px;color:#374151;">$635,500 – $889,700</td><td><a href="garrison_exit_assessment.html" style="color:#028090;font-weight:600;font-size:12px;text-decoration:none;">View Report &#8594;</a></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:12px;text-align:center;">8</td><td><div style="font-weight:600;font-size:13px;">Mercer Law Partners<span style="font-size:10px;color:#6B7280;margin-left:4px;">5-domain</span></div><div style="font-size:11px;color:#6B7280;margin-top:2px;">Legal</div></td><td><div style="display:flex;align-items:center;gap:8px;"><div style="width:120px;height:10px;background:#E5E7EB;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="width:43%;height:100%;background:#EA580C;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div><span style="font-weight:700;color:#EA580C;font-size:13px;">4.3/10</span></div></td><td><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:700;color:#EA580C;background:#FFF7ED;-webkit-print-color-adjust:exact;print-color-adjust:exact;">NEEDS WORK</span></td><td style="font-size:13px;font-weight:500;color:#374151;">2.5–3.5x</td><td style="font-size:13px;color:#374151;">$312,500</td><td style="font-size:12px;color:#374151;">$781,250 – $1,093,750</td><td><a href="mercer_exit_assessment.html" style="color:#028090;font-weight:600;font-size:12px;text-decoration:none;">View Report &#8594;</a></td></tr>
+<tr><td style="color:#9CA3AF;font-size:12px;text-align:center;">9</td><td><div style="font-weight:600;font-size:13px;">Greenscape Landscape Services<span style="font-size:10px;color:#6B7280;margin-left:4px;">5-domain</span></div><div style="font-size:11px;color:#6B7280;margin-top:2px;">Landscaping</div></td><td><div style="display:flex;align-items:center;gap:8px;"><div style="width:120px;height:10px;background:#E5E7EB;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="width:40%;height:100%;background:#EA580C;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div><span style="font-weight:700;color:#EA580C;font-size:13px;">4.0/10</span></div></td><td><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:700;color:#EA580C;background:#FFF7ED;-webkit-print-color-adjust:exact;print-color-adjust:exact;">NEEDS WORK</span></td><td style="font-size:13px;font-weight:500;color:#374151;">2.5–3.5x</td><td style="font-size:13px;color:#374151;">$465,000</td><td style="font-size:12px;color:#374151;">$1,162,500 – $1,627,500</td><td><a href="greenscape_exit_assessment.html" style="color:#028090;font-weight:600;font-size:12px;text-decoration:none;">View Report &#8594;</a></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:12px;text-align:center;">10</td><td><div style="font-weight:600;font-size:13px;">Apex Managed Solutions<span style="font-size:10px;color:#6B7280;margin-left:4px;">5-domain</span></div><div style="font-size:11px;color:#6B7280;margin-top:2px;">IT / MSP</div></td><td><div style="display:flex;align-items:center;gap:8px;"><div style="width:120px;height:10px;background:#E5E7EB;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="width:39%;height:100%;background:#EA580C;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div><span style="font-weight:700;color:#EA580C;font-size:13px;">3.9/10</span></div></td><td><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:700;color:#EA580C;background:#FFF7ED;-webkit-print-color-adjust:exact;print-color-adjust:exact;">NEEDS WORK</span></td><td style="font-size:13px;font-weight:500;color:#374151;">2.5–3.5x</td><td style="font-size:13px;color:#374151;">$378,000</td><td style="font-size:12px;color:#374151;">$945,000 – $1,323,000</td><td><a href="apex_ms_exit_assessment.html" style="color:#028090;font-weight:600;font-size:12px;text-decoration:none;">View Report &#8594;</a></td></tr>
+<tr><td style="color:#9CA3AF;font-size:12px;text-align:center;">11</td><td><div style="font-weight:600;font-size:13px;">Atlas Security Technologies<span style="font-size:10px;color:#6B7280;margin-left:4px;">5-domain</span></div><div style="font-size:11px;color:#6B7280;margin-top:2px;">IT / MSP</div></td><td><div style="display:flex;align-items:center;gap:8px;"><div style="width:120px;height:10px;background:#E5E7EB;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="width:37%;height:100%;background:#EA580C;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div><span style="font-weight:700;color:#EA580C;font-size:13px;">3.7/10</span></div></td><td><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:700;color:#EA580C;background:#FFF7ED;-webkit-print-color-adjust:exact;print-color-adjust:exact;">NEEDS WORK</span></td><td style="font-size:13px;font-weight:500;color:#374151;">2.5–3.5x</td><td style="font-size:13px;color:#374151;">$476,000</td><td style="font-size:12px;color:#374151;">$1,190,000 – $1,666,000</td><td><a href="atlas_exit_assessment.html" style="color:#028090;font-weight:600;font-size:12px;text-decoration:none;">View Report &#8594;</a></td></tr>
+<tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:12px;text-align:center;">12</td><td><div style="font-weight:600;font-size:13px;">Pinnacle Integrated<span style="font-size:10px;color:#6B7280;margin-left:4px;">5-domain</span></div><div style="font-size:11px;color:#6B7280;margin-top:2px;">IT / MSP</div></td><td><div style="display:flex;align-items:center;gap:8px;"><div style="width:120px;height:10px;background:#E5E7EB;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="width:36%;height:100%;background:#EA580C;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div><span style="font-weight:700;color:#EA580C;font-size:13px;">3.6/10</span></div></td><td><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:700;color:#EA580C;background:#FFF7ED;-webkit-print-color-adjust:exact;print-color-adjust:exact;">NEEDS WORK</span></td><td style="font-size:13px;font-weight:500;color:#374151;">2.5–3.5x</td><td style="font-size:13px;color:#374151;">$864,000</td><td style="font-size:12px;color:#374151;">$2,160,000 – $3,024,000</td><td><a href="pinnacle_exit_readiness_assessment.html" style="color:#028090;font-weight:600;font-size:12px;text-decoration:none;">View Report &#8594;</a></td></tr>
+</tbody>
+  </table>
+
+  <div class="guide-cta">
+    <span style="font-size:13px;color:#065F46;">
+      <strong>New to the assessment?</strong>
+      The Framework &amp; Scoring Guide explains every section, scoring rubric, domain weight, and valuation methodology.
+    </span>
+    <a href="assessment_guide.html">View Framework Guide &#8594;</a>
+  </div>
+
+  <div class="note">
+    <strong>Score methodology:</strong> All 12 companies scored under the Layer8 5-domain framework —
+    Diligence Risk, Owner Risk, Customer Quality, Operational Scalability, and Financial Readiness —
+    with vertical-specific blend weights. EBITDA from FY2025 source financials. Implied Value Range
+    uses current-state multiple band; individual reports include post-remediation projections and
+    the Value Recovery Roadmap.
+  </div>
+
 </div>
-
-<!-- Cards Grid -->
-<div class="cards-container">
-  <div class="cards-grid" id="cards-grid"></div>
+<div class="footer">Layer8 Tech Group &nbsp;·&nbsp; layer8techgroup.com &nbsp;·&nbsp; Confidential</div>
 </div>
-
-<!-- Footer -->
-<div class="footer">
-  Powered by <strong>Layer8 AI Chassis</strong>
-  &nbsp;&middot;&nbsp; layer8techgroup.com
-  &nbsp;&middot;&nbsp; <a href="assessment_guide.html" target="_blank" style="color:#028090;text-decoration:none;">Assessment Guide</a> &nbsp;&middot;&nbsp; Confidential Demo
-</div>
-
-<script>
-  // ── Data ────────────────────────────────────────────────────────
-  const companies = [
-    {
-      name:     "Peachtree Integrated Systems",
-      industry: "IT Services",
-      category: "it-msp",
-      badge:    "IT / MSP",
-      badgeCls: "badge-it",
-      score:    5.5,
-      ebitda:   997000,
-      report:   "reports/peachtree_exit_readiness_assessment.html",
-    },
-    {
-      name:     "Pinnacle Integrated Solutions",
-      industry: "Security / Low-voltage",
-      category: "security",
-      badge:    "Security",
-      badgeCls: "badge-security",
-      score:    2.8,
-      ebitda:   864000,
-      report:   "reports/pinnacle_exit_readiness_assessment.html",
-    },
-    {
-      name:     "Apex Managed Solutions",
-      industry: "IT / MSP",
-      category: "it-msp",
-      badge:    "IT / MSP",
-      badgeCls: "badge-it",
-      score:    3.2,
-      ebitda:   412000,
-      report:   "reports/apex_ms_exit_assessment.html",
-    },
-    {
-      name:     "Blue Collar Systems",
-      industry: "HVAC",
-      category: "trades",
-      badge:    "Trades",
-      badgeCls: "badge-trades",
-      score:    3.1,
-      ebitda:   389000,
-      report:   "reports/bcs_exit_assessment.html",
-    },
-    {
-      name:     "Helix Health Technologies",
-      industry: "Healthcare Tech",
-      category: "healthcare",
-      badge:    "Healthcare",
-      badgeCls: "badge-health",
-      score:    3.9,
-      ebitda:   894000,
-      report:   "reports/helix_exit_assessment.html",
-    },
-    {
-      name:     "Garrison Professional Advisors",
-      industry: "Accounting",
-      category: "accounting",
-      badge:    "Accounting",
-      badgeCls: "badge-account",
-      score:    3.0,
-      ebitda:   298000,
-      report:   "reports/garrison_exit_assessment.html",
-    },
-    {
-      name:     "Mercer Law Partners",
-      industry: "Legal",
-      category: "legal",
-      badge:    "Legal",
-      badgeCls: "badge-legal",
-      score:    3.5,
-      ebitda:   358000,
-      report:   "reports/mercer_exit_assessment.html",
-    },
-    {
-      name:     "Greenscape Landscape Services",
-      industry: "Landscaping",
-      category: "trades",
-      badge:    "Trades",
-      badgeCls: "badge-trades",
-      score:    3.0,
-      ebitda:   512000,
-      report:   "reports/greenscape_exit_assessment.html",
-    },
-    {
-      name:     "Atlas Security Technologies",
-      industry: "Security Systems",
-      category: "security",
-      badge:    "Security",
-      badgeCls: "badge-security",
-      score:    2.7,
-      ebitda:   524000,
-      report:   "reports/atlas_exit_assessment.html",
-    },
-  ];
-
-  // ── Helpers ─────────────────────────────────────────────────────
-  function getMultiples(score) {
-    if (score >= 6.5) return [4.5, 5.5];
-    if (score >= 5.0) return [3.5, 4.5];
-    if (score >= 3.5) return [2.5, 3.5];
-    return [2.0, 3.0];
-  }
-
-  function fmt(n) {
-    if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
-    return '$' + Math.round(n / 1000) + 'K';
-  }
-
-  function scoreColor(score) {
-    if (score >= 6.0) return '#059669';
-    if (score >= 4.5) return '#F59E0B';
-    return '#DC2626';
-  }
-
-  function scoreRating(score) {
-    if (score >= 8.0) return ['STRONG',       'rating-green'];
-    if (score >= 6.0) return ['ADEQUATE',      'rating-green'];
-    if (score >= 4.5) return ['NEEDS WORK',    'rating-amber'];
-    if (score >= 3.5) return ['MATERIAL GAPS', 'rating-amber'];
-    return ['CRITICAL RISK', 'rating-red'];
-  }
-
-  // ── Render cards ─────────────────────────────────────────────────
-  function renderCards() {
-    const grid = document.getElementById('cards-grid');
-    grid.innerHTML = '';
-
-    companies.forEach((co, idx) => {
-      const [curLo, curHi] = getMultiples(co.score);
-      const [pstLo, pstHi] = [curLo + 1, curHi + 1];
-      const curRange = fmt(co.ebitda * curLo) + ' \u2013 ' + fmt(co.ebitda * curHi);
-      const pstRange = fmt(co.ebitda * pstLo) + ' \u2013 ' + fmt(co.ebitda * pstHi);
-      const [ratingLabel, ratingCls] = scoreRating(co.score);
-      const color = scoreColor(co.score);
-
-      const btnHtml = co.report
-        ? `<a class="btn-report active-link" href="${co.report}" target="_blank">View Full Report &rarr;</a>`
-        : `<span class="btn-report disabled-link">Report Pending</span>`;
-
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.dataset.category = co.category;
-      card.innerHTML = `
-        <div class="card-top">
-          <div class="company-name">${co.name}</div>
-          <span class="badge ${co.badgeCls}">${co.badge}</span>
-        </div>
-        <div class="score-section">
-          <div class="score-header">
-            <span class="score-title">Overall Readiness Score</span>
-            <span class="score-value" style="color:${color};">${co.score}/10</span>
-          </div>
-          <div class="score-bar-bg">
-            <div class="score-bar-fill" style="width:${co.score * 10}%;background:${color};"></div>
-          </div>
-          <span class="score-rating ${ratingCls}">${ratingLabel}</span>
-        </div>
-        <div class="val-grid">
-          <div class="val-item">
-            <div class="vl">EBITDA (FY)</div>
-            <div class="vv">${fmt(co.ebitda)}</div>
-          </div>
-          <div class="val-item">
-            <div class="vl">Multiple Band</div>
-            <div class="vv">${curLo.toFixed(1)}&ndash;${curHi.toFixed(1)}x &rarr; ${pstLo.toFixed(1)}&ndash;${pstHi.toFixed(1)}x</div>
-          </div>
-          <div class="val-item">
-            <div class="vl">Current Valuation</div>
-            <div class="vv">${curRange}</div>
-          </div>
-          <div class="val-item">
-            <div class="vl">Post-Remediation</div>
-            <div class="vv uplift">${pstRange}</div>
-          </div>
-        </div>
-        ${btnHtml}
-      `;
-
-      grid.appendChild(card);
-    });
-  }
-
-  // ── Filter logic ─────────────────────────────────────────────────
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', function () {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-
-      const filter = this.dataset.filter;
-      document.querySelectorAll('.card').forEach(card => {
-        const match = filter === 'all' || card.dataset.category === filter;
-        if (match) {
-          card.classList.remove('hidden');
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(6px)';
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              card.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            });
-          });
-        } else {
-          card.style.transition = 'opacity 0.15s ease';
-          card.style.opacity = '0';
-          setTimeout(() => card.classList.add('hidden'), 150);
-        }
-      });
-    });
-  });
-
-  // ── Date ─────────────────────────────────────────────────────────
-  const d = new Date();
-  const months = ['Jan','Feb','Mar','Apr','May','Jun',
-                  'Jul','Aug','Sep','Oct','Nov','Dec'];
-  document.getElementById('hdr-date').textContent =
-    months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
-
-  // ── Init ─────────────────────────────────────────────────────────
-  renderCards();
-</script>
-
 </body>
 </html>

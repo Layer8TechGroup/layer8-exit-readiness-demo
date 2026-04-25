@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layer8 Exit Readiness — Demo Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 14px; line-height: 1.5; color: #1F2937;
+      background: #F3F4F6;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: #1E2761;
+      padding: 20px 32px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .header-left .brand {
+      font-size: 20px; font-weight: 700; color: #fff; display: block;
+    }
+    .header-left .sub {
+      font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 3px; display: block;
+    }
+    .header-right { text-align: right; }
+    .header-right .portfolio {
+      font-size: 14px; font-weight: 600; color: #fff; display: block;
+    }
+    .header-right .dt {
+      font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 3px; display: block;
+    }
+
+    /* ── Stats Bar ── */
+    .stats-bar {
+      background: #fff;
+      border-bottom: 1px solid #E5E7EB;
+      padding: 0 32px;
+      display: flex; gap: 0; flex-wrap: wrap;
+    }
+    .stat-card {
+      padding: 18px 28px;
+      border-right: 1px solid #E5E7EB;
+      flex: 1; min-width: 150px;
+    }
+    .stat-card:last-child { border-right: none; }
+    .stat-label {
+      font-size: 11px; font-weight: 600; color: #6B7280;
+      text-transform: uppercase; letter-spacing: 0.06em; display: block;
+    }
+    .stat-value {
+      font-size: 26px; font-weight: 700; color: #1E2761;
+      display: block; margin-top: 4px; line-height: 1;
+    }
+    .stat-sub {
+      font-size: 12px; color: #9CA3AF; margin-top: 3px; display: block;
+    }
+
+    /* ── Filter Bar ── */
+    .filter-bar {
+      padding: 16px 32px;
+      display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+    }
+    .filter-label {
+      font-size: 12px; font-weight: 600; color: #6B7280;
+      text-transform: uppercase; letter-spacing: 0.05em; margin-right: 4px;
+    }
+    .filter-btn {
+      padding: 6px 14px; border-radius: 20px; border: 1.5px solid #D1D5DB;
+      background: #fff; color: #374151; font-size: 13px; font-weight: 500;
+      cursor: pointer; transition: all 0.15s ease; font-family: inherit;
+    }
+    .filter-btn:hover { border-color: #028090; color: #028090; }
+    .filter-btn.active {
+      background: #028090; border-color: #028090; color: #fff;
+    }
+
+    /* ── Cards Grid ── */
+    .cards-container { padding: 8px 32px 40px; }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    @media (max-width: 720px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .header { padding: 16px 20px; }
+      .stats-bar { padding: 0 20px; }
+      .filter-bar { padding: 12px 20px; }
+      .cards-container { padding: 8px 20px 32px; }
+      .stat-card { padding: 14px 18px; min-width: 130px; }
+    }
+
+    /* ── Card ── */
+    .card {
+      background: #fff;
+      border: 1px solid #E5E7EB;
+      border-radius: 10px;
+      padding: 20px;
+      display: flex; flex-direction: column; gap: 14px;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .card.hidden {
+      display: none;
+    }
+    .card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+      border-color: #CBD5E1;
+    }
+
+    .card-top {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 10px;
+    }
+    .company-name {
+      font-size: 15px; font-weight: 700; color: #111827; line-height: 1.3;
+      flex: 1;
+    }
+
+    /* Industry badges */
+    .badge {
+      display: inline-block; padding: 3px 9px; border-radius: 12px;
+      font-size: 11px; font-weight: 600; white-space: nowrap; flex-shrink: 0;
+    }
+    .badge-it       { background: #DBEAFE; color: #1E40AF; }
+    .badge-health   { background: #D1FAE5; color: #065F46; }
+    .badge-legal    { background: #EDE9FE; color: #5B21B6; }
+    .badge-account  { background: #FEF3C7; color: #92400E; }
+    .badge-trades   { background: #FFEDD5; color: #9A3412; }
+    .badge-security { background: #FEE2E2; color: #991B1B; }
+
+    /* Score section */
+    .score-section { display: flex; flex-direction: column; gap: 6px; }
+    .score-header {
+      display: flex; justify-content: space-between; align-items: baseline;
+    }
+    .score-title { font-size: 11px; font-weight: 600; color: #6B7280; text-transform: uppercase; letter-spacing: 0.05em; }
+    .score-value { font-size: 18px; font-weight: 700; }
+    .score-bar-bg {
+      background: #E5E7EB; border-radius: 4px; height: 8px; overflow: hidden;
+    }
+    .score-bar-fill {
+      height: 8px; border-radius: 4px; transition: width 0.4s ease;
+    }
+    .score-rating {
+      font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px;
+      align-self: flex-start;
+    }
+    .rating-red    { background: #FEE2E2; color: #DC2626; }
+    .rating-amber  { background: #FEF3C7; color: #92400E; }
+    .rating-green  { background: #D1FAE5; color: #065F46; }
+
+    /* Valuation grid */
+    .val-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px;
+      background: #F8F9FA; border-radius: 6px; padding: 12px 14px;
+    }
+    .val-item .vl { font-size: 11px; color: #9CA3AF; font-weight: 500; }
+    .val-item .vv { font-size: 13px; font-weight: 600; color: #374151; margin-top: 1px; }
+    .val-item .vv.uplift { color: #059669; }
+
+    /* Report button */
+    .btn-report {
+      display: block; text-align: center;
+      padding: 9px 16px; border-radius: 6px;
+      font-size: 13px; font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      margin-top: auto;
+    }
+    .btn-report.active-link {
+      background: #1E2761; color: #fff;
+    }
+    .btn-report.active-link:hover {
+      background: #028090;
+    }
+    .btn-report.disabled-link {
+      background: #F3F4F6; color: #9CA3AF;
+      cursor: not-allowed; border: 1px dashed #D1D5DB;
+      pointer-events: none;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center; padding: 20px 32px;
+      font-size: 12px; color: #9CA3AF;
+      border-top: 1px solid #E5E7EB; background: #fff;
+    }
+    .footer strong { color: #6B7280; }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <span class="brand">Layer8 Tech Group</span>
+    <span class="sub">Exit Readiness Assessment Platform</span>
+  </div>
+  <div class="header-right">
+    <span class="portfolio">Demo Portfolio &mdash; 9 Companies</span>
+    <span class="dt" id="hdr-date"></span>
+  </div>
+</div>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stat-card">
+    <span class="stat-label">Companies Assessed</span>
+    <span class="stat-value">9</span>
+    <span class="stat-sub">Tier 1 assessments</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Average Score</span>
+    <span class="stat-value">3.4<span style="font-size:16px;color:#9CA3AF;">/10</span></span>
+    <span class="stat-sub">blended readiness</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Total Portfolio EBITDA</span>
+    <span class="stat-value">$5.2M</span>
+    <span class="stat-sub">most recent FY</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Avg Valuation Opportunity</span>
+    <span class="stat-value" style="color:#028090;">~35%</span>
+    <span class="stat-sub">lift from remediation</span>
+  </div>
+</div>
+
+<!-- Filter Bar -->
+<div class="filter-bar">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="it-msp">IT / MSP</button>
+  <button class="filter-btn" data-filter="healthcare">Healthcare</button>
+  <button class="filter-btn" data-filter="legal">Legal</button>
+  <button class="filter-btn" data-filter="accounting">Accounting</button>
+  <button class="filter-btn" data-filter="trades">Trades</button>
+  <button class="filter-btn" data-filter="security">Security</button>
+</div>
+
+<!-- Cards Grid -->
+<div class="cards-container">
+  <div class="cards-grid" id="cards-grid"></div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  Powered by <strong>Layer8 AI Chassis</strong>
+  &nbsp;&middot;&nbsp; layer8techgroup.com
+  &nbsp;&middot;&nbsp; <a href="assessment_guide.html" target="_blank" style="color:#028090;text-decoration:none;">Assessment Guide</a> &nbsp;&middot;&nbsp; Confidential Demo
+</div>
+
+<script>
+  // ── Data ────────────────────────────────────────────────────────
+  const companies = [
+    {
+      name:     "Peachtree Integrated Systems",
+      industry: "IT Services",
+      category: "it-msp",
+      badge:    "IT / MSP",
+      badgeCls: "badge-it",
+      score:    5.5,
+      ebitda:   997000,
+      report:   "reports/peachtree_exit_readiness_assessment.html",
+    },
+    {
+      name:     "Pinnacle Integrated Solutions",
+      industry: "Security / Low-voltage",
+      category: "security",
+      badge:    "Security",
+      badgeCls: "badge-security",
+      score:    2.8,
+      ebitda:   864000,
+      report:   "reports/pinnacle_exit_readiness_assessment.html",
+    },
+    {
+      name:     "Apex Managed Solutions",
+      industry: "IT / MSP",
+      category: "it-msp",
+      badge:    "IT / MSP",
+      badgeCls: "badge-it",
+      score:    3.2,
+      ebitda:   412000,
+      report:   "reports/apex_ms_exit_assessment.html",
+    },
+    {
+      name:     "Blue Collar Systems",
+      industry: "HVAC",
+      category: "trades",
+      badge:    "Trades",
+      badgeCls: "badge-trades",
+      score:    3.1,
+      ebitda:   389000,
+      report:   "reports/bcs_exit_assessment.html",
+    },
+    {
+      name:     "Helix Health Technologies",
+      industry: "Healthcare Tech",
+      category: "healthcare",
+      badge:    "Healthcare",
+      badgeCls: "badge-health",
+      score:    3.9,
+      ebitda:   894000,
+      report:   "reports/helix_exit_assessment.html",
+    },
+    {
+      name:     "Garrison Professional Advisors",
+      industry: "Accounting",
+      category: "accounting",
+      badge:    "Accounting",
+      badgeCls: "badge-account",
+      score:    3.0,
+      ebitda:   298000,
+      report:   "reports/garrison_exit_assessment.html",
+    },
+    {
+      name:     "Mercer Law Partners",
+      industry: "Legal",
+      category: "legal",
+      badge:    "Legal",
+      badgeCls: "badge-legal",
+      score:    3.5,
+      ebitda:   358000,
+      report:   "reports/mercer_exit_assessment.html",
+    },
+    {
+      name:     "Greenscape Landscape Services",
+      industry: "Landscaping",
+      category: "trades",
+      badge:    "Trades",
+      badgeCls: "badge-trades",
+      score:    3.0,
+      ebitda:   512000,
+      report:   "reports/greenscape_exit_assessment.html",
+    },
+    {
+      name:     "Atlas Security Technologies",
+      industry: "Security Systems",
+      category: "security",
+      badge:    "Security",
+      badgeCls: "badge-security",
+      score:    2.7,
+      ebitda:   524000,
+      report:   "reports/atlas_exit_assessment.html",
+    },
+  ];
+
+  // ── Helpers ─────────────────────────────────────────────────────
+  function getMultiples(score) {
+    if (score >= 6.5) return [4.5, 5.5];
+    if (score >= 5.0) return [3.5, 4.5];
+    if (score >= 3.5) return [2.5, 3.5];
+    return [2.0, 3.0];
+  }
+
+  function fmt(n) {
+    if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+    return '$' + Math.round(n / 1000) + 'K';
+  }
+
+  function scoreColor(score) {
+    if (score >= 6.0) return '#059669';
+    if (score >= 4.5) return '#F59E0B';
+    return '#DC2626';
+  }
+
+  function scoreRating(score) {
+    if (score >= 8.0) return ['STRONG',       'rating-green'];
+    if (score >= 6.0) return ['ADEQUATE',      'rating-green'];
+    if (score >= 4.5) return ['NEEDS WORK',    'rating-amber'];
+    if (score >= 3.5) return ['MATERIAL GAPS', 'rating-amber'];
+    return ['CRITICAL RISK', 'rating-red'];
+  }
+
+  // ── Render cards ─────────────────────────────────────────────────
+  function renderCards() {
+    const grid = document.getElementById('cards-grid');
+    grid.innerHTML = '';
+
+    companies.forEach((co, idx) => {
+      const [curLo, curHi] = getMultiples(co.score);
+      const [pstLo, pstHi] = [curLo + 1, curHi + 1];
+      const curRange = fmt(co.ebitda * curLo) + ' \u2013 ' + fmt(co.ebitda * curHi);
+      const pstRange = fmt(co.ebitda * pstLo) + ' \u2013 ' + fmt(co.ebitda * pstHi);
+      const [ratingLabel, ratingCls] = scoreRating(co.score);
+      const color = scoreColor(co.score);
+
+      const btnHtml = co.report
+        ? `<a class="btn-report active-link" href="${co.report}" target="_blank">View Full Report &rarr;</a>`
+        : `<span class="btn-report disabled-link">Report Pending</span>`;
+
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.dataset.category = co.category;
+      card.innerHTML = `
+        <div class="card-top">
+          <div class="company-name">${co.name}</div>
+          <span class="badge ${co.badgeCls}">${co.badge}</span>
+        </div>
+        <div class="score-section">
+          <div class="score-header">
+            <span class="score-title">Overall Readiness Score</span>
+            <span class="score-value" style="color:${color};">${co.score}/10</span>
+          </div>
+          <div class="score-bar-bg">
+            <div class="score-bar-fill" style="width:${co.score * 10}%;background:${color};"></div>
+          </div>
+          <span class="score-rating ${ratingCls}">${ratingLabel}</span>
+        </div>
+        <div class="val-grid">
+          <div class="val-item">
+            <div class="vl">EBITDA (FY)</div>
+            <div class="vv">${fmt(co.ebitda)}</div>
+          </div>
+          <div class="val-item">
+            <div class="vl">Multiple Band</div>
+            <div class="vv">${curLo.toFixed(1)}&ndash;${curHi.toFixed(1)}x &rarr; ${pstLo.toFixed(1)}&ndash;${pstHi.toFixed(1)}x</div>
+          </div>
+          <div class="val-item">
+            <div class="vl">Current Valuation</div>
+            <div class="vv">${curRange}</div>
+          </div>
+          <div class="val-item">
+            <div class="vl">Post-Remediation</div>
+            <div class="vv uplift">${pstRange}</div>
+          </div>
+        </div>
+        ${btnHtml}
+      `;
+
+      grid.appendChild(card);
+    });
+  }
+
+  // ── Filter logic ─────────────────────────────────────────────────
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+
+      const filter = this.dataset.filter;
+      document.querySelectorAll('.card').forEach(card => {
+        const match = filter === 'all' || card.dataset.category === filter;
+        if (match) {
+          card.classList.remove('hidden');
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(6px)';
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              card.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            });
+          });
+        } else {
+          card.style.transition = 'opacity 0.15s ease';
+          card.style.opacity = '0';
+          setTimeout(() => card.classList.add('hidden'), 150);
+        }
+      });
+    });
+  });
+
+  // ── Date ─────────────────────────────────────────────────────────
+  const d = new Date();
+  const months = ['Jan','Feb','Mar','Apr','May','Jun',
+                  'Jul','Aug','Sep','Oct','Nov','Dec'];
+  document.getElementById('hdr-date').textContent =
+    months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+
+  // ── Init ─────────────────────────────────────────────────────────
+  renderCards();
+</script>
+
+</body>
+</html>
