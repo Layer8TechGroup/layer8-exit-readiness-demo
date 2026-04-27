@@ -42,6 +42,15 @@
     .note{font-size:12px;color:#6B7280;margin-top:16px;border-top:1px solid #E5E7EB;padding-top:12px;}
     .footer{text-align:center;font-size:12px;color:#9CA3AF;padding:16px 32px;border-top:1px solid #E5E7EB;}
     @media print{body{background:white;}.page{max-width:100%;}@page{margin:.5in;}}
+    .th-tip{position:relative;display:inline-block;cursor:help;}
+    .th-tip .tip-text{
+      visibility:hidden;opacity:0;width:280px;background:#1F2937;color:#fff;
+      font-size:11px;font-weight:400;line-height:1.6;text-align:left;
+      padding:9px 11px;border-radius:4px;white-space:pre-line;z-index:99;
+      position:absolute;bottom:130%;left:50%;transform:translateX(-50%);
+      transition:opacity .15s;
+    }
+    .th-tip:hover .tip-text{visibility:visible;opacity:1;}
   </style>
 </head>
 <body>
@@ -73,7 +82,15 @@
       <th>Company</th>
       <th style="width:180px;">Score</th>
       <th style="width:120px;">Readiness</th>
-      <th style="width:130px;">Multiple &amp; Basis</th>
+      <th style="width:130px;"><span class="th-tip">Multiple &amp; Basis &#9432;<span class="tip-text">SDE = Seller's Discretionary Earnings
+(Main Street businesses &lt;$500K in owner earnings)
+
+Revenue = standard for professional services
+(accounting, financial advisory firms)
+
+EBITDA = mid-market with professional management
+
+Multiples are not comparable across basis types.</span></span></th>
       <th style="width:110px;">EBITDA</th>
       <th style="width:210px;">Implied Value Range</th>
       <th style="width:90px;"></th>
@@ -92,6 +109,7 @@
 <tr style="background:#F8F9FA;"><td style="color:#9CA3AF;font-size:12px;text-align:center;">12</td><td><div style="font-weight:600;font-size:13px;">Pinnacle Integrated<span style="font-size:10px;color:#6B7280;margin-left:4px;">7-domain</span></div><div style="font-size:11px;color:#6B7280;margin-top:2px;">IT / MSP</div></td><td><div style="display:flex;align-items:center;gap:8px;"><div style="width:120px;height:10px;background:#E5E7EB;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"><div style="width:35%;height:100%;background:#EA580C;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;"></div></div><span style="font-weight:700;color:#EA580C;font-size:13px;">3.5/10</span></div></td><td><span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:700;color:#EA580C;background:#FFF7ED;-webkit-print-color-adjust:exact;print-color-adjust:exact;">NEEDS WORK</span></td><td style="font-size:13px;font-weight:500;color:#374151;">2.5–2.8× EBITDA</td><td style="font-size:13px;color:#374151;">$864,000</td><td style="font-size:12px;color:#374151;">$2,160,000 – $2,419,200 EBITDA</td><td><a href="reports/pinnacle_exit_readiness_assessment.html" style="color:#028090;font-weight:600;font-size:12px;text-decoration:none;">View Report &#8594;</a></td></tr>
 </tbody>
   </table>
+  <p style="font-size:11px;color:#6B7280;font-style:italic;margin-top:12px;">* Valuation basis varies by industry and business size. SDE (Seller&rsquo;s Discretionary Earnings) is the standard for Main Street businesses under $500K in owner earnings &mdash; it includes owner compensation and personal expenses. Revenue multiples are standard for accounting and financial advisory firms where EBITDA normalization is complex. EBITDA multiples apply to mid-market businesses with professional management. Multiples are not comparable across basis types.</p>
   <div class="guide-cta">
     <span style="font-size:13px;color:#065F46;">
       <strong>New to the assessment?</strong>
