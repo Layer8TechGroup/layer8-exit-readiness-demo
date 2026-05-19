@@ -212,6 +212,86 @@ ul.sr li { margin-bottom: 8px; font-size: 13px; }
     .vrr-table th:nth-child(3), .vrr-table td:nth-child(3) { display: none; }
     .vrr-cta { flex-direction: column; }
 }
+/* ── Service Catalog (v2) ──────────────────────────────────────────────────── */
+.svc-catalog { margin: 0 0 28px; }
+.svc-catalog-hdr {
+    display: flex; align-items: baseline; justify-content: space-between;
+    border-top: 4px solid #028090; padding: 14px 0 10px;
+}
+.svc-catalog-title { font-size: 15px; font-weight: 700; color: #028090; }
+.svc-catalog-sub   { font-size: 11px; color: #6B7280; font-style: italic; }
+.svc-entry {
+    border: 1px solid #E5E7EB;
+    border-left: 5px solid var(--svc-color, #6B7280);
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 14px; overflow: hidden;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.svc-entry-title-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 14px 10px; border-bottom: 1px solid #E5E7EB;
+}
+.svc-entry-name {
+    font-size: 14px; font-weight: 700;
+    color: var(--svc-color, #1F2937);
+    flex: 1; line-height: 1.3;
+}
+.svc-entry-meta {
+    font-size: 11px; color: #6B7280; font-style: italic;
+    padding: 5px 14px 7px; border-bottom: 1px solid #F3F4F6;
+}
+.svc-fields {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid #F3F4F6;
+}
+.svc-field {
+    padding: 9px 14px; border-right: 1px solid #F3F4F6;
+}
+.svc-field:nth-child(even) { border-right: none; }
+.svc-field-full {
+    padding: 9px 14px; grid-column: 1 / -1; border-right: none;
+}
+.svc-lbl {
+    font-size: 10px; font-weight: 700; color: #9CA3AF;
+    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 3px;
+}
+.svc-val { font-size: 12px; color: #374151; line-height: 1.55; }
+.svc-footer {
+    display: flex; background: #F8F9FA; border-top: 1px solid #E5E7EB;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.svc-footer-cell { flex: 1; padding: 10px 14px; border-right: 1px solid #E5E7EB; }
+.svc-footer-cell:last-child { border-right: none; }
+.svc-footer-lbl {
+    font-size: 10px; font-weight: 700; color: #6B7280;
+    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 2px;
+}
+.svc-footer-val {
+    font-size: 14px; font-weight: 700;
+    color: var(--svc-color, #1F2937);
+}
+.svc-cta {
+    display: flex; align-items: center; justify-content: space-between;
+    background: #F0F9FF; border: 1px solid #BAE6FD; border-radius: 6px;
+    padding: 13px 16px; margin-top: 4px; gap: 16px; flex-wrap: wrap;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.svc-cta-text { font-size: 13px; color: #0C4A6E; flex: 1; line-height: 1.5; }
+.svc-cta-btn {
+    display: inline-block; background: #028090; color: white !important;
+    text-decoration: none; padding: 8px 18px; border-radius: 4px;
+    font-size: 12px; font-weight: 700; white-space: nowrap;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+@media (max-width:600px) {
+    .svc-fields { grid-template-columns: 1fr; }
+    .svc-field:nth-child(even) { border-right: none; }
+    .svc-footer { flex-direction: column; }
+    .svc-footer-cell { border-right: none; border-bottom: 1px solid #E5E7EB; }
+    .svc-footer-cell:last-child { border-bottom: none; }
+    .svc-cta { flex-direction: column; }
+}
+
 
 /* ── 5-domain horizontal bar chart ────────────────────────────────────── */
 .domain-chart { margin: 14px 0 24px; }
@@ -280,78 +360,6 @@ ul.sr li { margin-bottom: 8px; font-size: 13px; }
 }
 .ami-cta strong { color: #93C5FD; }
 
-/* ── Service Catalog (v2) ──────────────────────────────────────────────────── */
-.svc-catalog { margin: 0 0 28px; }
-.svc-catalog-hdr {
-    display: flex; align-items: baseline; justify-content: space-between;
-    border-top: 4px solid #028090; padding: 14px 0 10px;
-}
-.svc-catalog-title { font-size: 15px; font-weight: 700; color: #028090; }
-.svc-catalog-sub   { font-size: 11px; color: #6B7280; font-style: italic; }
-.svc-entry {
-    border: 1px solid #E5E7EB;
-    border-left: 5px solid var(--svc-color, #6B7280);
-    border-radius: 0 6px 6px 0;
-    margin-bottom: 14px; overflow: hidden;
-    -webkit-print-color-adjust: exact; print-color-adjust: exact;
-}
-.svc-entry-title-row {
-    display: flex; align-items: center; gap: 10px;
-    padding: 12px 14px 10px; border-bottom: 1px solid #E5E7EB;
-}
-.svc-entry-name {
-    font-size: 14px; font-weight: 700;
-    color: var(--svc-color, #1F2937);
-    flex: 1; line-height: 1.3;
-}
-.svc-entry-meta {
-    font-size: 11px; color: #6B7280; font-style: italic;
-    padding: 5px 14px 7px; border-bottom: 1px solid #F3F4F6;
-}
-.svc-fields {
-    display: grid; grid-template-columns: 1fr 1fr;
-    border-bottom: 1px solid #F3F4F6;
-}
-.svc-field { padding: 9px 14px; border-right: 1px solid #F3F4F6; }
-.svc-field:nth-child(even) { border-right: none; }
-.svc-field-full { padding: 9px 14px; grid-column: 1 / -1; border-right: none; }
-.svc-lbl {
-    font-size: 10px; font-weight: 700; color: #9CA3AF;
-    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 3px;
-}
-.svc-val { font-size: 12px; color: #374151; line-height: 1.55; }
-.svc-footer {
-    display: flex; background: #F8F9FA; border-top: 1px solid #E5E7EB;
-    -webkit-print-color-adjust: exact; print-color-adjust: exact;
-}
-.svc-footer-cell { flex: 1; padding: 10px 14px; border-right: 1px solid #E5E7EB; }
-.svc-footer-cell:last-child { border-right: none; }
-.svc-footer-lbl {
-    font-size: 10px; font-weight: 700; color: #6B7280;
-    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 2px;
-}
-.svc-footer-val { font-size: 14px; font-weight: 700; color: var(--svc-color, #1F2937); }
-.svc-cta {
-    display: flex; align-items: center; justify-content: space-between;
-    background: #F0F9FF; border: 1px solid #BAE6FD; border-radius: 6px;
-    padding: 13px 16px; margin-top: 4px; gap: 16px; flex-wrap: wrap;
-    -webkit-print-color-adjust: exact; print-color-adjust: exact;
-}
-.svc-cta-text { font-size: 13px; color: #0C4A6E; flex: 1; line-height: 1.5; }
-.svc-cta-btn {
-    display: inline-block; background: #028090; color: white !important;
-    text-decoration: none; padding: 8px 18px; border-radius: 4px;
-    font-size: 12px; font-weight: 700; white-space: nowrap;
-    -webkit-print-color-adjust: exact; print-color-adjust: exact;
-}
-@media (max-width:600px) {
-    .svc-fields { grid-template-columns: 1fr; }
-    .svc-field:nth-child(even) { border-right: none; }
-    .svc-footer { flex-direction: column; }
-    .svc-footer-cell { border-right: none; border-bottom: 1px solid #E5E7EB; }
-    .svc-footer-cell:last-child { border-bottom: none; }
-    .svc-cta { flex-direction: column; }
-}
 </style>
 </head>
 <body>
@@ -420,6 +428,8 @@ ul.sr li { margin-bottom: 8px; font-size: 13px; }
 <tr style="background:#1E2761;color:#FFFFFF;border-top:2px solid #374151;"><td colspan="2" style="font-size:11px;font-weight:700;letter-spacing:0.06em;padding:8px 10px;">TOTAL</td><td class="vrr-impact" style="color:#CBD5E1;">—</td><td class="vrr-value" style="color:#FFFFFF;font-weight:700;">$138,000</td><td style="color:#CBD5E1;font-size:11px;">—</td><td style="text-align:right;font-size:11px;color:#E2E8F0;white-space:nowrap;">$12,750 &#8211; $29,000</td><td style="text-align:center;color:#5EEAD4;font-weight:700;font-size:12px;">~6.5x</td></tr>
 </tbody></table><p style="font-size:12px;color:#028090;font-style:italic;margin:8px 16px 0;">Quick Win items are flagged &#10003; in the table above &#8212; these deliver the highest remediation ROI in the shortest timeline and are the recommended starting point for any remediation plan.</p><p style="font-size:11px;color:#6B7280;font-style:italic;margin:10px 16px 0;">Typical investment ranges reflect market-rate remediation costs and are provided for prioritization purposes only. Actual engagement scope and pricing depend on business size, gap severity, and selected service provider. Layer8 Tech Group provides formal engagement proposals following assessment delivery.</p><div class="vrr-cta"><span class="vrr-cta-text"><strong>Ready to recover this value before you list?</strong><br>Layer8 Tech Group delivers these services for businesses preparing for acquisition.</span><a class="vrr-cta-btn" href="https://calendly.com/jwallace-layer8techgroup/discovery-call" target="_blank">Schedule a Discovery Call &#8594;</a></div></div>
 
+  
+  
   
   
   
@@ -558,10 +568,10 @@ ul.sr li { margin-bottom: 8px; font-size: 13px; }
 
 
   <h2>Top 3 Strengths</h2>
-  <ul class="sr"><li>Customer Quality at 8.2/10 demonstrates a strong revenue foundation and client retention profile that will reduce buyer concerns about post-close revenue attrition. This STRONG performance across Halcyon&#x27;s largest weighted domain (19%) signals stable, defensible recurring relationships that support the proposed valuation multiple and minimize integration risk in the early post-acquisition period.</li><li>Technology &amp; Systems Maturity at 7.8/10 reflects STRONG infrastructure investments that will streamline buyer diligence and accelerate the transition timeline. Modern systems positioning eliminates costly legacy remediation work and positions the company favorably for rapid technology consolidation into a larger platform.</li><li>Legal &amp; Regulatory Compliance at 7.6/10 demonstrates STRONG governance discipline in a heavily regulated vertical, substantially reducing the scope and cost of post-close compliance remediation. This performance mitigates reputational and operational risk for the buyer and preempts a common source of deal friction in the accounting and wealth advisory space.</li></ul>
+  <ul class="sr"><li>Customer Quality at 8.2/10 represents a strong competitive moat and revenue stability profile that buyers view as a primary value driver in the accounting vertical. This strength significantly de-risks customer concentration and retention concerns during diligence, reducing the likelihood of post-close revenue erosion and supporting a valuation multiple at the upper end of the range. A buyer can confidently model predictable cash flows without requiring substantial earn-out provisions tied to customer preservation.</li><li>Human Capital at 7.7/10 demonstrates a strong operational team foundation that mitigates key-person dependency risk and facilitates post-acquisition integration. This positions Halcyon favorably against peer firms with weaker talent benches, as buyers can execute transition plans with lower disruption and retain institutional knowledge without material staff turnover. The strength of your team reduces the buyer&#x27;s need to inject external management resources immediately after close.</li><li>Technology &amp; Systems Maturity at 7.8/10 reflects a strong infrastructure baseline that limits technical debt surprises during vendor and system diligence. While the Automation Maturity Index flags remaining manual workflows, your systems foundation means a buyer can prioritize growth and client expansion over emergency modernization, preserving post-close operational bandwidth and supporting margin expansion plans.</li></ul>
 
   <h2>Top 3 Risks</h2>
-  <ul class="sr"><li>Operational Scalability at 6.2/10 (ADEQUATE) represents a gap buyers will note during diligence, particularly given the firm&#x27;s lower middle market valuation multiple. A buyer&#x27;s operational team will likely require detailed documentation of process standardization, delegation frameworks, and capacity headroom to support growth post-acquisition, and may require post-close investment in process documentation and systems to enable scaled service delivery.</li><li>Financial Readiness at 7.2/10 (ADEQUATE) will surface as a diligence finding during buyer underwriting, particularly around accounting controls, revenue recognition consistency, and working capital dynamics. Buyers will ask to see a plan for strengthening internal financial controls and standardizing reporting before close, and may apply a modest valuation adjustment pending remediation of identified gaps.</li><li>Owner Risk at 7.0/10 (ADEQUATE) creates a concern buyers will probe extensively during seller interviews and transition planning, as it signals potential concentration of relationships, decision-making, or operational knowledge in founder/principal roles. Buyers will expect to see a detailed transition and retention plan, and may negotiate earnout terms or holdback provisions tied to owner continuity and knowledge transfer milestones.</li></ul>
+  <ul class="sr"><li>Operational Scalability at 6.2/10 (ADEQUATE) represents a gap buyers will note during diligence, particularly given the lower middle market valuation multiple of 0.8–1.1× EBITDA where operational leverage is a key value driver. A buyer&#x27;s team will ask to see detailed plans for scaling client service delivery, back-office processes, and advisory capacity without proportional cost increases, and may require post-close investment in systems, staffing, or workflows to unlock the margin expansion they expect from the acquisition.</li><li>Owner Risk at 7.0/10 (ADEQUATE) creates a concern buyers will ask to see a plan for during transition discussions, as the current owner-dependent model will need to shift to institutional continuity before or immediately after close. Buyers will focus diligence on key client retention, advisor compensation and retention agreements, and management depth, and may apply earn-out conditions or retention escrows to protect against owner departure disrupting revenue or client relationships post-close.</li><li>Financial Readiness at 7.2/10 (ADEQUATE) will surface as a diligence finding without deal-blocking impact, but buyers will request clean financials, documented accruals, and clear working capital schedules to validate the $920,000 EBITDA figure and assess true cash conversion. Any gaps in accounting controls, revenue recognition clarity, or expense categorization may prompt adjustments to the purchase price or require remediation through post-close true-up mechanisms tied to working capital and earnout performance.</li></ul>
 
   <h2 class="pb">Recommended Priority Fixes</h2>
   <p style="font-size:13px;color:#6B7280;margin-bottom:16px;">
@@ -569,11 +579,11 @@ ul.sr li { margin-bottom: 8px; font-size: 13px; }
     complete domain-by-domain remediation plan and cost estimates, see the Value Recovery
     Roadmap above.
   </p>
-  <div class="fix-card"><div class="fix-num">Fix 1<span style="background:#047857;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">OS</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Document Service Delivery Processes and Capacity Framework</div><div style="font-size:12px;color:#374151;">Halcyon must create a standardized process documentation library covering all core service workflows, delegation matrices, and current capacity utilization rates (target: 80% documented by Days 0–60). This directly addresses Risk 1 (Operational Scalability at 6.2/10), which buyers flag as a gap during diligence for lower middle market firms. A buyer&#x27;s operations team will require this artifact to underwrite post-close scaling risk and avoid applying a valuation haircut for operational opacity.</div></div>
-<div class="fix-card"><div class="fix-num">Fix 2<span style="background:#B45309;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">FR</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Strengthen Accounting Controls and Revenue Recognition Policy</div><div style="font-size:12px;color:#374151;">Engage an external accountant or internal audit resource to complete a control maturity assessment and produce a written revenue recognition policy document aligned with industry standards (Days 0–45). This directly addresses Risk 2 (Financial Readiness at 7.2/10), which surfaces during buyer underwriting as a concern around accounting rigor and working capital predictability. Buyers will expect to see a plan for tightening controls and standardizing reporting to avoid a modest valuation adjustment or escrow holdback.</div></div>
-<div class="fix-card"><div class="fix-num">Fix 3<span style="background:#7C3AED;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">OR</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Create Owner Transition and Knowledge Transfer Plan</div><div style="font-size:12px;color:#374151;">Develop a detailed, 12-month owner transition roadmap that documents key client relationships, decision-making authority, operational dependencies, and retention incentives for founder(s) and critical principals (Days 0–50). This directly addresses Risk 3 (Owner Risk at 7.0/10), which buyers probe heavily during seller interviews and due diligence. A credible transition plan will reduce earnout/holdback negotiations and demonstrate continuity confidence to the buyer&#x27;s integration team.</div></div>
-<div class="fix-card"><div class="fix-num">Fix 4<span style="background:#1E2761;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">DR</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Conduct Diligence Readiness and Data Room Audit</div><div style="font-size:12px;color:#374151;">Perform an internal diligence readiness assessment (or engage external advisor to conduct one) covering tax compliance, legal entity structure, material contracts, litigation history, and regulatory filings, producing a documented gap list and remediation timeline (Days 15–60). This addresses Diligence Risk at 7.3/10, the second-highest-impact domain by weight, and ensures the data room is organized and complete before buyer requests begin. Early transparency on known issues builds credibility and reduces surprise discoveries that trigger renegotiation.</div></div>
-<div class="fix-card"><div class="fix-num">Fix 5<span style="background:#0F766E;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">HC</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Build Client Relationship Documentation and Succession Bench</div><div style="font-size:12px;color:#374151;">Create a client relationship inventory (AUM, tenure, key contacts, service level, revenue contribution) and identify cross-trained backup advisors for each of the top 20 clients, with documented service handoff playbooks (Days 30–75). This addresses Human Capital at 7.7/10 and reinforces the continuity narrative by reducing perceived key-person risk. Buyers will view documented bench strength and client-advisor redundancy as a de-risking factor that supports valuation and retention terms.</div></div>
+  <div class="fix-card"><div class="fix-num">Fix 1<span style="background:#047857;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">OS</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Document scalable service delivery and margin expansion plan</div><div style="font-size:12px;color:#374151;">This fix directly addresses Risk 1: Operational Scalability at 6.2/10. Create a detailed, buyer-ready operational leverage plan that maps client service delivery, back-office workflows, and advisory capacity expansion without proportional cost increases—including specific headcount, technology, and process improvements needed post-close. Buyers in the lower middle market (0.8–1.1× EBITDA) expect to see operational leverage; a documented roadmap with clear margin expansion targets demonstrates institutional capability and reduces post-close surprise discovery costs.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 2<span style="background:#7C3AED;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">OR</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Establish owner transition and management continuity agreements</div><div style="font-size:12px;color:#374151;">This fix directly addresses Risk 2: Owner Risk at 7.0/10. Draft and execute formal management succession and key advisor retention agreements that shift from owner-dependent to institutional decision-making, including defined roles post-close, non-compete clauses, and earnout/retention escrow terms tied to client retention milestones. Buyers will conduct intense diligence on owner dependency and client relationships; documented continuity agreements signal a professional, transferable business and reduce earn-out holdbacks or deal discount.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 3<span style="background:#B45309;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">FR</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Prepare audited EBITDA workup and working capital schedule</div><div style="font-size:12px;color:#374151;">This fix directly addresses Risk 3: Financial Readiness at 7.2/10. Commission a clean, line-item EBITDA recalculation with clear revenue recognition policies, accrual documentation, and a detailed working capital schedule that validates the $920,000 EBITDA figure and explains any non-recurring items or accounting adjustments. Buyers will validate cash conversion and may apply purchase price adjustments if financials lack clarity; a professional, pre-audited workup accelerates diligence closure and reduces post-close true-up disputes.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 4<span style="background:#1E2761;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">DR</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Conduct diligence risk remediation and legal audit review</div><div style="font-size:12px;color:#374151;">Diligence Risk at 7.3/10 is the next-highest-priority gap by blend weight (17%). Conduct a comprehensive legal audit covering regulatory compliance, contract quality, litigation exposure, and contingent liabilities, and produce a written diligence risk remediation roadmap that addresses any gaps buyers will identify during standstill review. A clean, pre-identified risk register with remediation timelines demonstrates transparency and reduces surprise findings that could trigger price reductions or deal delays during closing.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 5<span style="background:#0F766E;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">HC</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Build and document formal HR and compensation governance framework</div><div style="font-size:12px;color:#374151;">Human Capital at 7.7/10 (14% blend weight) requires formal structure to protect post-close stability. Document compensation philosophies, advisor equity/bonus structures, retention incentives, and succession planning protocols in a governance manual and present to key staff in a controlled rollout plan. Buyers will evaluate talent retention and institutional knowledge transfer risk; formalized HR governance reduces advisor flight risk, clarifies earnout payouts, and signals professional operational maturity to the buyer&#x27;s integration team.</div></div>
 
   <div class="compliance">
     <h2>Compliance Notes</h2>

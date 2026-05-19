@@ -212,6 +212,86 @@ ul.sr li { margin-bottom: 8px; font-size: 13px; }
     .vrr-table th:nth-child(3), .vrr-table td:nth-child(3) { display: none; }
     .vrr-cta { flex-direction: column; }
 }
+/* ── Service Catalog (v2) ──────────────────────────────────────────────────── */
+.svc-catalog { margin: 0 0 28px; }
+.svc-catalog-hdr {
+    display: flex; align-items: baseline; justify-content: space-between;
+    border-top: 4px solid #028090; padding: 14px 0 10px;
+}
+.svc-catalog-title { font-size: 15px; font-weight: 700; color: #028090; }
+.svc-catalog-sub   { font-size: 11px; color: #6B7280; font-style: italic; }
+.svc-entry {
+    border: 1px solid #E5E7EB;
+    border-left: 5px solid var(--svc-color, #6B7280);
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 14px; overflow: hidden;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.svc-entry-title-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 14px 10px; border-bottom: 1px solid #E5E7EB;
+}
+.svc-entry-name {
+    font-size: 14px; font-weight: 700;
+    color: var(--svc-color, #1F2937);
+    flex: 1; line-height: 1.3;
+}
+.svc-entry-meta {
+    font-size: 11px; color: #6B7280; font-style: italic;
+    padding: 5px 14px 7px; border-bottom: 1px solid #F3F4F6;
+}
+.svc-fields {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid #F3F4F6;
+}
+.svc-field {
+    padding: 9px 14px; border-right: 1px solid #F3F4F6;
+}
+.svc-field:nth-child(even) { border-right: none; }
+.svc-field-full {
+    padding: 9px 14px; grid-column: 1 / -1; border-right: none;
+}
+.svc-lbl {
+    font-size: 10px; font-weight: 700; color: #9CA3AF;
+    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 3px;
+}
+.svc-val { font-size: 12px; color: #374151; line-height: 1.55; }
+.svc-footer {
+    display: flex; background: #F8F9FA; border-top: 1px solid #E5E7EB;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.svc-footer-cell { flex: 1; padding: 10px 14px; border-right: 1px solid #E5E7EB; }
+.svc-footer-cell:last-child { border-right: none; }
+.svc-footer-lbl {
+    font-size: 10px; font-weight: 700; color: #6B7280;
+    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 2px;
+}
+.svc-footer-val {
+    font-size: 14px; font-weight: 700;
+    color: var(--svc-color, #1F2937);
+}
+.svc-cta {
+    display: flex; align-items: center; justify-content: space-between;
+    background: #F0F9FF; border: 1px solid #BAE6FD; border-radius: 6px;
+    padding: 13px 16px; margin-top: 4px; gap: 16px; flex-wrap: wrap;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.svc-cta-text { font-size: 13px; color: #0C4A6E; flex: 1; line-height: 1.5; }
+.svc-cta-btn {
+    display: inline-block; background: #028090; color: white !important;
+    text-decoration: none; padding: 8px 18px; border-radius: 4px;
+    font-size: 12px; font-weight: 700; white-space: nowrap;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+@media (max-width:600px) {
+    .svc-fields { grid-template-columns: 1fr; }
+    .svc-field:nth-child(even) { border-right: none; }
+    .svc-footer { flex-direction: column; }
+    .svc-footer-cell { border-right: none; border-bottom: 1px solid #E5E7EB; }
+    .svc-footer-cell:last-child { border-bottom: none; }
+    .svc-cta { flex-direction: column; }
+}
+
 
 /* ── 5-domain horizontal bar chart ────────────────────────────────────── */
 .domain-chart { margin: 14px 0 24px; }
@@ -280,78 +360,6 @@ ul.sr li { margin-bottom: 8px; font-size: 13px; }
 }
 .ami-cta strong { color: #93C5FD; }
 
-/* ── Service Catalog (v2) ──────────────────────────────────────────────────── */
-.svc-catalog { margin: 0 0 28px; }
-.svc-catalog-hdr {
-    display: flex; align-items: baseline; justify-content: space-between;
-    border-top: 4px solid #028090; padding: 14px 0 10px;
-}
-.svc-catalog-title { font-size: 15px; font-weight: 700; color: #028090; }
-.svc-catalog-sub   { font-size: 11px; color: #6B7280; font-style: italic; }
-.svc-entry {
-    border: 1px solid #E5E7EB;
-    border-left: 5px solid var(--svc-color, #6B7280);
-    border-radius: 0 6px 6px 0;
-    margin-bottom: 14px; overflow: hidden;
-    -webkit-print-color-adjust: exact; print-color-adjust: exact;
-}
-.svc-entry-title-row {
-    display: flex; align-items: center; gap: 10px;
-    padding: 12px 14px 10px; border-bottom: 1px solid #E5E7EB;
-}
-.svc-entry-name {
-    font-size: 14px; font-weight: 700;
-    color: var(--svc-color, #1F2937);
-    flex: 1; line-height: 1.3;
-}
-.svc-entry-meta {
-    font-size: 11px; color: #6B7280; font-style: italic;
-    padding: 5px 14px 7px; border-bottom: 1px solid #F3F4F6;
-}
-.svc-fields {
-    display: grid; grid-template-columns: 1fr 1fr;
-    border-bottom: 1px solid #F3F4F6;
-}
-.svc-field { padding: 9px 14px; border-right: 1px solid #F3F4F6; }
-.svc-field:nth-child(even) { border-right: none; }
-.svc-field-full { padding: 9px 14px; grid-column: 1 / -1; border-right: none; }
-.svc-lbl {
-    font-size: 10px; font-weight: 700; color: #9CA3AF;
-    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 3px;
-}
-.svc-val { font-size: 12px; color: #374151; line-height: 1.55; }
-.svc-footer {
-    display: flex; background: #F8F9FA; border-top: 1px solid #E5E7EB;
-    -webkit-print-color-adjust: exact; print-color-adjust: exact;
-}
-.svc-footer-cell { flex: 1; padding: 10px 14px; border-right: 1px solid #E5E7EB; }
-.svc-footer-cell:last-child { border-right: none; }
-.svc-footer-lbl {
-    font-size: 10px; font-weight: 700; color: #6B7280;
-    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 2px;
-}
-.svc-footer-val { font-size: 14px; font-weight: 700; color: var(--svc-color, #1F2937); }
-.svc-cta {
-    display: flex; align-items: center; justify-content: space-between;
-    background: #F0F9FF; border: 1px solid #BAE6FD; border-radius: 6px;
-    padding: 13px 16px; margin-top: 4px; gap: 16px; flex-wrap: wrap;
-    -webkit-print-color-adjust: exact; print-color-adjust: exact;
-}
-.svc-cta-text { font-size: 13px; color: #0C4A6E; flex: 1; line-height: 1.5; }
-.svc-cta-btn {
-    display: inline-block; background: #028090; color: white !important;
-    text-decoration: none; padding: 8px 18px; border-radius: 4px;
-    font-size: 12px; font-weight: 700; white-space: nowrap;
-    -webkit-print-color-adjust: exact; print-color-adjust: exact;
-}
-@media (max-width:600px) {
-    .svc-fields { grid-template-columns: 1fr; }
-    .svc-field:nth-child(even) { border-right: none; }
-    .svc-footer { flex-direction: column; }
-    .svc-footer-cell { border-right: none; border-bottom: 1px solid #E5E7EB; }
-    .svc-footer-cell:last-child { border-bottom: none; }
-    .svc-cta { flex-direction: column; }
-}
 </style>
 </head>
 <body>
@@ -420,6 +428,8 @@ ul.sr li { margin-bottom: 8px; font-size: 13px; }
 <tr style="background:#1E2761;color:#FFFFFF;border-top:2px solid #374151;"><td colspan="2" style="font-size:11px;font-weight:700;letter-spacing:0.06em;padding:8px 10px;">TOTAL</td><td class="vrr-impact" style="color:#CBD5E1;">—</td><td class="vrr-value" style="color:#FFFFFF;font-weight:700;">$1,271,000</td><td style="color:#CBD5E1;font-size:11px;">—</td><td style="text-align:right;font-size:11px;color:#E2E8F0;white-space:nowrap;">$28,000 &#8211; $50,500</td><td style="text-align:center;color:#5EEAD4;font-weight:700;font-size:12px;">20x+</td></tr>
 </tbody></table><p style="font-size:12px;color:#028090;font-style:italic;margin:8px 16px 0;">Quick Win items are flagged &#10003; in the table above &#8212; these deliver the highest remediation ROI in the shortest timeline and are the recommended starting point for any remediation plan.</p><p style="font-size:11px;color:#6B7280;font-style:italic;margin:10px 16px 0;">Typical investment ranges reflect market-rate remediation costs and are provided for prioritization purposes only. Actual engagement scope and pricing depend on business size, gap severity, and selected service provider. Layer8 Tech Group provides formal engagement proposals following assessment delivery.</p><div class="vrr-cta"><span class="vrr-cta-text"><strong>Ready to recover this value before you list?</strong><br>Layer8 Tech Group delivers these services for businesses preparing for acquisition.</span><a class="vrr-cta-btn" href="https://calendly.com/jwallace-layer8techgroup/discovery-call" target="_blank">Schedule a Discovery Call &#8594;</a></div></div>
 
+  
+  
   
   
   
@@ -559,10 +569,10 @@ ul.sr li { margin-bottom: 8px; font-size: 13px; }
 
 
   <h2>Top 3 Strengths</h2>
-  <ul class="sr"><li>Technology &amp; Systems Maturity at 5.4/10 represents an adequate technical foundation that reduces buyer anxiety around legacy system replacement and integration costs. While not exceptional, this adequate infrastructure score signals that core systems are functional and maintainable, allowing the buyer to focus diligence resources on revenue and compliance risks rather than a complete technology rebuild.</li><li>Human Capital at 5.2/10 demonstrates an adequate organizational structure with defined roles and institutional knowledge that mitigates key-person risk during transition. A buyer will view this adequate staffing foundation as a platform from which to scale operations post-acquisition, rather than inheriting a fragile one-person dependency model.</li><li>Diligence Risk at 5.3/10 reflects adequate operational transparency and documentation practices that will streamline the M&amp;A due diligence process and reduce discovery costs. Buyers conducting lower middle market transactions appreciate this adequate record-keeping posture because it signals realistic surprise exposure and enables faster closing timelines.</li></ul>
+  <ul class="sr"><li>Technology &amp; Systems Maturity at 5.4/10 provides an adequate foundation that reduces buyer concerns around legacy infrastructure risk and near-term system replacement costs. While modernization opportunities exist, the current platform stability means a buyer can prioritize revenue synergies and customer integration over emergency technology remediation during the critical post-close window.</li><li>Human Capital at 5.2/10 demonstrates adequate organizational depth and talent retention, which mitigates key person risk—a primary concern for healthcare technology buyers evaluating management continuity and operational handoff feasibility. This baseline competency in staffing reduces the likelihood of material talent attrition during diligence and integration phases.</li><li>Diligence Risk at 5.3/10 indicates adequate transparency and documentation practices that streamline buyer due diligence timelines and reduce audit scope creep. An organized data room and clear operational records support faster closing cycles and lower transaction friction compared to targets with opaque or fragmented compliance records.</li></ul>
 
   <h2>Top 3 Risks</h2>
-  <ul class="sr"><li>Financial Readiness at 3.0/10 (CRITICAL RISK) creates a material liability that will trigger a buyer discount across the valuation range. A diligence team will identify incomplete financial controls, incomplete audit trails, or cash-basis accounting that prevents reliable EBITDA verification and raises post-close adjustment risk; buyers typically apply a haircut of 10–15% to multiple or require substantial escrow holdback to cover restatement exposure.</li><li>Customer Quality at 5.0/10 (NEEDS WORK) represents a critical gap in revenue stability that will generate a material discount during buyer diligence. If customer concentration is high, retention rates are below market, or reference checks reveal service delivery concerns, buyers will apply a multiple haircut and demand customer-by-customer analysis; this gap directly reduces the defensibility of current EBITDA and future cash flow projections.</li><li>Legal &amp; Regulatory Compliance at 4.7/10 (NEEDS WORK) poses a deal-completion risk in the healthcare vertical, where regulatory exposure carries outsized post-close liability. Buyers will conduct detailed diligence into licensing, billing practices, data privacy, and adherence to healthcare regulations; gaps here will trigger escrow allocations, indemnification carve-outs, or a structural discount to address unresolved compliance remediation.</li></ul>
+  <ul class="sr"><li>Financial Readiness at 3.0/10 (CRITICAL RISK) represents the most material valuation threat to this transaction. Buyers will apply a significant haircut to the stated EBITDA multiple and will require extensive remediation of accounting controls, revenue recognition practices, and cash flow documentation before closing. This critical gap directly impacts deal pricing and introduces post-close earn-out risk that could reduce realizable proceeds by 15–25% from the published valuation range.</li><li>Customer Quality at 5.0/10 (NEEDS WORK) creates a material liability around revenue durability and buyer confidence in forward projections. A buyer&#x27;s diligence team will flag concentration risk, churn trends, contract terms, and customer satisfaction metrics as part of their underwriting, and will apply a discount to the multiple if customer retention or growth assumptions cannot be independently validated. This needs-work posture will likely result in a price reduction of 5–10% within the stated valuation band.</li><li>Legal &amp; Regulatory Compliance at 4.7/10 (NEEDS WORK) poses a deal-risk factor in the highly regulated healthcare vertical, where buyers face material liability exposure from licensing, privacy, billing, and fraud/abuse compliance gaps. A buyer&#x27;s counsel will conduct extensive compliance diligence and will require representations, warranties, and escrow coverage that will trigger a haircut to the multiple and increase transaction friction. Remediation of this critical domain is essential to avoid deal delays or post-close indemnification claims.</li></ul>
 
   <h2 class="pb">Recommended Priority Fixes</h2>
   <p style="font-size:13px;color:#6B7280;margin-bottom:16px;">
@@ -570,11 +580,11 @@ ul.sr li { margin-bottom: 8px; font-size: 13px; }
     complete domain-by-domain remediation plan and cost estimates, see the Value Recovery
     Roadmap above.
   </p>
-  <div class="fix-card"><div class="fix-num">Fix 1<span style="background:#B45309;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">FR</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Restate financials with audited EBITDA bridge</div><div style="font-size:12px;color:#374151;">Engage a big-four or regional accounting firm to audit the last 24 months of financial statements, produce a detailed EBITDA bridge (adjustments for owner-pays items, one-time costs, etc.), and issue a written management letter confirming revenue recognition and cash controls. This directly addresses Risk 1 (Financial Readiness at 3.0/10 CRITICAL RISK) by eliminating buyer uncertainty about earnings quality and reducing restatement exposure, which typically triggers a 10–15% multiple haircut without remediation. A clean audit report and verified EBITDA statement will restore buyer confidence in valuation and reduce escrow holdback demands.</div></div>
-<div class="fix-card"><div class="fix-num">Fix 2<span style="background:#0369A1;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">CQ</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Complete customer concentration and retention analysis</div><div style="font-size:12px;color:#374151;">Produce a detailed customer ledger (top 20 customers by revenue, contract terms, renewal dates, NPS/satisfaction scores, and 24-month churn rates) and commission a third-party reference check of 5–8 key accounts to validate service delivery and relationship health. This directly addresses Risk 2 (Customer Quality at 5.0/10 NEEDS WORK) by giving buyers hard data on revenue stability and customer risk; without it, diligence teams will apply a multiple haircut and demand customer-by-customer proof of retention. Clear, credible customer metrics will support EBITDA defensibility and reduce buyer discount assumptions.</div></div>
-<div class="fix-card"><div class="fix-num">Fix 3<span style="background:#9D174D;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">LC</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Complete healthcare compliance audit and remediation plan</div><div style="font-size:12px;color:#374151;">Commission an independent healthcare compliance specialist to audit licensing (medical director, state practice licenses, DEA registration if applicable), billing practices (coding accuracy, claim submission), HIPAA/privacy controls, and adherence to state telehealth or service-delivery regulations; produce a written compliance report with a prioritized remediation roadmap and timeline. This directly addresses Risk 3 (Legal &amp; Regulatory Compliance at 4.7/10 NEEDS WORK) by identifying and quantifying regulatory exposure before buyer diligence, reducing surprise findings and post-close liability disputes. A clean compliance audit or credible remediation plan will minimize escrow carve-outs and indemnification demands.</div></div>
-<div class="fix-card"><div class="fix-num">Fix 4<span style="background:#0F766E;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">HC</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Document key-person retention and succession plan</div><div style="font-size:12px;color:#374151;">Secure signed employment or retention agreements (12+ month lock-up post-close) from the top 3–4 revenue-generating or operationally critical staff; document their roles, compensation, and advancement path under new ownership. This addresses Human Capital (5.2/10 NEEDS WORK, 12% weight) by mitigating buyer concern that critical talent will depart after close, which erodes operational continuity and EBITDA realization. Documented retention reduces post-close cash-flow risk and eliminates a common earn-out adjustment lever.</div></div>
-<div class="fix-card"><div class="fix-num">Fix 5<span style="background:#1E2761;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">DR</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Map diligence-readiness data room and prepare vendor schedules</div><div style="font-size:12px;color:#374151;">Build a clean, organized data room with indexed folders for all financial statements, contracts, payroll, insurance, IP documentation, customer agreements, and compliance records; prepare a vendor and service-provider schedule (EHR, billing system, hosting, support contracts) with renewal dates and termination terms. This addresses Diligence Risk (5.3/10 NEEDS WORK, 17% weight) by eliminating delays during buyer due diligence and reducing friction over undisclosed liabilities or missing documentation; a well-organized data room signals operational maturity and reduces buyer requests for clarification, which extends timeline and erodes confidence. Clean, complete disclosure reduces discovery delays and escrow disputes.</div></div>
+  <div class="fix-card"><div class="fix-num">Fix 1<span style="background:#B45309;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">FR</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Rebuild accounting controls and revenue recognition documentation</div><div style="font-size:12px;color:#374151;">This fix directly addresses Risk 1 (Financial Readiness at 3.0/10 — CRITICAL RISK). Engage a Big Four or healthcare-specialist accounting firm to conduct a forensic review of revenue recognition policies, perform a 12-month revenue restatement audit, and document all accounting control procedures in a SOX-readiness format. Buyers will require audited or reviewed financials and clean revenue reconciliation before closing; without this, expect a 15–25% valuation haircut and extended earn-out clawback risk.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 2<span style="background:#0369A1;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">CQ</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Map customer concentration, churn, and contract renewal risk</div><div style="font-size:12px;color:#374151;">This fix directly addresses Risk 2 (Customer Quality at 5.0/10 — NEEDS WORK). Produce a detailed customer cohort analysis documenting: top-20 customer names, revenue contribution %, contract renewal dates, YoY churn by segment, NPS or satisfaction score, and 36-month forward revenue visibility. Buyers will scrutinize revenue durability and forward growth assumptions; a clean, independently auditable customer health dashboard will prevent a 5–10% multiple discount and strengthen earn-out confidence.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 3<span style="background:#9D174D;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">LC</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Obtain healthcare compliance certification and audit report</div><div style="font-size:12px;color:#374151;">This fix directly addresses Risk 3 (Legal &amp; Regulatory Compliance at 4.7/10 — NEEDS WORK). Retain a healthcare compliance counsel to perform a comprehensive gap assessment covering HIPAA, state licensing, billing compliance, and anti-kickback statute exposure; produce a written remediation plan and schedule a third-party compliance audit (SOC 2 Type II or equivalent). In the regulated healthcare vertical, buyers require clean compliance diligence; gaps trigger extended escrow, indemnification baskets, and multiple compression.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 4<span style="background:#0F766E;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">HC</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Document and certify key-person knowledge and succession</div><div style="font-size:12px;color:#374151;">This fix addresses Owner Risk at 5.0/10 and Human Capital at 5.2/10 — the next-highest-weighted gaps after the three critical Risks. Create a detailed organizational chart, job descriptions for all roles, a 12-month knowledge transfer plan for critical functions (clinical, revenue cycle, product), and written retention agreements for key personnel extending 12+ months post-close. Buyers will de-risk leadership continuity; a clear succession and retention structure prevents post-close operational deterioration and supports earnout achievement.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 5<span style="background:#047857;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">OS</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Conduct operational scalability and process maturity assessment</div><div style="font-size:12px;color:#374151;">This fix addresses Operational Scalability at 4.8/10 — the lowest-scored domain in the remediation range. Commission a third-party operational consultant to document all core processes (patient intake, billing, reporting, data handling), identify manual bottlenecks, and produce a written 24-month process automation and scaling roadmap with ROI projections. Buyers will evaluate whether the platform can scale with post-acquisition growth; a credible roadmap mitigates operational risk and supports revenue multiple confidence.</div></div>
 
   <div class="compliance">
     <h2>Compliance Notes</h2>
