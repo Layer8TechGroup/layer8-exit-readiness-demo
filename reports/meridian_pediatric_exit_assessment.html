@@ -279,6 +279,79 @@ ul.sr li { margin-bottom: 8px; font-size: 13px; }
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
 }
 .ami-cta strong { color: #93C5FD; }
+
+/* ── Service Catalog (v2) ──────────────────────────────────────────────────── */
+.svc-catalog { margin: 0 0 28px; }
+.svc-catalog-hdr {
+    display: flex; align-items: baseline; justify-content: space-between;
+    border-top: 4px solid #028090; padding: 14px 0 10px;
+}
+.svc-catalog-title { font-size: 15px; font-weight: 700; color: #028090; }
+.svc-catalog-sub   { font-size: 11px; color: #6B7280; font-style: italic; }
+.svc-entry {
+    border: 1px solid #E5E7EB;
+    border-left: 5px solid var(--svc-color, #6B7280);
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 14px; overflow: hidden;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.svc-entry-title-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 14px 10px; border-bottom: 1px solid #E5E7EB;
+}
+.svc-entry-name {
+    font-size: 14px; font-weight: 700;
+    color: var(--svc-color, #1F2937);
+    flex: 1; line-height: 1.3;
+}
+.svc-entry-meta {
+    font-size: 11px; color: #6B7280; font-style: italic;
+    padding: 5px 14px 7px; border-bottom: 1px solid #F3F4F6;
+}
+.svc-fields {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid #F3F4F6;
+}
+.svc-field { padding: 9px 14px; border-right: 1px solid #F3F4F6; }
+.svc-field:nth-child(even) { border-right: none; }
+.svc-field-full { padding: 9px 14px; grid-column: 1 / -1; border-right: none; }
+.svc-lbl {
+    font-size: 10px; font-weight: 700; color: #9CA3AF;
+    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 3px;
+}
+.svc-val { font-size: 12px; color: #374151; line-height: 1.55; }
+.svc-footer {
+    display: flex; background: #F8F9FA; border-top: 1px solid #E5E7EB;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.svc-footer-cell { flex: 1; padding: 10px 14px; border-right: 1px solid #E5E7EB; }
+.svc-footer-cell:last-child { border-right: none; }
+.svc-footer-lbl {
+    font-size: 10px; font-weight: 700; color: #6B7280;
+    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 2px;
+}
+.svc-footer-val { font-size: 14px; font-weight: 700; color: var(--svc-color, #1F2937); }
+.svc-cta {
+    display: flex; align-items: center; justify-content: space-between;
+    background: #F0F9FF; border: 1px solid #BAE6FD; border-radius: 6px;
+    padding: 13px 16px; margin-top: 4px; gap: 16px; flex-wrap: wrap;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.svc-cta-text { font-size: 13px; color: #0C4A6E; flex: 1; line-height: 1.5; }
+.svc-cta-btn {
+    display: inline-block; background: #028090; color: white !important;
+    text-decoration: none; padding: 8px 18px; border-radius: 4px;
+    font-size: 12px; font-weight: 700; white-space: nowrap;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+@media (max-width:600px) {
+    .svc-fields { grid-template-columns: 1fr; }
+    .svc-field:nth-child(even) { border-right: none; }
+    .svc-footer { flex-direction: column; }
+    .svc-footer-cell { border-right: none; border-bottom: 1px solid #E5E7EB; }
+    .svc-footer-cell:last-child { border-bottom: none; }
+    .svc-cta { flex-direction: column; }
+}
 </style>
 </head>
 <body>
@@ -347,6 +420,8 @@ ul.sr li { margin-bottom: 8px; font-size: 13px; }
 <tr style="background:#1E2761;color:#FFFFFF;border-top:2px solid #374151;"><td colspan="2" style="font-size:11px;font-weight:700;letter-spacing:0.06em;padding:8px 10px;">TOTAL</td><td class="vrr-impact" style="color:#CBD5E1;">—</td><td class="vrr-value" style="color:#FFFFFF;font-weight:700;">$1,054,000</td><td style="color:#CBD5E1;font-size:11px;">—</td><td style="text-align:right;font-size:11px;color:#E2E8F0;white-space:nowrap;">$10,250 &#8211; $26,000</td><td style="text-align:center;color:#5EEAD4;font-weight:700;font-size:12px;">20x+</td></tr>
 </tbody></table><p style="font-size:12px;color:#028090;font-style:italic;margin:8px 16px 0;">Quick Win items are flagged &#10003; in the table above &#8212; these deliver the highest remediation ROI in the shortest timeline and are the recommended starting point for any remediation plan.</p><p style="font-size:11px;color:#6B7280;font-style:italic;margin:10px 16px 0;">Typical investment ranges reflect market-rate remediation costs and are provided for prioritization purposes only. Actual engagement scope and pricing depend on business size, gap severity, and selected service provider. Layer8 Tech Group provides formal engagement proposals following assessment delivery.</p><div class="vrr-cta"><span class="vrr-cta-text"><strong>Ready to recover this value before you list?</strong><br>Layer8 Tech Group delivers these services for businesses preparing for acquisition.</span><a class="vrr-cta-btn" href="https://calendly.com/jwallace-layer8techgroup/discovery-call" target="_blank">Schedule a Discovery Call &#8594;</a></div></div>
 
+  
+  
   
   
   
@@ -485,10 +560,10 @@ ul.sr li { margin-bottom: 8px; font-size: 13px; }
 
 
   <h2>Top 3 Strengths</h2>
-  <ul class="sr"><li>Legal &amp; Regulatory Compliance at 7.9/10 represents a strong regulatory posture that significantly de-risks the healthcare vertical&#x27;s most common diligence friction points. Meridian&#x27;s compliance infrastructure will allow buyers to compress legal and regulatory due diligence cycles and reduces post-close remediation costs, particularly valuable in a pediatric care setting where regulatory oversight is intensive.</li><li>Owner Risk at 7.8/10 demonstrates a strong ownership transition readiness, indicating that founder or principal stakeholder dependencies have been mitigated to a degree that supports seamless post-acquisition integration. This eliminates a primary deal killer in lower-middle-market healthcare rolls and allows the buyer to focus capital and management attention on revenue synergies rather than stakeholder retention or knowledge transfer.</li><li>Technology &amp; Systems Maturity at 7.9/10 reflects a strong technical infrastructure foundation that will support rapid platform consolidation and avoid costly legacy system replacement post-close. A mature tech stack reduces buyer friction during systems integration and positions Meridian favorably within a roll-up or bolt-on strategy where operational continuity is critical to maintaining pediatric patient relationships.</li></ul>
+  <ul class="sr"><li>Legal &amp; Regulatory Compliance at 7.9/10 represents a strong compliance posture that will significantly reduce buyer diligence friction in the healthcare vertical. Healthcare acquisitions typically face heightened regulatory scrutiny, and Meridian&#x27;s strong performance in this domain preempts costly compliance remediation and demonstrates that licensure, credentialing, and privacy obligations are well-managed—a finding that accelerates closing timelines and supports valuation confidence.</li><li>Owner Risk at 7.8/10 reflects a strong ownership structure and transition readiness that eliminates key-person dependency concerns for incoming ownership. Buyers typically apply a risk discount when founder or principal owner continuity is uncertain; Meridian&#x27;s strong profile in this domain signals that knowledge transfer and operational continuity can proceed smoothly post-close, reducing earn-out contingencies and supporting full multiple realization.</li><li>Financial Readiness at 7.5/10 demonstrates strong financial controls and reporting infrastructure that will streamline the buyer&#x27;s financial diligence workstream. Clean, auditable financial statements and sound accounting practices minimize restatement risk and provide the buyer with high confidence in the $1.24M EBITDA foundation, allowing underwriting to focus on operational upside rather than baseline financial reconstruction.</li></ul>
 
   <h2>Top 3 Risks</h2>
-  <ul class="sr"><li>Customer Quality at 6.5/10 (ADEQUATE) represents a gap buyers will note during diligence, as this domain carries the highest blend weight at 21% and signals potential concentration, retention, or contract stability concerns. Buyers will ask to see detailed customer concentration metrics, renewal rates, and account health trends, and may apply a modest valuation haircut if customer dependencies or churn patterns emerge during reference calls and contract review.</li><li>Diligence Risk at 6.8/10 (ADEQUATE) creates a concern buyers will ask to see a plan for, particularly around documentation completeness, financial record integrity, and compliance documentation in a regulated healthcare vertical. This 17% weighted domain will surface as a diligence finding without deal-blocking impact, but incomplete or inconsistent records in patient data handling, billing practices, or regulatory filings may require remediation or post-close escrow holdbacks.</li><li>Operational Scalability at 7.0/10 (ADEQUATE) may require post-close investment and will surface as a diligence finding, as this domain suggests the practice&#x27;s infrastructure, staffing model, or clinical workflows may not yet support material revenue growth without significant operational redesign. Buyers evaluating multi-location roll-up potential or organic growth will probe whether current systems, provider capacity, and management bandwidth can support a 20%+ revenue expansion without service degradation.</li></ul>
+  <ul class="sr"><li>Customer Quality at 6.5/10 (ADEQUATE) represents a gap buyers will note during diligence, particularly given its 21% weighting in the combined score. A buyer&#x27;s team will conduct detailed analysis of revenue concentration, contract terms, and patient retention rates to assess whether the customer base can sustain post-acquisition growth, and any material concentration or churn risk may require post-close investment in relationship management or service improvements to justify the current valuation multiple.</li><li>Diligence Risk at 6.8/10 (ADEQUATE) creates a concern buyers will ask to see a plan for addressing during the data room phase and management presentations. Gaps in financial documentation, regulatory records, or operational transparency will surface as standard diligence findings and may prompt additional requests for representations, warranties, and indemnification, potentially extending the underwriting timeline and creating friction in deal closure.</li><li>Operational Scalability at 7.0/10 (ADEQUATE) will surface as a diligence finding without deal-blocking impact, though buyers will examine the infrastructure, staffing, and processes in place to support growth post-acquisition. Any constraints in clinical capacity, back-office automation, or management depth may require post-close investment or operational restructuring to unlock the growth assumptions embedded in buyer projections.</li></ul>
 
   <h2 class="pb">Recommended Priority Fixes</h2>
   <p style="font-size:13px;color:#6B7280;margin-bottom:16px;">
@@ -496,11 +571,11 @@ ul.sr li { margin-bottom: 8px; font-size: 13px; }
     complete domain-by-domain remediation plan and cost estimates, see the Value Recovery
     Roadmap above.
   </p>
-  <div class="fix-card"><div class="fix-num">Fix 1<span style="background:#0369A1;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">CQ</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Map and document customer concentration and renewal trends</div><div style="font-size:12px;color:#374151;">This fix addresses Risk 1 (Customer Quality at 6.5/10). Produce a detailed customer concentration report showing top 10 accounts as % of revenue, historical 3-year renewal rates by cohort, and account health scores (NPS, utilization, churn risk). Buyers will use this during diligence to assess revenue stability and validate whether customer dependencies or churn patterns justify a valuation haircut.</div></div>
-<div class="fix-card"><div class="fix-num">Fix 2<span style="background:#1E2761;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">DR</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Audit and standardize healthcare compliance documentation</div><div style="font-size:12px;color:#374151;">This fix addresses Risk 2 (Diligence Risk at 6.8/10). Conduct a comprehensive audit of patient data handling records, billing practice documentation, and regulatory filing completeness; produce a written remediation plan for any gaps and evidence of corrective actions taken. Buyers in regulated healthcare verticals will expect complete, consistent records during diligence, and this deliverable prevents post-close escrow holdbacks or renegotiation.</div></div>
-<div class="fix-card"><div class="fix-num">Fix 3<span style="background:#047857;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">OS</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Design scalable clinical workflow and staffing blueprint</div><div style="font-size:12px;color:#374151;">This fix addresses Risk 3 (Operational Scalability at 7.0/10). Document current provider capacity, clinical workflow bottlenecks, and management bandwidth; then produce a detailed operational scaling plan showing how staffing, systems, and workflows would support 20%+ revenue growth without service degradation. Buyers evaluating roll-up or organic growth potential will use this to reduce perceived post-close investment risk and operational redesign burden.</div></div>
-<div class="fix-card"><div class="fix-num">Fix 4<span style="background:#B45309;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">FR</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Compile complete financial records and audit trail package</div><div style="font-size:12px;color:#374151;">Human Capital scores 7.2/10 (ADEQUATE) with 12% blend weight, and financial clarity directly supports buyer confidence in both operations and valuation. Prepare a 3-year audited or reviewed financial statement package, general ledger documentation, and a detailed revenue recognition policy memo; include reconciliations of any prior adjustments or non-recurring items. This allows buyers to validate EBITDA and reduces diligence friction in the second-highest-weighted risk domain.</div></div>
-<div class="fix-card"><div class="fix-num">Fix 5<span style="background:#0F766E;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">HC</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Document management succession and key person dependencies</div><div style="font-size:12px;color:#374151;">Owner Risk scores 7.8/10 (STRONG) but Human Capital at 7.2/10 (ADEQUATE, 12% weight) signals potential retention or leadership continuity gaps that concern buyers in healthcare services. Produce an organizational chart, key person insurance schedule, and transition plan for any critical clinical or operational roles; outline retention incentives and buyer integration touchpoints. This reassures buyers that the practice does not depend entirely on founder presence and supports post-close stability.</div></div>
+  <div class="fix-card"><div class="fix-num">Fix 1<span style="background:#0369A1;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">CQ</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Quantify Revenue Concentration and Patient Retention</div><div style="font-size:12px;color:#374151;">Conduct a detailed customer segmentation analysis identifying top 10 payers, contract renewal dates, and 24-month patient retention rates by service line. This directly addresses Risk 1 (Customer Quality at 6.5/10), which represents the highest-weighted domain at 21% and a key buyer diligence focus. A buyer will require this data to stress-test revenue sustainability and justify the 5.4–5.9× multiple; absence of clarity here will trigger post-close holdbacks or discounts.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 2<span style="background:#1E2761;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">DR</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Assemble Complete Financial and Regulatory Data Room</div><div style="font-size:12px;color:#374151;">Organize and validate 36 months of tax returns, GL detail, patient billing records, compliance certifications, and any regulatory correspondence into a secure virtual data room with an index and narrative explanations of variances or exceptions. This addresses Risk 2 (Diligence Risk at 6.8/10) by removing friction during buyer underwriting; gaps in documentation will prompt reps, warranties, indemnification requests, and timeline delays that erode deal certainty and valuation.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 3<span style="background:#047857;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">OS</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Document Clinical and Operational Capacity Roadmap</div><div style="font-size:12px;color:#374151;">Create a detailed process map of clinical workflows, staffing levels, exam room utilization, and back-office functions, then produce a written 18-month capacity and hiring plan tied to buyer growth assumptions. This addresses Risk 3 (Operational Scalability at 7.0/10) by showing buyers that infrastructure, workflows, and headcount can support post-acquisition growth without major restructuring. Without this clarity, buyers will underwrite operational risk and assume post-close investment needs, reducing offer multiples.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 4<span style="background:#7C3AED;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">OR</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Establish Formal Board Governance and Succession Plan</div><div style="font-size:12px;color:#374151;">Implement a documented succession plan naming interim/permanent clinical and operations leadership, establish a quarterly advisory board (or board of directors) with defined roles, and document key-person insurance coverage. This addresses owner_risk (7.8/10, STRONG but weighted 16%) by reducing buyer anxiety about founder/owner dependency and management continuity post-close. Clear governance accelerates buyer comfort and supports deal valuation.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 5<span style="background:#B45309;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">FR</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Audit and Certify Billing Compliance and Coding Accuracy</div><div style="font-size:12px;color:#374151;">Engage a third-party healthcare billing auditor to review 90 days of patient claims, coding practices, and payer contract compliance, then produce a written certification and any remediation plan for audit exceptions. This addresses financial_readiness (7.5/10, STRONG but weighted 8%) by validating that reported EBITDA is defensible and that billing operations will not trigger post-close adjustments or regulatory exposure. Buyers will scrutinize healthcare billing integrity; a clean audit reduces reps and warranties friction.</div></div>
 
   <div class="compliance">
     <h2>Compliance Notes</h2>

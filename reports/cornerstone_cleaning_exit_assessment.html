@@ -279,6 +279,79 @@ ul.sr li { margin-bottom: 8px; font-size: 13px; }
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
 }
 .ami-cta strong { color: #93C5FD; }
+
+/* ── Service Catalog (v2) ──────────────────────────────────────────────────── */
+.svc-catalog { margin: 0 0 28px; }
+.svc-catalog-hdr {
+    display: flex; align-items: baseline; justify-content: space-between;
+    border-top: 4px solid #028090; padding: 14px 0 10px;
+}
+.svc-catalog-title { font-size: 15px; font-weight: 700; color: #028090; }
+.svc-catalog-sub   { font-size: 11px; color: #6B7280; font-style: italic; }
+.svc-entry {
+    border: 1px solid #E5E7EB;
+    border-left: 5px solid var(--svc-color, #6B7280);
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 14px; overflow: hidden;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.svc-entry-title-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 14px 10px; border-bottom: 1px solid #E5E7EB;
+}
+.svc-entry-name {
+    font-size: 14px; font-weight: 700;
+    color: var(--svc-color, #1F2937);
+    flex: 1; line-height: 1.3;
+}
+.svc-entry-meta {
+    font-size: 11px; color: #6B7280; font-style: italic;
+    padding: 5px 14px 7px; border-bottom: 1px solid #F3F4F6;
+}
+.svc-fields {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid #F3F4F6;
+}
+.svc-field { padding: 9px 14px; border-right: 1px solid #F3F4F6; }
+.svc-field:nth-child(even) { border-right: none; }
+.svc-field-full { padding: 9px 14px; grid-column: 1 / -1; border-right: none; }
+.svc-lbl {
+    font-size: 10px; font-weight: 700; color: #9CA3AF;
+    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 3px;
+}
+.svc-val { font-size: 12px; color: #374151; line-height: 1.55; }
+.svc-footer {
+    display: flex; background: #F8F9FA; border-top: 1px solid #E5E7EB;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.svc-footer-cell { flex: 1; padding: 10px 14px; border-right: 1px solid #E5E7EB; }
+.svc-footer-cell:last-child { border-right: none; }
+.svc-footer-lbl {
+    font-size: 10px; font-weight: 700; color: #6B7280;
+    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 2px;
+}
+.svc-footer-val { font-size: 14px; font-weight: 700; color: var(--svc-color, #1F2937); }
+.svc-cta {
+    display: flex; align-items: center; justify-content: space-between;
+    background: #F0F9FF; border: 1px solid #BAE6FD; border-radius: 6px;
+    padding: 13px 16px; margin-top: 4px; gap: 16px; flex-wrap: wrap;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.svc-cta-text { font-size: 13px; color: #0C4A6E; flex: 1; line-height: 1.5; }
+.svc-cta-btn {
+    display: inline-block; background: #028090; color: white !important;
+    text-decoration: none; padding: 8px 18px; border-radius: 4px;
+    font-size: 12px; font-weight: 700; white-space: nowrap;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+@media (max-width:600px) {
+    .svc-fields { grid-template-columns: 1fr; }
+    .svc-field:nth-child(even) { border-right: none; }
+    .svc-footer { flex-direction: column; }
+    .svc-footer-cell { border-right: none; border-bottom: 1px solid #E5E7EB; }
+    .svc-footer-cell:last-child { border-bottom: none; }
+    .svc-cta { flex-direction: column; }
+}
 </style>
 </head>
 <body>
@@ -347,6 +420,8 @@ ul.sr li { margin-bottom: 8px; font-size: 13px; }
 <tr style="background:#1E2761;color:#FFFFFF;border-top:2px solid #374151;"><td colspan="2" style="font-size:11px;font-weight:700;letter-spacing:0.06em;padding:8px 10px;">TOTAL</td><td class="vrr-impact" style="color:#CBD5E1;">—</td><td class="vrr-value" style="color:#FFFFFF;font-weight:700;">$510,000</td><td style="color:#CBD5E1;font-size:11px;">—</td><td style="text-align:right;font-size:11px;color:#E2E8F0;white-space:nowrap;">$11,750 &#8211; $28,000</td><td style="text-align:center;color:#5EEAD4;font-weight:700;font-size:12px;">20x+</td></tr>
 </tbody></table><p style="font-size:12px;color:#028090;font-style:italic;margin:8px 16px 0;">Quick Win items are flagged &#10003; in the table above &#8212; these deliver the highest remediation ROI in the shortest timeline and are the recommended starting point for any remediation plan.</p><p style="font-size:11px;color:#6B7280;font-style:italic;margin:10px 16px 0;">Typical investment ranges reflect market-rate remediation costs and are provided for prioritization purposes only. Actual engagement scope and pricing depend on business size, gap severity, and selected service provider. Layer8 Tech Group provides formal engagement proposals following assessment delivery.</p><div class="vrr-cta"><span class="vrr-cta-text"><strong>Ready to recover this value before you list?</strong><br>Layer8 Tech Group delivers these services for businesses preparing for acquisition.</span><a class="vrr-cta-btn" href="https://calendly.com/jwallace-layer8techgroup/discovery-call" target="_blank">Schedule a Discovery Call &#8594;</a></div></div>
 
+  
+  
   
   
   
@@ -483,10 +558,10 @@ ul.sr li { margin-bottom: 8px; font-size: 13px; }
 
 
   <h2>Top 3 Strengths</h2>
-  <ul class="sr"><li>Legal &amp; Regulatory Compliance at 7.6/10 demonstrates strong foundational governance that significantly reduces buyer diligence burden in a sector subject to labor and safety regulations. This strength preempts costly compliance remediation and allows the buyer to focus integration resources on revenue synergies rather than regulatory catch-up, supporting a faster path to closing and minimizing post-close adjustment risk.</li><li>Technology &amp; Systems Maturity at 7.7/10 reflects a strong operational infrastructure that enables efficient scaling without proportional cost increases, a critical asset in a service business. A buyer inherits systems ready for modernization rather than legacy manual processes, reducing the technology refresh capex typically required in commercial cleaning acquisitions and supporting multiple-expansion confidence.</li><li>Owner Risk at 7.2/10 indicates adequate separation of the business from founder dependency, reducing key-person risk that typically discounts valuations in lower middle-market services deals. This operational independence strengthens the buyer&#x27;s confidence in revenue sustainability post-acquisition and reduces the need for extended earn-out provisions or founder retention premiums.</li></ul>
+  <ul class="sr"><li>Legal &amp; Regulatory Compliance at 7.6/10 represents a strong operational foundation that minimizes post-close liability exposure and remediation costs for the buyer. A robust compliance posture in the commercial cleaning vertical—where regulatory requirements around chemical handling, worker safety, and environmental standards are material—substantially reduces the diligence burden and allows the buyer to close with greater confidence in operational continuity.</li><li>Technology &amp; Systems Maturity at 7.7/10 demonstrates strong infrastructure readiness that supports integration and operational leverage post-acquisition. This technological foundation positions the company to absorb buyer systems and processes with lower implementation risk, reducing the need for costly platform overhauls and enabling faster realization of synergies.</li><li>Customer Quality at 6.8/10, while adequate, reflects a stable and defensible revenue base that provides predictable cash flow generation during the critical post-close period. A solid customer foundation mitigates top-line volatility risk and gives the buyer a platform on which to layer growth initiatives without fighting a deteriorating core business.</li></ul>
 
   <h2>Top 3 Risks</h2>
-  <ul class="sr"><li>Diligence Risk at 6.3/10 (ADEQUATE) represents a gap buyers will note during their operational and financial review. A below-consensus score in this primary domain signals incomplete documentation, unclear data trails, or missing historical records that will require remediation or post-close verification, potentially creating friction in purchase agreement negotiations and earnout structuring.</li><li>Customer Quality at 6.8/10 (ADEQUATE) creates a concern buyers will ask to see a plan for during diligence, as the score indicates concentration risk, contract instability, or churn patterns that fall short of lower-middle-market buyer expectations. Buyers will likely request detailed customer tenure, contract renewal history, and revenue concentration analysis, and may model a conservative revenue retention assumption post-close.</li><li>Financial Readiness at 6.5/10 (ADEQUATE) will surface as a diligence finding that may require post-close investment in accounting controls, tax compliance, or working capital management. The lower weighted score in this domain suggests buyers will scrutinize cash flow quality, expense classification, and tax position more closely, potentially triggering requests for audited financials or a working capital adjustment clause in the purchase agreement.</li></ul>
+  <ul class="sr"><li>Diligence Risk at 6.3/10 (ADEQUATE) represents a gap buyers will note during their full financial and operational review. With the lowest risk-adjusted score (6.3 × 21% = 1.32), this domain signals incomplete documentation, unclear audit trails, or missing controls that will require buyer remediation post-close or trigger a working-capital and representation-and-warranty adjustment. Sellers should expect diligence teams to request extensive backup on revenue recognition, expense allocation, and contract terms before closing.</li><li>Financial Readiness at 6.5/10 (ADEQUATE) creates a concern buyers will ask to see a plan for improving accounting infrastructure and cash forecasting visibility. This domain indicates potential gaps in month-end close timeliness, expense tracking, or cash-flow modeling that may require post-close investment in accounting systems or personnel, and will surface as a standard diligence finding that could delay closing or reduce the offered multiple within the stated 3.0–3.5× EBITDA range.</li><li>Customer Quality at 6.8/10 (ADEQUATE) will surface as a diligence finding without immediate deal-blocking impact, but represents a notable revenue-concentration or contract-renewal risk that buyers will underwrite carefully. With a 20% blend weight, customer concentration, contract terms, or churn rates that fall below market best practices will create concern during customer reference calls and may prompt negotiation on earnout structure or holdback amounts to protect against post-close revenue deterioration.</li></ul>
 
   <h2 class="pb">Recommended Priority Fixes</h2>
   <p style="font-size:13px;color:#6B7280;margin-bottom:16px;">
@@ -494,11 +569,11 @@ ul.sr li { margin-bottom: 8px; font-size: 13px; }
     complete domain-by-domain remediation plan and cost estimates, see the Value Recovery
     Roadmap above.
   </p>
-  <div class="fix-card"><div class="fix-num">Fix 1<span style="background:#1E2761;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">DR</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Compile Complete Financial &amp; Operational Documentation Package</div><div style="font-size:12px;color:#374151;">Address Diligence Risk (6.3/10) by assembling 3 years of audited or reviewed financials, bank statements, customer contracts, service logs, and tax returns into a single organized data room with clear indexing and provenance. Buyers will conduct detailed operational and financial review during diligence; incomplete or unclear documentation will create friction in negotiations, delay closing, and trigger requests for post-close verification escrows. A polished, transparent package demonstrates control and reduces buyer risk perception.</div></div>
-<div class="fix-card"><div class="fix-num">Fix 2<span style="background:#0369A1;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">CQ</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Produce Customer Concentration &amp; Retention Analysis Report</div><div style="font-size:12px;color:#374151;">Address Customer Quality Risk (6.8/10) by delivering a detailed report showing customer tenure distribution, annual contract renewal history, revenue concentration (% top 5 / top 10 customers), and churn patterns over the past 24–36 months, segmented by customer size and contract type. Buyers expect lower-middle-market service companies to demonstrate stable, diversified revenue; this report gives them the data needed to build confidence in post-close retention and defensibility. Lack of this analysis will prompt conservative buyer modeling and potential valuation discount.</div></div>
-<div class="fix-card"><div class="fix-num">Fix 3<span style="background:#B45309;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">FR</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Engage Big Four Accounting Firm for Financial Controls Assessment</div><div style="font-size:12px;color:#374151;">Address Financial Readiness Risk (6.5/10) by commissioning a third-party assessment of accounting controls, cash flow quality, expense classification accuracy, and tax compliance posture, resulting in a written remediation roadmap the buyer can review pre-close. Buyers scrutinize cash flow quality and tax position in lower-middle-market deals; an independent assessment reduces friction around working capital adjustments and post-close audit surprises. This investment demonstrates operational maturity and protects deal certainty.</div></div>
-<div class="fix-card"><div class="fix-num">Fix 4<span style="background:#047857;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">OS</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Map Service Delivery Workflows &amp; Document Standard Operating Procedures</div><div style="font-size:12px;color:#374151;">Operational Scalability (7.2/10) is a secondary gap that will concern buyers evaluating growth potential post-acquisition; create a documented library of standard operating procedures (SOPs) for core service delivery, customer onboarding, quality assurance, and safety compliance, with photo/video evidence of process execution. Buyers need confidence that service quality and margins can scale without proportional cost increases; documented workflows reduce operational risk perception and support buyer confidence in integration planning.</div></div>
-<div class="fix-card"><div class="fix-num">Fix 5<span style="background:#0F766E;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">HC</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Develop 24-Month Organizational Succession &amp; Retention Plan</div><div style="font-size:12px;color:#374151;">Owner Risk (7.2/10) and Human Capital (7.2/10) are both adequate but weighted heavily in buyer diligence; produce a signed 24-month retention agreement with key operational leaders (operations manager, lead technician supervisors), a documented organizational chart with role-specific KPIs, and a written succession plan for each critical role. Buyers evaluate management continuity and key-person dependencies carefully; this plan demonstrates operational independence from the owner and reduces post-close disruption risk, supporting smoother integration and lower earnout risk.</div></div>
+  <div class="fix-card"><div class="fix-num">Fix 1<span style="background:#1E2761;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">DR</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Compile Auditable Revenue &amp; Expense Documentation</div><div style="font-size:12px;color:#374151;">Directly addresses Diligence Risk (6.3/10). Assemble a complete 24-month audit trail of all revenue contracts, invoices, and expense allocations organized by customer and cost center, with clear reconciliation to tax returns and bank statements. Buyers will request this during full financial diligence; having it packaged and verified before the data room opens eliminates delays, reduces perceived opacity, and protects against post-close working-capital adjustments.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 2<span style="background:#B45309;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">FR</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Implement Monthly Close Checklist &amp; Cash Forecast</div><div style="font-size:12px;color:#374151;">Directly addresses Financial Readiness (6.5/10). Create a documented month-end close process with a standardized checklist, accrual schedule, and 13-week rolling cash-flow forecast updated weekly. Buyers will expect to see evidence of timely, predictable financial reporting and forward visibility; this deliverable demonstrates control maturity and reduces buyer concern about post-close accounting infrastructure gaps.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 3<span style="background:#0369A1;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">CQ</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Document Customer Contracts &amp; Renewal Schedule</div><div style="font-size:12px;color:#374151;">Directly addresses Customer Quality (6.8/10). Produce a master customer roster with contract terms, renewal dates, annual revenue, and any concentration thresholds, plus a 12-month forward renewal forecast with historical churn rates by cohort. Buyers will conduct customer reference calls and model revenue stability; clear documentation of contract health, diversity, and churn patterns minimizes surprise findings during diligence and supports earnout / holdback negotiations.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 4<span style="background:#047857;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">OS</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Formalize Operational Procedures &amp; Key Person Plan</div><div style="font-size:12px;color:#374151;">Addresses Operational Scalability and Human Capital (both 7.2/10) combined gap. Document all core cleaning delivery processes, route management, quality-control checkpoints, and safety protocols in a operations manual; simultaneously create a succession or retention plan for 3–5 key supervisors or revenue drivers. Buyers will evaluate operational leverage and staff continuity; clear procedures and named backfill reduce perceived operational concentration risk and support premium valuation within the 3.0–3.5× range.</div></div>
+<div class="fix-card"><div class="fix-num">Fix 5<span style="background:#9D174D;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;white-space:nowrap;">LC</span></div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">Conduct Third-Party Legal &amp; Compliance Audit</div><div style="font-size:12px;color:#374151;">Addresses Owner Risk (7.2/10) and compliance posture across licensing, insurance, and employment law. Retain external counsel to issue a written legal audit covering worker classification, safety compliance (OSHA, state), insurance adequacy, and contract enforceability; resolve any identified gaps before going to market. Buyers will conduct their own legal review; a clean third-party audit signals diligence and reduces post-close litigation or indemnity claims, protecting deal value and closing timeline.</div></div>
 
   <div class="compliance">
     <h2>Compliance Notes</h2>
