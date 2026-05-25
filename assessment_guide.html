@@ -246,36 +246,93 @@ SMB deals slow down, get re-traded, or fall apart entirely:</p>
 <!-- ── DOMAIN BLEND WEIGHTS ──────────────────────────────────────────────── -->
 <h2>Domain Blend Weights by Vertical</h2>
 
-<p>The Layer8 Scoring Engine applies vertical-specific blend weights that reflect how buyers
-in each industry actually weight these domains. A legal firm buyer cares far more about
-partner succession than automation maturity; a healthcare buyer weights patient retention
-as a primary value driver. The overall score shifts accordingly.</p>
+<p>The combined readiness score uses vertical-specific blend weights. The same eight domains
+are evaluated for every business; the weight each contributes to the combined score varies
+by vertical, reflecting how buyers in that industry weight risk during underwriting.</p>
 
 <table class="vert-table">
   <thead><tr>
-    <th style="text-align:left;">Vertical</th>
+    <th style="text-align:left;width:160px;">Vertical</th>
     <th>Diligence<br>Risk</th>
     <th>Owner<br>Risk</th>
     <th>Customer<br>Quality</th>
     <th>Ops<br>Scalability</th>
     <th>Financial<br>Readiness</th>
+    <th>Legal &amp;<br>Reg.</th>
+    <th>Technology<br>Maturity</th>
+    <th>Human<br>Capital</th>
   </tr></thead>
-  <tbody><tr><td>Default / General</td><td>30%</td><td>25%</td><td>25%</td><td>12%</td><td>8%</td></tr>
-<tr><td>Technology / MSP</td><td>25%</td><td>22%</td><td>25%</td><td>20%</td><td>8%</td></tr>
-<tr><td>Healthcare</td><td>28%</td><td>22%</td><td>28%</td><td>12%</td><td>10%</td></tr>
-<tr><td>Legal</td><td>28%</td><td>30%</td><td>25%</td><td>10%</td><td>7%</td></tr>
-<tr><td>Insurance</td><td>27%</td><td>22%</td><td>30%</td><td>12%</td><td>9%</td></tr>
-<tr><td>Accounting</td><td>27%</td><td>30%</td><td>25%</td><td>10%</td><td>8%</td></tr>
-<tr><td>Real Estate</td><td>27%</td><td>22%</td><td>30%</td><td>12%</td><td>9%</td></tr>
-</tbody>
+  <tbody>
+    <tr><td>Default / General</td><td>21%</td><td>17%</td><td>20%</td><td>10%</td><td>7%</td><td>8%</td><td>7%</td><td>10%</td></tr>
+    <tr><td>Technology / MSP</td><td>18%</td><td>15%</td><td>21%</td><td>13%</td><td>7%</td><td>6%</td><td>10%</td><td>10%</td></tr>
+    <tr><td>Healthcare</td><td>17%</td><td>16%</td><td>21%</td><td>8%</td><td>8%</td><td>11%</td><td>7%</td><td>12%</td></tr>
+    <tr><td>Legal</td><td>17%</td><td>17%</td><td>19%</td><td>7%</td><td>7%</td><td>14%</td><td>5%</td><td>14%</td></tr>
+    <tr><td>Insurance</td><td>17%</td><td>15%</td><td>23%</td><td>8%</td><td>8%</td><td>13%</td><td>5%</td><td>11%</td></tr>
+    <tr><td>Accounting</td><td>17%</td><td>17%</td><td>19%</td><td>7%</td><td>10%</td><td>11%</td><td>5%</td><td>14%</td></tr>
+    <tr><td>Real Estate</td><td>18%</td><td>16%</td><td>22%</td><td>8%</td><td>8%</td><td>13%</td><td>6%</td><td>9%</td></tr>
+    <tr><td>Home Services / Trades</td><td>17%</td><td>18%</td><td>22%</td><td>10%</td><td>7%</td><td>9%</td><td>6%</td><td>11%</td></tr>
+  </tbody>
 </table>
 
 <div class="callout-amber">
   <strong>Vertical selection matters.</strong> Running a healthcare practice through the Default
-  weights would underweight patient retention (Customer Quality) and overweight Operational
-  Scalability — producing a score profile that doesn't reflect how a healthcare buyer
-  actually underwrites the deal. Always select the vertical that matches the company's
-  primary business model.
+  weights underweights Legal &amp; Compliance by 3 percentage points (8% instead of 11%) —
+  a domain where healthcare buyers apply material scrutiny around HIPAA posture and provider
+  licensing. Always select the vertical that matches the company's primary business model.
+  If the business spans multiple verticals, use the one that generates the majority of revenue.
+</div>
+
+
+<!-- ── READINESS BANDS ───────────────────────────────────────────────────── -->
+<h2>Readiness Bands</h2>
+
+<p>Each score — per-domain and the combined readiness score — maps to one of five labeled
+bands. These labels appear on every domain score bar in the report and drive the language
+the synthesis narrative uses to describe gaps to a buyer.</p>
+
+<table class="mult-table">
+  <thead><tr>
+    <th style="width:100px;">Score</th>
+    <th style="width:160px;">Band</th>
+    <th>What It Signals to a Buyer</th>
+  </tr></thead>
+  <tbody>
+    <tr style="background:#F5F3FF;">
+      <td class="score-cell"><span class="badge be">10</span></td>
+      <td style="font-weight:700;color:#5B21B6;">EXCEPTIONAL</td>
+      <td>Institutional-quality across this dimension. No meaningful buyer scrutiny expected; supports the upper end of the valuation range.</td>
+    </tr>
+    <tr style="background:#ECFDF5;">
+      <td class="score-cell"><span class="badge ba">8 – 9</span></td>
+      <td style="font-weight:700;color:#065F46;">STRONG</td>
+      <td>Solid fundamentals with minor addressable gaps. Buyer will note 1–2 items but no deal-blocking issues; clean diligence process expected.</td>
+    </tr>
+    <tr style="background:#EFF6FF;">
+      <td class="score-cell"><span class="badge bs">6 – 7</span></td>
+      <td style="font-weight:700;color:#1E40AF;">ADEQUATE</td>
+      <td>Acceptable but buyer will identify gaps. Extended diligence likely; remediation before listing materially improves the multiple.</td>
+    </tr>
+    <tr style="background:#FFFBEB;">
+      <td class="score-cell"><span class="badge bn">4 – 5</span></td>
+      <td style="font-weight:700;color:#92400E;">NEEDS WORK</td>
+      <td>Material gaps. Buyer applies a discount, structures an earnout, or requires remediation as a condition of close. Expect re-trading after LOI.</td>
+    </tr>
+    <tr style="background:#FEF2F2;">
+      <td class="score-cell"><span class="badge bc">0 – 3</span></td>
+      <td style="font-weight:700;color:#DC2626;">CRITICAL RISK</td>
+      <td>Not sale-ready. Many buyers will pass; remaining buyers price aggressively. Remediation required before a meaningful listing is possible.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout">
+  <strong>How bands drive report tone.</strong> The synthesis narrative is tone-calibrated to
+  the combined score. NEEDS WORK and CRITICAL RISK produce direct discount language
+  ("will trigger a buyer discount," "valuation haircut"). ADEQUATE produces gap and concern
+  language ("buyers will note during diligence," "may require post-close investment").
+  STRONG and above produces polish and friction language. A single CRITICAL RISK domain
+  triggers hard discount language on that domain in the Risks section regardless of the
+  combined score.
 </div>
 
 
