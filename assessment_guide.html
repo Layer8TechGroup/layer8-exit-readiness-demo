@@ -613,98 +613,81 @@ domain scores; investment ranges scale by score band.</p>
 
 
 <!-- ── VALUATION IMPACT ───────────────────────────────────────────────────── -->
-<h2 class="pb">Valuation Impact Analysis</h2>
+<h2>Valuation Impact Analysis</h2>
 
-<p>The valuation section translates the overall readiness score into a EBITDA multiple band and
-implied dollar value range. It also projects a post-remediation range based on implementing the
-priority fixes in the report.</p>
+<p>The valuation section translates the overall readiness score into an estimated transaction
+multiple and — where EBITDA is available — an implied dollar range. Two components drive the
+output: a vertical- and EBITDA-tier baseline anchored to current market data, and a continuous
+score positioning that places the business within that baseline.</p>
 
-<h3>How Multiple Bands Are Assigned</h3>
-<p>Multiple bands reflect real-world SMB transaction data for businesses of comparable size and
-operational maturity. They are not aspirational — they represent what buyers are currently paying
-for businesses at each readiness level:</p>
-
-<table class="mult-table">
-  <thead><tr>
-    <th style="width:140px;">Overall Score</th>
-    <th style="width:160px;">Multiple Range</th>
-    <th>What It Signals to Buyers</th>
-  </tr></thead>
-  <tbody>
-    <tr><td class="score-cell"><span class="badge be">8.0 – 10.0</span></td>
-        <td><strong>5.0 – 6.5×</strong></td>
-        <td>Institutional-ready — minimal buyer risk, clean diligence, strong fundamentals</td></tr>
-    <tr><td class="score-cell"><span class="badge bs">6.5 – 7.9</span></td>
-        <td><strong>4.5 – 5.5×</strong></td>
-        <td>Strong fundamentals with minor addressable gaps</td></tr>
-    <tr><td class="score-cell"><span class="badge ba">5.0 – 6.4</span></td>
-        <td><strong>3.5 – 4.5×</strong></td>
-        <td>Adequate — buyer will discount for gaps, expect extended diligence</td></tr>
-    <tr><td class="score-cell"><span class="badge bn">3.5 – 4.9</span></td>
-        <td><strong>2.5 – 3.5×</strong></td>
-        <td>Material gaps — significant discount expected, earnout likely</td></tr>
-    <tr><td class="score-cell"><span class="badge bc">0 – 3.4</span></td>
-        <td><strong>2.0 – 3.0×</strong></td>
-        <td>Not ready — remediation required before listing, deal structure risk is high</td></tr>
-  </tbody>
-</table>
-
-<h3>Post-Remediation Projection</h3>
-<p>The post-remediation range shows the implied value after implementing the priority fixes,
-assuming a 1.0× improvement in the multiple band. <strong>This is a directional estimate,
-not a guarantee.</strong> The actual improvement depends on the quality of execution and
-how the market receives the remediated business at the time of sale.</p>
-
-<h3>EBITDA Source</h3>
-<p>Where EBITDA is shown, it reflects the most recent full fiscal year extracted from the
-company's financial documents. Where the AI could not extract a reliable figure, EBITDA
-is shown as "—" and the valuation section shows the multiple band without dollar values.
-Providing a verified EBITDA at intake enables the full valuation analysis.</p>
+<h3>Vertical and EBITDA Tier</h3>
+<p>The baseline range is determined by two axes: vertical and EBITDA tier. Seven named verticals
+are supported — healthcare, legal, accounting, insurance, technology, real estate, and home
+services — plus a general default. Each maps to four tiers: Main Street (&lt;$500K, SDE basis),
+Lower Middle Market ($500K–$2M), Middle Market ($2M–$5M), and PE Platform ($5M+). Tiers 2–4
+apply multiples against EBITDA; accounting and insurance use Revenue. Where EBITDA cannot be
+extracted, the report uses the Lower Middle Market range without dollar values.</p>
 
 <div class="callout-blue">
-  <strong>Important note on add-backs:</strong> The EBITDA shown is as-reported from the
-  financial statements. A properly normalized EBITDA — with owner compensation adjusted to
-  market rate, one-time expenses removed, and personal expenses separated — will typically
-  be higher and will command a better multiple. The Financial Readiness domain score
-  reflects how well-documented these add-backs are.
+  <strong>Note on EBITDA and add-backs:</strong> The EBITDA used for tier placement and dollar
+  calculations is as-reported from the financial documents. A normalized EBITDA — with owner
+  compensation adjusted to market, one-time expenses removed, and personal expenses separated —
+  will typically be higher and will command a better position within the tier range. Where
+  normalization crosses a tier threshold, the impact is larger: a different baseline multiple
+  range applies.
 </div>
 
+<h3>Score Positioned Within the Baseline</h3>
+<p>Within the vertical+tier baseline, the score determines a continuous position — not a discrete
+band assignment:</p>
+
+<pre style="font-size:12px;background:#F8F9FA;padding:10px 14px;border-radius:4px;line-height:1.9;-webkit-print-color-adjust:exact;print-color-adjust:exact;">position = clamp((score − 3.5) / 6.5, 0, 1)
+mid      = baseline_low + position × (baseline_high − baseline_low)
+range    = mid ± 0.25, clamped to baseline bounds</pre>
+
+<p><em>Example:</em> Technology / Main Street / baseline 2.5–3.5× / score 5.0<br>
+→ position = (5.0 − 3.5) / 6.5 = <strong>0.23</strong><br>
+→ mid = 2.5 + 0.23 × 1.0 = <strong>2.73</strong><br>
+→ reported range <strong>2.5–3.0×</strong> (clamped at baseline floor).</p>
+
+<p>Reports render the position as one of five qualitative labels: <em>at floor</em>
+(score &lt; 3.5), <em>lower range</em> (3.5 ≤ score &lt; 5.0),
+<em>at midpoint</em> (5.0 ≤ score &lt; 6.5), <em>above midpoint</em> (6.5 ≤ score &lt; 8.0),
+<em>upper range</em> (≥ 8.0).</p>
+
+<h3>Post-Remediation Projection</h3>
+<p>The post-remediation projection adds 2.0 to the overall score and re-runs the positioning
+formula at the projected score. The typical result — 0.1–0.4× within the current tier —
+reflects realistic post-close improvement rather than a flat multiple-band jump. This is a
+directional estimate; actual improvement depends on execution and market conditions at sale.</p>
+
+<p>Each report includes a vertical-specific grid showing the factors buyers in that market reward
+with higher multiples and the conditions that suppress them.</p>
 
 <!-- ── VALUE RECOVERY ROADMAP ────────────────────────────────────────────── -->
 <h2>Value Recovery Roadmap</h2>
 
-<p>The Value Recovery Roadmap is a prioritized services table that translates each domain
-gap into a specific Layer8 service, a multiple impact estimate, a dollar value at risk,
-and an estimated timeline to close the gap. It appears between the domain bar chart and
-the Valuation Impact Analysis in each report.</p>
+<p>The Value Recovery Roadmap is a prioritized services table that translates each domain's gap
+into a specific remediation engagement. It renders within the assessment scores area — not as a
+standalone section — as a 7-column table with a TOTAL aggregation row.</p>
 
-<h3>How Dollar Values Are Calculated</h3>
-<p>The "Total Recoverable Value" is the gap between the company's current valuation
-midpoint and the ceiling of the next multiple band up, multiplied by EBITDA:</p>
+<h3>How to Read the Columns</h3>
 <ul>
-  <li><strong>Current midpoint</strong> = (lower band multiple + upper band multiple) ÷ 2</li>
-  <li><strong>Ceiling</strong> = the high end of the next multiple band above the current one</li>
-  <li><strong>Total recoverable</strong> = (ceiling − current midpoint) × EBITDA</li>
-  <li><strong>Per-domain share</strong> = total recoverable × that domain's blend weight</li>
-  <li><strong>Multiple impact</strong> = per-domain share ÷ EBITDA</li>
+  <li><strong>Domain</strong> — color-badged abbreviation and name</li>
+  <li><strong>Layer8 Service</strong> — mapped remediation engagement</li>
+  <li><strong>Multiple Impact</strong> — +x.x× lift if this domain's gap is fully closed</li>
+  <li><strong>Value at Risk</strong> — domain's recoverable value share; EBITDA-dependent</li>
+  <li><strong>Estimated Timeline</strong> — weeks to close; score-adjusted per domain</li>
+  <li><strong>Typical Investment</strong> — score-adjusted cost range; severity-colored</li>
+  <li><strong>Estimated ROI</strong> — value at risk ÷ investment midpoint; Legal Compliance
+      and Technology &amp; Systems Maturity show a brief narrative instead — their value
+      shows up as avoided downside, not a clean multiplier</li>
 </ul>
+<p>The TOTAL row aggregates recoverable value, total investment range, and overall portfolio ROI.</p>
 
-<div class="callout-amber">
-  <strong>Example:</strong> A business with a 3.6/10 score sits in the 2.5–3.5× band.
-  Current midpoint = 3.0×. Next band ceiling = 4.5×. With EBITDA of $864,000:
-  total recoverable = 1.5 × $864,000 = $1,296,000. The Diligence Risk domain (30% blend)
-  accounts for $388,800 of that, representing a +0.5× multiple impact if fully closed.
-</div>
-
-<h3>Quick Win vs. Timeline</h3>
-<p>Each row displays an estimated timeline to close the domain gap. Timelines reflect both
-the inherent complexity of the service type and the severity of the gap (score band):</p>
-<ul>
-  <li><strong>Financial Readiness and Diligence Risk</strong> — faster ceiling (4–8 weeks for most gaps). Discrete tasks: add-back schedule, data room completion, MFA deployment.</li>
-  <li><strong>Owner Risk</strong> — 6–10 weeks. Succession planning and knowledge capture require coordination and documentation.</li>
-  <li><strong>Customer Quality</strong> — 8–12+ weeks. Contract review requires legal involvement; CRM implementation requires configuration and adoption time.</li>
-  <li><strong>Operational Scalability</strong> — 8–12+ weeks. Process documentation and systems audits require structured interviews and multi-stakeholder review.</li>
-</ul>
+<h3>Quick Win Badge</h3>
+<p>The &#10003; Quick Win badge marks rows where ROI ≥ 5.0× — a threshold flag, not a timeline
+category. Badged rows are the recommended starting point for any remediation plan.</p>
 
 
 <!-- ── CONFIDENCE LEVELS ──────────────────────────────────────────────────── -->
