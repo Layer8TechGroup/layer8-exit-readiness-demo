@@ -27,6 +27,18 @@
                 padding:10px 16px;font-size:12px;color:#78350F;margin:16px 0 0;
                 -webkit-print-color-adjust:exact;print-color-adjust:exact;}
 
+    /* Vertical coverage */
+    .vc-subtitle{font-size:15px;color:#028090;font-weight:600;margin:0 0 8px;}
+    .vc-body{font-size:14px;color:#374151;max-width:720px;line-height:1.8;margin:0 0 16px;}
+    .vc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+             gap:8px 14px;margin:0 0 14px;}
+    .vc-item{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:500;
+             color:#1F2937;background:#FFFFFF;border:1px solid #E5E7EB;
+             border-radius:4px;padding:9px 13px;
+             -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .vc-check{color:#028090;font-weight:700;font-size:14px;line-height:1;flex-shrink:0;}
+    .vc-note{font-size:12px;color:#4B5563;font-style:italic;margin:0 0 4px;}
+
     /* Vertical badges */
     .vbadge{display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;
             font-weight:700;white-space:nowrap;
@@ -130,6 +142,29 @@
       persons, or financial results is coincidental.
     </div>
   </div>
+
+  <h2>Vertical Coverage</h2>
+  <p class="vc-subtitle">Calibrated to Your Industry</p>
+  <p class="vc-body">
+    SellerDiligence assessment rubrics are calibrated by vertical &mdash; because what matters
+    in a healthcare practice sale is not the same as what matters in a technology services
+    acquisition.
+  </p>
+
+  <div class="vc-grid">
+    <div class="vc-item"><span class="vc-check">&#10003;</span> Healthcare</div>
+    <div class="vc-item"><span class="vc-check">&#10003;</span> Legal</div>
+    <div class="vc-item"><span class="vc-check">&#10003;</span> Accounting</div>
+    <div class="vc-item"><span class="vc-check">&#10003;</span> Insurance</div>
+    <div class="vc-item"><span class="vc-check">&#10003;</span> Real Estate</div>
+    <div class="vc-item"><span class="vc-check">&#10003;</span> Technology / MSP</div>
+    <div class="vc-item"><span class="vc-check">&#10003;</span> Home Services / Trades</div>
+  </div>
+
+  <p class="vc-note">
+    All industries supported via Default / General calibration when a specific vertical is
+    not listed.
+  </p>
 
   <h2>Company Profiles</h2>
   <p class="section-note">Ranked by overall readiness score, highest to lowest. Click "View Report" to open the full assessment.</p>
